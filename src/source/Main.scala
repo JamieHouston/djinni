@@ -27,23 +27,16 @@ object Main {
     var cppOutFolder: Option[File] = None
     var cppNamespace: String = ""
     var cppIncludePrefix: String = ""
-    var cppExtendedRecordIncludePrefix: String = ""
     var cppFileIdentStyle: IdentConverter = IdentStyle.underLower
     var cppOptionalTemplate: String = "std::optional"
     var cppOptionalHeader: String = "<optional>"
     var cppEnumHashWorkaround : Boolean = true
-    var cppNnHeader: Option[String] = None
-    var cppNnType: Option[String] = None
-    var cppNnCheckExpression: Option[String] = None
-    var cppUseWideStrings: Boolean = false
     var javaOutFolder: Option[File] = None
     var javaPackage: Option[String] = None
-    var javaClassAccessModifier: JavaAccessModifier.Value = JavaAccessModifier.Public
     var javaCppException: Option[String] = None
     var javaAnnotation: Option[String] = None
     var javaNullableAnnotation: Option[String] = None
     var javaNonnullAnnotation: Option[String] = None
-    var javaUseFinalForRecord: Boolean = true
     var jniOutFolder: Option[File] = None
     var jniHeaderOutFolderOptional: Option[File] = None
     var jniNamespace: String = "djinni_generated"
@@ -66,20 +59,29 @@ object Main {
     var objcIdentStyle = IdentStyle.objcDefault
     var objcTypePrefix: String = ""
     var objcIncludePrefix: String = ""
-    var objcExtendedRecordIncludePrefix: String = ""
     var objcppIncludePrefix: String = ""
     var objcppIncludeCppPrefix: String = ""
     var objcppIncludeObjcPrefixOptional: Option[String] = None
     var objcFileIdentStyleOptional: Option[IdentConverter] = None
     var objcppNamespace: String = "djinni_generated"
     var objcBaseLibIncludePrefix: String = ""
+    var cxOutFolder: Option[File] = None
+    var cxHeaderOutFolderOptional: Option[File] = None
+    var cxIncludePrefix: String = ""
+    var cxIncludeCppPrefix: String = ""
+    var cxIdentStyle: CxIdentStyle = IdentStyle.cxDefault
+    var cxFileIdentStyle: IdentConverter = IdentStyle.camelUpper
+    var cxExt: String = "cpp"
+    var cxHeaderExt: String = "h"
+    var cxNamespace: String = "djinni"
+    var cxBaseLibIncludePrefix: String = ""
     var inFileListPath: Option[File] = None
     var outFileListPath: Option[File] = None
     var skipGeneration: Boolean = false
     var yamlOutFolder: Option[File] = None
     var yamlOutFile: Option[String] = None
     var yamlPrefix: String = ""
-	
+
     val argParser = new scopt.OptionParser[Unit]("djinni") {
 
       def identStyle(optionName: String, update: IdentConverter => Unit) = {
@@ -100,8 +102,6 @@ object Main {
         .text("The output for the Java files (Generator disabled if unspecified).")
       opt[String]("java-package").valueName("...").foreach(x => javaPackage = Some(x))
         .text("The package name to use for generated Java classes.")
-      opt[JavaAccessModifier.Value]("java-class-access-modifier").valueName("<public/package>").foreach(x => javaClassAccessModifier = x)
-        .text("The access modifier to use for generated Java classes (default: public).")
       opt[String]("java-cpp-exception").valueName("<exception-class>").foreach(x => javaCppException = Some(x))
         .text("The type for translated C++ exceptions in Java (default: java.lang.RuntimeException that is not checked)")
       opt[String]("java-annotation").valueName("<annotation-class>").foreach(x => javaAnnotation = Some(x))
@@ -110,8 +110,6 @@ object Main {
         .text("Java annotation (@Nullable) to place on all fields and return values that are optional")
       opt[String]("java-nonnull-annotation").valueName("<nonnull-annotation-class>").foreach(x => javaNonnullAnnotation = Some(x))
         .text("Java annotation (@Nonnull) to place on all fields and return values that are not optional")
-      opt[Boolean]("java-use-final-for-record").valueName("<use-final-for-record>").foreach(x => javaUseFinalForRecord = x)
-        .text("Whether generated Java classes for records should be marked 'final' (default: true). ")
       note("")
       opt[File]("cpp-out").valueName("<out-folder>").foreach(x => cppOutFolder = Some(x))
         .text("The output folder for C++ files (Generator disabled if unspecified).")
@@ -131,14 +129,6 @@ object Main {
         .text("The header to use for optional values (default: \"<optional>\")")
       opt[Boolean]("cpp-enum-hash-workaround").valueName("<true/false>").foreach(x => cppEnumHashWorkaround = x)
         .text("Work around LWG-2148 by generating std::hash specializations for C++ enums (default: true)")
-      opt[String]("cpp-nn-header").valueName("<header>").foreach(x => cppNnHeader = Some(x))
-        .text("The header to use for non-nullable pointers")
-      opt[String]("cpp-nn-type").valueName("<header>").foreach(x => cppNnType = Some(x))
-        .text("The type to use for non-nullable pointers (as a substitute for std::shared_ptr)")
-      opt[String]("cpp-nn-check-expression").valueName("<header>").foreach(x => cppNnCheckExpression = Some(x))
-        .text("The expression to use for building non-nullable pointers")
-      opt[Boolean]( "cpp-use-wide-strings").valueName("<true/false>").foreach(x => cppUseWideStrings = x)
-        .text("Use wide strings in C++ code (default: false)")
       note("")
       opt[File]("jni-out").valueName("<out-folder>").foreach(x => jniOutFolder = Some(x))
         .text("The folder for the JNI C++ output files (Generator disabled if unspecified).")
@@ -172,14 +162,26 @@ object Main {
         .text("The prefix for #include of the main C++ header files from Objective-C++ files.")
       opt[String]("objcpp-include-objc-prefix").valueName("<prefix>").foreach(x => objcppIncludeObjcPrefixOptional = Some(x))
         .text("The prefix for #import of the Objective-C header files from Objective-C++ files (default: the same as --objcpp-include-prefix)")
-      opt[String]("cpp-extended-record-include-prefix").valueName("<prefix>").foreach(cppExtendedRecordIncludePrefix = _)
-        .text("The prefix path for #include of the extended record C++ header (.hpp) files")
-      opt[String]("objc-extended-record-include-prefix").valueName("<prefix>").foreach(objcExtendedRecordIncludePrefix = _)
-        .text("The prefix path for #import of the extended record Objective-C header (.h) files")
       opt[String]("objcpp-namespace").valueName("<prefix>").foreach(objcppNamespace = _)
         .text("The namespace name to use for generated Objective-C++ classes.")
       opt[String]("objc-base-lib-include-prefix").valueName("...").foreach(x => objcBaseLibIncludePrefix = x)
         .text("The Objective-C++ base library's include path, relative to the Objective-C++ classes.")
+      opt[File]("cx-out").valueName("<out-folder>").foreach(x => cxOutFolder = Some(x))
+        .text("The output folder for cx C++ output files (Generator disabled if unspecified)")
+      opt[File]("cx-header-out").valueName("<out-folder>").foreach(x => cxHeaderOutFolderOptional = Some(x))
+        .text("The output folder for cx C++ header files (default ??)")
+      opt[String]("cx-include-prefix").valueName("<prefix>").foreach(cxIncludePrefix = _)
+        .text("The prefix for #includes of cx header files from cx C++ files. (default ??)")
+      opt[String]("cx-include-cpp-prefix").valueName("<prefix>").foreach(cxIncludeCppPrefix = _)
+        .text("The prefix for #includes of the main header files from cx C++ files. (default ??)")
+      opt[String]("cx-ext").valueName("<ext>").foreach(cxExt = _)
+        .text("The filename extension for cx files (default ??)")
+      opt[String]("cx-h-ext").valueName("<ext>").foreach(cxHeaderExt = _)
+        .text("The filename extension for cx header files (is this even necessary??)")
+      opt[String]("cx-namespace").valueName("<prefix>").foreach(cxNamespace = _)
+        .text("The default namespace for cx classes")
+      opt[String]("cx-base-lib-include-prefix").valueName("...").foreach(x => cxBaseLibIncludePrefix = x)
+        .text("The C++/Cx base library's include path, relative to the C++/Cx classes.")
       note("")
       opt[File]("yaml-out").valueName("<out-folder>").foreach(x => yamlOutFolder = Some(x))
         .text("The output folder for YAML files (Generator disabled if unspecified).")
@@ -215,6 +217,13 @@ object Main {
       identStyle("ident-objc-type-param", c => { objcIdentStyle = objcIdentStyle.copy(typeParam = c) })
       identStyle("ident-objc-local",      c => { objcIdentStyle = objcIdentStyle.copy(local = c) })
       identStyle("ident-objc-file",       c => { objcFileIdentStyleOptional = Some(c) })
+      identStyle("ident-cx-enum",       c => { cxIdentStyle = cxIdentStyle.copy(enum = c) })
+      identStyle("ident-cx-field",      c => { cxIdentStyle = cxIdentStyle.copy(field = c) })
+      identStyle("ident-cx-method",     c => { cxIdentStyle = cxIdentStyle.copy(method = c) })
+      identStyle("ident-cx-type",       c => { cxIdentStyle = cxIdentStyle.copy(ty = c) })
+      identStyle("ident-cx-type-param", c => { cxIdentStyle = cxIdentStyle.copy(typeParam = c) })
+      identStyle("ident-cx-local",      c => { cxIdentStyle = cxIdentStyle.copy(local = c) })
+      identStyle("ident-cx-file",       c => { cxFileIdentStyle = c })
 
     }
 
@@ -229,6 +238,7 @@ object Main {
     val jniFileIdentStyle = jniFileIdentStyleOptional.getOrElse(cppFileIdentStyle)
     var objcFileIdentStyle = objcFileIdentStyleOptional.getOrElse(objcIdentStyle.ty)
     val objcppIncludeObjcPrefix = objcppIncludeObjcPrefixOptional.getOrElse(objcppIncludePrefix)
+    val cxHeaderOutFolder = if (cxHeaderOutFolderOptional.isDefined) cxHeaderOutFolderOptional else cxOutFolder
 
     // Add ObjC prefix to identstyle
     objcIdentStyle = objcIdentStyle.copy(ty = IdentStyle.prefix(objcTypePrefix,objcIdentStyle.ty))
@@ -238,11 +248,14 @@ object Main {
       cppIdentStyle = cppIdentStyle.copy(enumType = cppTypeEnumIdentStyle)
     }
 
+    //    if (cxTypeEnumIdentStyle != null) {
+    //      cxIdentStyle = cxIdentStyle.copy(enumType = cxTypeEnumIdentStyle)
+    //    }
+
     // Parse IDL file.
     System.out.println("Parsing...")
     val inFileListWriter = if (inFileListPath.isDefined) {
-      if (inFileListPath.get.getParentFile != null)
-        createFolder("input file list", inFileListPath.get.getParentFile)
+      createFolder("input file list", inFileListPath.get.getParentFile)
       Some(new BufferedWriter(new FileWriter(inFileListPath.get)))
     } else {
       None
@@ -272,8 +285,7 @@ object Main {
 
     System.out.println("Generating...")
     val outFileListWriter = if (outFileListPath.isDefined) {
-      if (outFileListPath.get.getParentFile != null)
-        createFolder("output file list", outFileListPath.get.getParentFile)
+      createFolder("output file list", outFileListPath.get.getParentFile)
       Some(new BufferedWriter(new FileWriter(outFileListPath.get)))
     } else {
       None
@@ -282,27 +294,20 @@ object Main {
     val outSpec = Spec(
       javaOutFolder,
       javaPackage,
-      javaClassAccessModifier,
       javaIdentStyle,
       javaCppException,
       javaAnnotation,
       javaNullableAnnotation,
       javaNonnullAnnotation,
-      javaUseFinalForRecord,
       cppOutFolder,
       cppHeaderOutFolder,
       cppIncludePrefix,
-      cppExtendedRecordIncludePrefix,
       cppNamespace,
       cppIdentStyle,
       cppFileIdentStyle,
       cppOptionalTemplate,
       cppOptionalHeader,
       cppEnumHashWorkaround,
-      cppNnHeader,
-      cppNnType,
-      cppNnCheckExpression,
-      cppUseWideStrings,
       jniOutFolder,
       jniHeaderOutFolder,
       jniIncludePrefix,
@@ -320,12 +325,21 @@ object Main {
       objcppExt,
       objcHeaderExt,
       objcIncludePrefix,
-      objcExtendedRecordIncludePrefix,
       objcppIncludePrefix,
       objcppIncludeCppPrefix,
       objcppIncludeObjcPrefix,
       objcppNamespace,
       objcBaseLibIncludePrefix,
+      cxOutFolder,
+      cxHeaderOutFolder,
+      cxIncludePrefix,
+      cxIncludeCppPrefix,
+      cxIdentStyle,
+      cxFileIdentStyle,
+      cxExt,
+      cxHeaderExt,
+      cxNamespace,
+      cxBaseLibIncludePrefix,
       outFileListWriter,
       skipGeneration,
       yamlOutFolder,

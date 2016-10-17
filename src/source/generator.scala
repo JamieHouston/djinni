@@ -30,27 +30,20 @@ package object generatorTools {
   case class Spec(
                    javaOutFolder: Option[File],
                    javaPackage: Option[String],
-                   javaClassAccessModifier: JavaAccessModifier.Value,
                    javaIdentStyle: JavaIdentStyle,
                    javaCppException: Option[String],
                    javaAnnotation: Option[String],
                    javaNullableAnnotation: Option[String],
                    javaNonnullAnnotation: Option[String],
-                   javaUseFinalForRecord: Boolean,
                    cppOutFolder: Option[File],
                    cppHeaderOutFolder: Option[File],
                    cppIncludePrefix: String,
-                   cppExtendedRecordIncludePrefix: String,
                    cppNamespace: String,
                    cppIdentStyle: CppIdentStyle,
                    cppFileIdentStyle: IdentConverter,
                    cppOptionalTemplate: String,
                    cppOptionalHeader: String,
                    cppEnumHashWorkaround: Boolean,
-                   cppNnHeader: Option[String],
-                   cppNnType: Option[String],
-                   cppNnCheckExpression: Option[String],
-                   cppUseWideStrings: Boolean,
                    jniOutFolder: Option[File],
                    jniHeaderOutFolder: Option[File],
                    jniIncludePrefix: String,
@@ -68,12 +61,21 @@ package object generatorTools {
                    objcppExt: String,
                    objcHeaderExt: String,
                    objcIncludePrefix: String,
-                   objcExtendedRecordIncludePrefix: String,
                    objcppIncludePrefix: String,
                    objcppIncludeCppPrefix: String,
                    objcppIncludeObjcPrefix: String,
                    objcppNamespace: String,
                    objcBaseLibIncludePrefix: String,
+                   cxOutFolder: Option[File],
+                   cxHeaderOutFolder: Option[File],
+                   cxIncludePrefix: String,
+                   cxIncludeCppPrefix: String,
+                   cxIdentStyle: CxIdentStyle,
+                   cxFileIdentStyle: IdentConverter,
+                   cxExt: String,
+                   cxHeaderExt: String,
+                   cxNamespace: String,
+                   cxBaseLibIncludePrefix: String,
                    outFileListWriter: Option[Writer],
                    skipGeneration: Boolean,
                    yamlOutFolder: Option[File],
@@ -84,7 +86,7 @@ package object generatorTools {
     if (s.isEmpty) s else ", " + s
   }
   def q(s: String) = '"' + s + '"'
-  def firstUpper(token: String) = if (token.isEmpty()) token else token.charAt(0).toUpper + token.substring(1)
+  def firstUpper(token: String) = token.charAt(0).toUpper + token.substring(1)
 
   type IdentConverter = String => String
 
@@ -100,6 +102,10 @@ package object generatorTools {
                             method: IdentConverter, field: IdentConverter, local: IdentConverter,
                             enum: IdentConverter, const: IdentConverter)
 
+  case class CxIdentStyle(ty: IdentConverter, enumType: IdentConverter, typeParam: IdentConverter,
+                           method: IdentConverter, field: IdentConverter, local: IdentConverter,
+                           enum: IdentConverter, const: IdentConverter)
+
   object IdentStyle {
     val camelUpper = (s: String) => s.split('_').map(firstUpper).mkString
     val camelLower = (s: String) => {
@@ -114,6 +120,7 @@ package object generatorTools {
     val javaDefault = JavaIdentStyle(camelUpper, camelUpper, camelLower, camelLower, camelLower, underCaps, underCaps)
     val cppDefault = CppIdentStyle(camelUpper, camelUpper, camelUpper, underLower, underLower, underLower, underCaps, underCaps)
     val objcDefault = ObjcIdentStyle(camelUpper, camelUpper, camelLower, camelLower, camelLower, camelUpper, camelUpper)
+    val cxDefault = CxIdentStyle(camelUpper, camelUpper, camelUpper, camelUpper, camelUpper, camelUpper, camelUpper, camelUpper)
 
     val styles = Map(
       "FooBar" -> camelUpper,
@@ -138,20 +145,6 @@ package object generatorTools {
       None
     }
   }
-
-  object JavaAccessModifier extends Enumeration {
-    val Public = Value("public")
-    val Package = Value("package")
-
-    def getCodeGenerationString(javaAccessModifier: JavaAccessModifier.Value): String = {
-      javaAccessModifier match {
-        case Public => "public "
-        case Package => "/*package*/ "
-      }
-    }
-
-  }
-  implicit val javaAccessModifierReads: scopt.Read[JavaAccessModifier.Value] = scopt.Read.reads(JavaAccessModifier withName _)
 
   final case class SkipFirst() {
     private var first = true
@@ -213,11 +206,19 @@ package object generatorTools {
         }
         new ObjcppGenerator(spec).generate(idl)
       }
+      if (spec.cxOutFolder.isDefined) {
+        if (!spec.skipGeneration) {
+          createFolder("Cx", spec.cxOutFolder.get)
+          createFolder("Cx header", spec.cxHeaderOutFolder.get)
+        }
+        new CxGenerator(spec).generate(idl)
+      }
+
       if (spec.yamlOutFolder.isDefined) {
         if (!spec.skipGeneration) {
           createFolder("YAML", spec.yamlOutFolder.get)
+          new YamlGenerator(spec).generate(idl)
         }
-        new YamlGenerator(spec).generate(idl)
       }
       None
     }
@@ -267,11 +268,12 @@ abstract class Generator(spec: Spec)
   }
 
   protected def createFile(folder: File, fileName: String, f: IndentWriter => Unit): Unit = createFile(folder, fileName, out => new IndentWriter(out), f)
-
+  
   implicit def identToString(ident: Ident): String = ident.name
   val idCpp = spec.cppIdentStyle
   val idJava = spec.javaIdentStyle
   val idObjc = spec.objcIdentStyle
+  val idCx = spec.cxIdentStyle
 
   def wrapNamespace(w: IndentWriter, ns: String, f: IndentWriter => Unit) {
     ns match {
@@ -293,8 +295,8 @@ abstract class Generator(spec: Spec)
     w.wl("} // end anonymous namespace")
   }
 
-  def writeHppFileGeneric(folder: File, namespace: String, fileIdentStyle: IdentConverter)(name: String, origin: String, includes: Iterable[String], fwds: Iterable[String], f: IndentWriter => Unit, f2: IndentWriter => Unit) {
-    createFile(folder, fileIdentStyle(name) + "." + spec.cppHeaderExt, (w: IndentWriter) => {
+  def writeHppFileGeneric(folder: File, namespace: String, fileIdentStyle: IdentConverter, headerExt: String)(name: String, origin: String, includes: Iterable[String], fwds: Iterable[String], f: IndentWriter => Unit, f2: IndentWriter => Unit) {
+    createFile(folder, fileIdentStyle(name) + "." + headerExt, (w: IndentWriter) => {
       w.wl("// AUTOGENERATED FILE - DO NOT MODIFY!")
       w.wl("// This file generated by Djinni from " + origin)
       w.wl
@@ -317,16 +319,14 @@ abstract class Generator(spec: Spec)
     })
   }
 
-  def writeCppFileGeneric(folder: File, namespace: String, fileIdentStyle: IdentConverter, includePrefix: String)(name: String, origin: String, includes: Iterable[String], f: IndentWriter => Unit) {
-    createFile(folder, fileIdentStyle(name) + "." + spec.cppExt, (w: IndentWriter) => {
+  def writeCppFileGeneric(folder: File, namespace: String, fileIdentStyle: IdentConverter, includePrefix: String, bodyExt: String, headerExt: String)(name: String, origin: String, includes: Iterable[String], f: IndentWriter => Unit) {
+    createFile(folder, fileIdentStyle(name) + "." + bodyExt, (w: IndentWriter) => {
       w.wl("// AUTOGENERATED FILE - DO NOT MODIFY!")
       w.wl("// This file generated by Djinni from " + origin)
       w.wl
-      val myHeader = q(includePrefix + fileIdentStyle(name) + "." + spec.cppHeaderExt)
+      val myHeader = q(includePrefix + fileIdentStyle(name) + "." + headerExt)
       w.wl(s"#include $myHeader  // my header")
-      val myHeaderInclude = s"#include $myHeader"
-      for (include <- includes if include != myHeaderInclude)
-        w.wl(include)
+      includes.foreach(w.wl(_))
       w.wl
       wrapNamespace(w, namespace, f)
     })
@@ -354,8 +354,6 @@ abstract class Generator(spec: Spec)
       case Some("") => "::" + t
       case Some(s) => "::" + s + "::" + t
     }
-
-  def withCppNs(t: String) = withNs(Some(spec.cppNamespace), t)
 
   def writeAlignedCall(w: IndentWriter, call: String, params: Seq[Field], delim: String, end: String, f: Field => String): IndentWriter = {
     w.w(call)
