@@ -26,7 +26,6 @@ fi
 # Run the build if necessary.
 if [ ! -f "$base_dir/$launcher" ]; then
     # If the launcher file doesn't exist, the build was never even run.
-    echo "target/start file not found, so building over"
     need_to_build=1
 else
     # If the launcher file isn't newer than all the build dependencies, the build needs to be rerun.
@@ -36,10 +35,7 @@ else
     done
     newer=$(find "${dependencies_full_path[@]}" -newer "$base_dir/$launcher" | head | wc -l)
     if [ "$newer" -gt 0 ]; then
-        echo "target/start file older than dependencies, so building over"
         need_to_build=1
-    else
-        echo "target/start found and newer than dependencies, so not rebuilding it"
     fi
 fi
 
