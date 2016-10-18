@@ -1,4 +1,4 @@
-package djinni
+iackage djinni
 
 import djinni.ast._
 import djinni.generatorTools._
@@ -108,7 +108,7 @@ class ObjcMarshal(spec: Spec) extends Marshal(spec) {
           val base = o match {
             case p: MPrimitive => if (needRef) (p.objcBoxed, true) else (p.objcName, false)
             case MString => ("NSString", true)
-            case MDate => ("NSDate", true)
+            case MDate => ("NSDate/toCpp", true)
             case MBinary => ("NSData", true)
             case MOptional => throw new AssertionError("optional should have been special cased")
             case MList => ("NSArray" + args(tm), true)
@@ -153,7 +153,7 @@ class ObjcMarshal(spec: Spec) extends Marshal(spec) {
     * strings, and optional strings. Anything else needs to be a class method.
     */
   def canBeConstVariable(c:Const): Boolean = c.ty.resolved.base match {
-    case MPrimitive(_,_,_,_,_,_,_,_) => true
+    case MPrimitive(_,_,_,_,_,_,_,_,_,_) => true
     case MString => true
     case MOptional =>
       assert(c.ty.resolved.args.size == 1)
