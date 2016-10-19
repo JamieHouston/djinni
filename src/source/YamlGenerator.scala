@@ -217,7 +217,7 @@ object YamlGenerator {
       nested(td, "jni")("translator").toString,
       nested(td, "jni")("header").toString,
       nested(td, "jni")("typename").toString,
-      nested(td, "jni")("typeSignature").toString)
+      nested(td, "jni")("typeSignature").toString),
     MExtern.Cx(
       nested(td, "cx")("typename").toString,
       if(nested(td, "cx").contains("header")) Some(nested(td, "cx")("header").toString) else None,

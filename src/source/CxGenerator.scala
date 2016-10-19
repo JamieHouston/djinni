@@ -388,7 +388,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
             w.wl(s"native_call_nativeRef = [nativeRef]{ return nativeRef; };")
           }
           for(m <- i.methods) {
-            val ret = m.ret.fold("void")(ty=>cppMarshal.toCppType(ty.resolved, Some(spec.cppNamespace)))
+            val ret = m.ret.fold("void")(ty=>cppMarshal.toCppType(ty.resolved, Some(spec.cppNamespace), Seq()))
             val params = m.params.map(p => cppMarshal.fqParamType(p.ty) + " " + idCpp.local(p.ident))
             val methodName = idCpp.method(m.ident)
             val call = "nativeRef()->" + idCx.method(m.ident)  + m.params.map(p=>translate(p.ty.resolved, idCpp.local(p.ident), Some(spec.cxNamespace))).mkString("(", ", ", ")")
@@ -419,7 +419,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
   }
   def translate(ty: MExpr, name: String, cxNamespace: Option[String]=None): String = {
     //    val Cpp = toCppType(ty, Some(spec.cppNamespace))
-    val Cpp = cppMarshal.toCppType(ty, Some(spec.cppNamespace))
+    val Cpp = cppMarshal.toCppType(ty, Some(spec.cppNamespace), Seq())
     //   val Cx = toCxType(ty, csNamespace)
     val Cx = cxMarshal.fieldType(ty, cxNamespace)
     s"transform<$Cpp, $Cx>()($name)"
