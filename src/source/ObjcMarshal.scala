@@ -1,4 +1,4 @@
-iackage djinni
+package djinni
 
 import djinni.ast._
 import djinni.generatorTools._
@@ -108,7 +108,7 @@ class ObjcMarshal(spec: Spec) extends Marshal(spec) {
           val base = o match {
             case p: MPrimitive => if (needRef) (p.objcBoxed, true) else (p.objcName, false)
             case MString => ("NSString", true)
-            case MDate => ("NSDate/toCpp", true)
+            case MDate => ("NSDate", true)
             case MBinary => ("NSData", true)
             case MOptional => throw new AssertionError("optional should have been special cased")
             case MList => ("NSArray" + args(tm), true)
