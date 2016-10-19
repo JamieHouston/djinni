@@ -62,7 +62,6 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
     if (spec.cppEnumHashWorkaround) {
       refs.hpp.add("#include <functional>") // needed for std::hash
     }
-    }
 
     writeHppFile(ident, origin, refs.hpp, refs.hppFwds, w => {
       w.w(s"enum class $self : int").bracedSemi {
