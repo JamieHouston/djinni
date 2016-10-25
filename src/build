@@ -16,11 +16,20 @@ base_dir=$(cd "`dirname "$loc"`" && pwd)
 
 need_to_build=0
 dependencies=("build.sbt" "project/plugins.sbt" "source")
-launcher="target/start"
+
+# Determine os version and choose correspondent .sh or .bat file accordingly.
+os_version="`uname -a`"
+
 
 if [ $# -ne 0 ]; then
     echo "Error: No command-line arguments allowed.  Got: $@" > /dev/stderr
     exit 1
+fi
+
+if [[ $os_version == *"MINGW"* ]]; then
+    launcher="target/start"
+else
+    launcher="target/start.bat"
 fi
 
 # Run the build if necessary.
