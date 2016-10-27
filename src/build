@@ -27,9 +27,9 @@ if [ $# -ne 0 ]; then
 fi
 
 if [[ $os_version == *"MINGW"* ]]; then
-    launcher="target/start"
-else
     launcher="target/start.bat"
+else
+    launcher="target/startt"
 fi
 
 # Run the build if necessary.
