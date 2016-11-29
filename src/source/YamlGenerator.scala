@@ -52,6 +52,7 @@ class YamlGenerator(spec: Spec) extends Generator(spec) {
     w.wl("objcpp:").nested { write(w, objcpp(td)) }
     w.wl("java:").nested { write(w, java(td)) }
     w.wl("jni:").nested { write(w, jni(td)) }
+    w.wl("cx:").nested {write(w, cx(td)) }
   }
 
   private def write(w: IndentWriter, m: Map[String, Any]) {
