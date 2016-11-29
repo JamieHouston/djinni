@@ -56,6 +56,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
     }
     def findConvert(m: Meta) = for(r <- cxMarshal.convertReferences(m, name)) r match {
       case ImportRef(arg) => cx.add("#include " + arg)
+      case DeclRef(_, _) =>
     }
   }
 
