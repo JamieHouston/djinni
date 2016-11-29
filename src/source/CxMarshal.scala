@@ -74,6 +74,7 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
       case MMap => "Map"
       case d: MDef => throw new AssertionError("unreachable")
       case p: MParam => throw new AssertionError("not applicable")
+      case _ => throw new AssertionError("invalid type")
 
     })
   }
@@ -129,6 +130,7 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
       case MMap => "Map"
       case d: MDef => throw new AssertionError("unreachable")
       case p: MParam => throw new AssertionError("not applicable")
+      case _ => throw new AssertionError("invalid type")
     })
   }
 
