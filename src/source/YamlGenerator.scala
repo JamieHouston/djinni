@@ -53,6 +53,7 @@ class YamlGenerator(spec: Spec) extends Generator(spec) {
     w.wl("java:").nested { write(w, java(td)) }
     w.wl("jni:").nested { write(w, jni(td)) }
     w.wl("cx:").nested {write(w, cx(td)) }
+    w.wl("cxcpp:").nested {write(w, cpp(td)) }
   }
 
   private def write(w: IndentWriter, m: Map[String, Any]) {
@@ -225,9 +226,9 @@ object YamlGenerator {
       nested(td, "cx")("boxed").toString,
       nested(td, "cx")("reference").asInstanceOf[Boolean]),
     MExtern.CxCpp(
-      nested(td, "cxcpp")("typename").toString,
-      nested(td, "cxcpp")("header").toString,
-      nested(td, "cxcpp")("byValue").asInstanceOf[Boolean])
+      nested(td, "cpp")("typename").toString,
+      nested(td, "cpp")("header").toString,
+      nested(td, "cpp")("byValue").asInstanceOf[Boolean])
   );
 
   private def nested(td: ExternTypeDecl, key: String) = {
