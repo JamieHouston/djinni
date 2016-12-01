@@ -95,7 +95,7 @@ case object MSet extends MOpaque { val numParams = 1; val idlName = "set" }
 case object MMap extends MOpaque { val numParams = 2; val idlName = "map" }
 
 val defaults: Map[String,MOpaque] = immutable.HashMap(
-  ("i8",   MPrimitive("i8",   "byte",    "jbyte",    "uint8_t", "Byte",    "B", "uint8_t", "NSNumber", "uint8_t", "Platform::IBox<uint8>")),
+  ("i8",   MPrimitive("i8",   "byte",    "jbyte",    "int8_t", "Byte",    "B", "int8_t", "NSNumber", "uint8_t", "Platform::IBox<uint8>")),
   ("i16",  MPrimitive("i16",  "short",   "jshort",   "int16_t", "Short",   "S", "int16_t", "NSNumber", "int16_t", "Platform::IBox<short>")),
   ("i32",  MPrimitive("i32",  "int",     "jint",     "int32_t", "Integer", "I", "int32_t", "NSNumber", "int32_t", "Platform::IBox<int>")),
   ("i64",  MPrimitive("i64",  "long",    "jlong",    "int64_t", "Long",    "J", "int64_t", "NSNumber", "int64_t", "Platform::IBox<int64_t>")),
