@@ -30,7 +30,7 @@ abstract sealed class Meta
 
 case class MParam(name: String) extends Meta { val numParams = 0 }
 case class MDef(name: String, override val numParams: Int, defType: DefType, body: TypeDef) extends Meta
-case class MExtern(name: String, override val numParams: Int, defType: DefType, body: TypeDef, cpp: MExtern.Cpp, objc: MExtern.Objc, objcpp: MExtern.Objcpp, java: MExtern.Java, jni: MExtern.Jni, cx: MExtern.Cx, cxcpp: MExtern.CxCpp) extends Meta
+case class MExtern(name: String, override val numParams: Int, defType: DefType, body: TypeDef, cpp: MExtern.Cpp, objc: MExtern.Objc, objcpp: MExtern.Objcpp, java: MExtern.Java, jni: MExtern.Jni, cx: MExtern.Cx) extends Meta
 object MExtern {
   // These hold the information marshals need to interface with existing types correctly
   // All include paths are complete including quotation marks "a/b/c" or angle brackets <a/b/c>.
@@ -70,11 +70,6 @@ object MExtern {
     header: Option[String],
     boxed: String,
     reference: Boolean
-  )
-  case class CxCpp(
-    typename: String,
-    header: String,
-    byValue: Boolean
   )
 }
 
