@@ -225,9 +225,9 @@ object YamlGenerator {
       nested(td, "cx")("boxed").toString,
       nested(td, "cx")("reference").asInstanceOf[Boolean]),
     MExtern.CxCpp(
-      nested(td, "cxcpp")("typename").toString,
-      nested(td, "cxcpp")("header").toString,
-      nested(td, "cxcpp")("byValue").asInstanceOf[Boolean])
+      nested(td, "cpp")("typename").toString,
+      nested(td, "cpp")("header").toString,
+      nested(td, "cpp")("byValue").asInstanceOf[Boolean])
   );
 
   private def nested(td: ExternTypeDecl, key: String) = {
