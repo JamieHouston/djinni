@@ -28,3 +28,8 @@ jni:
   header: '"Marshal.hpp"'
   typename: jobject
   typeSignature: 'Ljava/util/Date;'
+cx:
+  typename: '::feedsdkwindows::LayoutComponentModel'
+  header: '"LayoutComponentModel.h"'
+  boxed: 'LayoutComponentModel'
+  reference: true
