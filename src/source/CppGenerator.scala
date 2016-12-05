@@ -28,30 +28,24 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
 
   val marshal = new CppMarshal(spec)
 
-  val writeCppFile = writeCppFileGeneric(spec.cppOutFolder.get, spec.cppNamespace, spec.cppFileIdentStyle, spec.cppIncludePrefix) _
+  val writeCppFile = writeCppFileGeneric(spec.cppOutFolder.get, spec.cppNamespace, spec.cppFileIdentStyle, spec.cppIncludePrefix, spec.cppExt, spec.cppHeaderExt) _
   def writeHppFile(name: String, origin: String, includes: Iterable[String], fwds: Iterable[String], f: IndentWriter => Unit, f2: IndentWriter => Unit = (w => {})) =
-    writeHppFileGeneric(spec.cppHeaderOutFolder.get, spec.cppNamespace, spec.cppFileIdentStyle)(name, origin, includes, fwds, f, f2)
+    writeHppFileGeneric(spec.cppHeaderOutFolder.get, spec.cppNamespace, spec.cppFileIdentStyle, spec.cppHeaderExt)(name, origin, includes, fwds, f, f2)
 
   class CppRefs(name: String) {
     var hpp = mutable.TreeSet[String]()
     var hppFwds = mutable.TreeSet[String]()
     var cpp = mutable.TreeSet[String]()
 
-    def find(ty: TypeRef, forwardDeclareOnly: Boolean) { find(ty.resolved, forwardDeclareOnly) }
-    def find(tm: MExpr, forwardDeclareOnly: Boolean) {
-      tm.args.foreach((x) => find(x, forwardDeclareOnly))
-      find(tm.base, forwardDeclareOnly)
+    def find(ty: TypeRef) { find(ty.resolved) }
+    def find(tm: MExpr) {
+      tm.args.foreach(find)
+      find(tm.base)
     }
-    def find(m: Meta, forwardDeclareOnly : Boolean) = {
-      for(r <- marshal.hppReferences(m, name, forwardDeclareOnly)) r match {
-        case ImportRef(arg) => hpp.add("#include " + arg)
-        case DeclRef(decl, Some(spec.cppNamespace)) => hppFwds.add(decl)
-        case DeclRef(_, _) =>
-      }
-      for(r <- marshal.cppReferences(m, name, forwardDeclareOnly)) r match {
-        case ImportRef(arg) => cpp.add("#include " + arg)
-        case DeclRef(_, _) =>
-      }
+    def find(m: Meta) = for(r <- marshal.references(m, name)) r match {
+      case ImportRef(arg) => hpp.add("#include " + arg)
+      case DeclRef(decl, Some(spec.cppNamespace)) => hppFwds.add(decl)
+      case DeclRef(_, _) =>
     }
   }
 
@@ -67,7 +61,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
       w.w(s"enum class $self : int").bracedSemi {
         for (o <- e.options) {
           writeDoc(w, o.doc)
-          w.wl(idCpp.enum(o.ident.name) + ",")
+          w.wl(idCpp.enum(o.ident.name) + (if(o == e.options.last) "" else ","))
         }
       }
     },
@@ -104,7 +98,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
       case d: Double if marshal.fieldType(ty) == "float" => w.w(d.toString + "f")
       case d: Double => w.w(d.toString)
       case b: Boolean => w.w(if (b) "true" else "false")
-      case s: String => w.w("{" + s + "}")
+      case s: String => w.w(s)
       case e: EnumValue => w.w(marshal.typename(ty) + "::" + idCpp.enum(e.ty.name + "_" + e.name))
       case v: ConstRef => w.w(selfName + "::" + idCpp.const(v))
       case z: Map[_, _] => { // Value is record
@@ -136,8 +130,8 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
 
   override def generateRecord(origin: String, ident: Ident, doc: Doc, params: Seq[TypeParam], r: Record) {
     val refs = new CppRefs(ident.name)
-    r.fields.foreach(f => refs.find(f.ty, false))
-    r.consts.foreach(c => refs.find(c.ty, false))
+    r.fields.foreach(f => refs.find(f.ty))
+    r.consts.foreach(c => refs.find(c.ty))
     refs.hpp.add("#include <utility>") // Add for std::move
 
     val self = marshal.typename(ident, r)
@@ -146,16 +140,12 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
 
     // Requiring the extended class
     if (r.ext.cpp) {
-      refs.cpp.add("#include "+q(spec.cppExtendedRecordIncludePrefix + spec.cppFileIdentStyle(ident) + "." + spec.cppHeaderExt))
+      refs.hpp.add(s"class $self; // Requiring extended class")
+      refs.cpp.add("#include "+q("../" + spec.cppFileIdentStyle(ident) + "." + spec.cppHeaderExt))
     }
 
     // C++ Header
     def writeCppPrototype(w: IndentWriter) {
-      if (r.ext.cpp) {
-        w.w(s"struct $self; // Requiring extended class")
-        w.wl
-        w.wl
-      }
       writeDoc(w, doc)
       writeCppTypeParams(w, params)
       w.w("struct " + actualSelf + cppFinal).bracedSemi {
@@ -185,14 +175,14 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
         // Constructor.
         if(r.fields.nonEmpty) {
           w.wl
-          writeAlignedCall(w, actualSelf + "(", r.fields, ")", f => marshal.fieldType(f.ty) + " " + idCpp.local(f.ident) + "_")
+          writeAlignedCall(w, actualSelf + "(", r.fields, ")", f => marshal.fieldType(f.ty) + " " + idCpp.local(f.ident))
           w.wl
-          val init = (f: Field) => idCpp.field(f.ident) + "(std::move(" + idCpp.local(f.ident) + "_))"
+          val init = (f: Field) => idCpp.field(f.ident) + "(std::move(" + idCpp.local(f.ident) + "))"
           w.wl(": " + init(r.fields.head))
           r.fields.tail.map(f => ", " + init(f)).foreach(w.wl)
           w.wl("{}")
         }
-
+        w.wl(actualSelf + "() {}")
         if (r.ext.cpp) {
           w.wl
           w.wl(s"virtual ~$actualSelf() = default;")
@@ -265,15 +255,14 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
   override def generateInterface(origin: String, ident: Ident, doc: Doc, typeParams: Seq[TypeParam], i: Interface) {
     val refs = new CppRefs(ident.name)
     i.methods.map(m => {
-      m.params.map(p => refs.find(p.ty, true))
-      m.ret.foreach((x)=>refs.find(x, true))
+      m.params.map(p => refs.find(p.ty))
+      m.ret.foreach(refs.find)
     })
     i.consts.map(c => {
-      refs.find(c.ty, true)
+      refs.find(c.ty)
     })
 
     val self = marshal.typename(ident, i)
-    val methodNamesInScope = i.methods.map(m => idCpp.method(m.ident))
 
     writeHppFile(ident, origin, refs.hpp, refs.hppFwds, w => {
       writeDoc(w, doc)
@@ -288,8 +277,8 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
         for (m <- i.methods) {
           w.wl
           writeDoc(w, m.doc)
-          val ret = marshal.returnType(m.ret, methodNamesInScope)
-          val params = m.params.map(p => marshal.paramType(p.ty, methodNamesInScope) + " " + idCpp.local(p.ident))
+          val ret = marshal.returnType(m.ret)
+          val params = m.params.map(p => marshal.paramType(p.ty) + " " + idCpp.local(p.ident))
           if (m.static) {
             w.wl(s"static $ret ${idCpp.method(m.ident)}${params.mkString("(", ", ", ")")};")
           } else {

@@ -114,4 +114,3 @@ abstract class BaseObjcGenerator(spec: Spec) extends Generator(spec) {
     }
   }
 }
-
