@@ -19,7 +19,7 @@ enum class color : int {
      * color. To my eyes it seems merely deep blue." --Isaac Asimov
      */
     INDIGO,
-    VIOLET,
+    VIOLET
 };
 
 }  // namespace testsuite
