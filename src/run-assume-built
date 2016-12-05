@@ -14,11 +14,4 @@ while [ -h "$loc" ]; do
 done
 base_dir=$(cd "`dirname "$loc"`" && pwd)
 
-# Determine os version and choose correspondent .sh or .bat file accordingly.
-os_version="`uname -a`"
-
-if [[ $os_version == *"MINGW"* ]]; then
-  exec "$base_dir/target/start.bat" "$@"
-else
-  exec "$base_dir/target/start" "$@"
-fi
+exec "$base_dir/target/start" "$@"

@@ -29,7 +29,7 @@ jni:
   typename: jobject
   typeSignature: 'Ljava/util/Date;'
 cx:
-  typename: '::feedsdkwindows::LayoutComponentModel'
-  header: '"LayoutComponentModel.h"'
-  boxed: 'LayoutComponentModel'
+  typename: 'Windows::Foundation::DateTime'
+  header: 'Windows.Foundation.FoundationContract.winmd'
+  boxed: 'DateTime'
   reference: true

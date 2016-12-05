@@ -32,9 +32,9 @@ jni:
   typename: jobject
   typeSignature: 'Ljava/time/Duration;'
 cx:
-  typename: '::feedsdkwindows::LayoutComponentModel'
-  header: '"LayoutComponentModel.h"'
-  boxed: 'LayoutComponentModel'
+  typename: 'Windows::Foundation::TimeSpan'
+  header: 'Windows.Foundation.FoundationContract.winmd'
+  boxed: 'TimeSpan'
   reference: true
 ---
 name: h
@@ -66,9 +66,9 @@ jni:
   typename: jobject
   typeSignature: 'Ljava/time/Duration;'
 cx:
-  typename: '::feedsdkwindows::LayoutComponentModel'
-  header: '"LayoutComponentModel.h"'
-  boxed: 'LayoutComponentModel'
+  typename: 'Windows::Foundation::TimeSpan'
+  header: 'Windows.Foundation.FoundationContract.winmd'
+  boxed: 'TimeSpan'
   reference: true
 ---
 name: min
@@ -100,9 +100,9 @@ jni:
   typename: jobject
   typeSignature: 'Ljava/time/Duration;'
 cx:
-  typename: '::feedsdkwindows::LayoutComponentModel'
-  header: '"LayoutComponentModel.h"'
-  boxed: 'LayoutComponentModel'
+  typename: 'Windows::Foundation::TimeSpan'
+  header: 'Windows.Foundation.FoundationContract.winmd'
+  boxed: 'TimeSpan'
   reference: true
 ---
 name: s
@@ -134,9 +134,9 @@ jni:
   typename: jobject
   typeSignature: 'Ljava/time/Duration;'
 cx:
-  typename: '::feedsdkwindows::LayoutComponentModel'
-  header: '"LayoutComponentModel.h"'
-  boxed: 'LayoutComponentModel'
+  typename: 'Windows::Foundation::TimeSpan'
+  header: 'Windows.Foundation.FoundationContract.winmd'
+  boxed: 'TimeSpan'
   reference: true
 ---
 name: ms
@@ -168,9 +168,9 @@ jni:
   typename: jobject
   typeSignature: 'Ljava/time/Duration;'
 cx:
-  typename: '::feedsdkwindows::LayoutComponentModel'
-  header: '"LayoutComponentModel.h"'
-  boxed: 'LayoutComponentModel'
+  typename: 'Windows::Foundation::TimeSpan'
+  header: 'Windows.Foundation.FoundationContract.winmd'
+  boxed: 'TimeSpan'
   reference: true
 ---
 name: us
@@ -202,9 +202,9 @@ jni:
   typename: jobject
   typeSignature: 'Ljava/time/Duration;'
 cx:
-  typename: '::feedsdkwindows::LayoutComponentModel'
-  header: '"LayoutComponentModel.h"'
-  boxed: 'LayoutComponentModel'
+  typename: 'Windows::Foundation::TimeSpan'
+  header: 'Windows.Foundation.FoundationContract.winmd'
+  boxed: 'TimeSpan'
   reference: true
 ---
 name: ns
@@ -236,7 +236,7 @@ jni:
   typename: jobject
   typeSignature: 'Ljava/time/Duration;'
 cx:
-  typename: '::feedsdkwindows::LayoutComponentModel'
-  header: '"LayoutComponentModel.h"'
-  boxed: 'LayoutComponentModel'
+  typename: 'Windows::Foundation::TimeSpan'
+  header: 'Windows.Foundation.FoundationContract.winmd'
+  boxed: 'TimeSpan'
   reference: true
