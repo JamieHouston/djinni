@@ -273,6 +273,8 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
             }
             f.ty.resolved.base match {
               case MString => w.wl(s"tempResult = Platform::String::CompareOrdinal(this->${idCx.field(f.ident)}, rhs->${idCx.field(f.ident)});")
+              case MDate =>
+                compareOrd
               case t: MPrimitive =>
                 compareOrd
               case df: MDef => df.defType match {

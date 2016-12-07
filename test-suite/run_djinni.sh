@@ -28,6 +28,7 @@ wchar_in_relative="djinni/wchar_test.djinni"
 temp_out_relative="djinni-output-temp"
 
 cpp_out="$base_dir/generated-src/cpp"
+cx_out="$base_dir/generated-src/cx"
 jni_out="$base_dir/generated-src/jni"
 objc_out="$base_dir/generated-src/objc"
 java_out="$base_dir/generated-src/java/com/dropbox/djinni/test"
@@ -87,6 +88,9 @@ fi
     --objcpp-out "$temp_out_relative/objc" \
     --objc-type-prefix DB \
     \
+    --cx-out "$temp_out_relative/cx" \
+    --cx-namespace testsuite \
+    \
     --yaml-out "$temp_out_relative/yaml" \
     --yaml-out-file "yaml-test.yaml" \
     --yaml-prefix "test_" \
@@ -114,6 +118,9 @@ fi
     --objc-out "$temp_out_relative/objc" \
     --objcpp-out "$temp_out_relative/objc" \
     --objc-type-prefix DB \
+    \
+    --cx-out "$temp_out_relative/cx" \
+    --cx-namespace testsuite \
     \
     --list-in-files "./generated-src/inFileList.txt" \
     --list-out-files "./generated-src/outFileList.txt"\
@@ -146,6 +153,9 @@ cp "$base_dir/djinni/yaml-test.djinni" "$temp_out/yaml"
     --objcpp-out "$temp_out_relative/objc" \
     --objc-type-prefix DB \
     \
+    --cx-out "$temp_out_relative/cx" \
+    --cx-namespace testsuite \
+    \
     --idl "$temp_out_relative/yaml/yaml-test.djinni" \
 )
 
@@ -164,6 +174,7 @@ mirror "cpp" "$temp_out/cpp" "$cpp_out"
 mirror "java" "$temp_out/java" "$java_out"
 mirror "jni" "$temp_out/jni" "$jni_out"
 mirror "objc" "$temp_out/objc" "$objc_out"
+mirror "cx" "$temp_out/cx" "$cx_out"
 
 date > "$gen_stamp"
 
