@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include "CxOnlyListenerProxy.h"
 #include "JavaOnlyListener.h"
 #include "ObjcOnlyListener.h"
 #include "uses_single_language_listeners.hpp"
@@ -17,6 +18,8 @@ public:
     ObjcOnlyListener^ ReturnForObjC ();
     void CallForJava (JavaOnlyListener^ L);
     JavaOnlyListener^ ReturnForJava ();
+    void CallForCx (CxOnlyListener^ L);
+    CxOnlyListener^ ReturnForCx ();
 internal:
     UsesSingleLanguageListeners(std::shared_ptr<::testsuite::UsesSingleLanguageListeners> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::UsesSingleLanguageListeners> cppRef() {return _cppRef;}

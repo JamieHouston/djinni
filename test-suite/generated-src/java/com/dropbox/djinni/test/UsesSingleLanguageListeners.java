@@ -22,6 +22,11 @@ public abstract class UsesSingleLanguageListeners {
     @CheckForNull
     public abstract JavaOnlyListener returnForJava();
 
+    public abstract void callForCx(@CheckForNull CxOnlyListener l);
+
+    @CheckForNull
+    public abstract CxOnlyListener returnForCx();
+
     private static final class CppProxy extends UsesSingleLanguageListeners
     {
         private final long nativeRef;
@@ -76,5 +81,21 @@ public abstract class UsesSingleLanguageListeners {
             return native_returnForJava(this.nativeRef);
         }
         private native JavaOnlyListener native_returnForJava(long _nativeRef);
+
+        @Override
+        public void callForCx(CxOnlyListener l)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_callForCx(this.nativeRef, l);
+        }
+        private native void native_callForCx(long _nativeRef, CxOnlyListener l);
+
+        @Override
+        public CxOnlyListener returnForCx()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_returnForCx(this.nativeRef);
+        }
+        private native CxOnlyListener native_returnForCx(long _nativeRef);
     }
 }

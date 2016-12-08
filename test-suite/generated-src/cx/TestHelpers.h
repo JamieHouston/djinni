@@ -4,13 +4,13 @@
 #pragma once
 
 #include "AssortedPrimitives.h"
-#include "ClientInterface.h"
+#include "ClientInterfaceProxy.h"
 #include "Color.h"
 #include "MapListRecord.h"
 #include "NestedCollection.h"
 #include "PrimitiveList.h"
 #include "SetRecord.h"
-#include "UserToken.h"
+#include "UserTokenProxy.h"
 #include "test_helpers.hpp"
 #include <memory>
 #include <stdint.h>

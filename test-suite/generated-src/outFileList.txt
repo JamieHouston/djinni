@@ -14,6 +14,7 @@ djinni-output-temp/cpp/interface_using_extended_record.hpp
 djinni-output-temp/cpp/interface_using_extended_record.cpp
 djinni-output-temp/cpp/objc_only_listener.hpp
 djinni-output-temp/cpp/java_only_listener.hpp
+djinni-output-temp/cpp/cx_only_listener.hpp
 djinni-output-temp/cpp/uses_single_language_listeners.hpp
 djinni-output-temp/cpp/first_listener.hpp
 djinni-output-temp/cpp/second_listener.hpp
@@ -59,6 +60,7 @@ djinni-output-temp/java/RecordUsingExtendedRecord.java
 djinni-output-temp/java/InterfaceUsingExtendedRecord.java
 djinni-output-temp/java/ObjcOnlyListener.java
 djinni-output-temp/java/JavaOnlyListener.java
+djinni-output-temp/java/CxOnlyListener.java
 djinni-output-temp/java/UsesSingleLanguageListeners.java
 djinni-output-temp/java/FirstListener.java
 djinni-output-temp/java/SecondListener.java
@@ -110,6 +112,8 @@ djinni-output-temp/jni/NativeObjcOnlyListener.hpp
 djinni-output-temp/jni/NativeObjcOnlyListener.cpp
 djinni-output-temp/jni/NativeJavaOnlyListener.hpp
 djinni-output-temp/jni/NativeJavaOnlyListener.cpp
+djinni-output-temp/jni/NativeCxOnlyListener.hpp
+djinni-output-temp/jni/NativeCxOnlyListener.cpp
 djinni-output-temp/jni/NativeUsesSingleLanguageListeners.hpp
 djinni-output-temp/jni/NativeUsesSingleLanguageListeners.cpp
 djinni-output-temp/jni/NativeFirstListener.hpp
@@ -185,6 +189,7 @@ djinni-output-temp/objc/DBInterfaceUsingExtendedRecord.h
 djinni-output-temp/objc/DBInterfaceUsingExtendedRecord.mm
 djinni-output-temp/objc/DBObjcOnlyListener.h
 djinni-output-temp/objc/DBJavaOnlyListener.h
+djinni-output-temp/objc/DBCxOnlyListener.h
 djinni-output-temp/objc/DBUsesSingleLanguageListeners.h
 djinni-output-temp/objc/DBFirstListener.h
 djinni-output-temp/objc/DBSecondListener.h
@@ -250,6 +255,8 @@ djinni-output-temp/objc/DBObjcOnlyListener+Private.h
 djinni-output-temp/objc/DBObjcOnlyListener+Private.mm
 djinni-output-temp/objc/DBJavaOnlyListener+Private.h
 djinni-output-temp/objc/DBJavaOnlyListener+Private.mm
+djinni-output-temp/objc/DBCxOnlyListener+Private.h
+djinni-output-temp/objc/DBCxOnlyListener+Private.mm
 djinni-output-temp/objc/DBUsesSingleLanguageListeners+Private.h
 djinni-output-temp/objc/DBUsesSingleLanguageListeners+Private.mm
 djinni-output-temp/objc/DBFirstListener+Private.h
@@ -328,6 +335,9 @@ djinni-output-temp/cx/RecordUsingExtendedRecord.h
 djinni-output-temp/cx/RecordUsingExtendedRecord.cpp
 djinni-output-temp/cx/InterfaceUsingExtendedRecord.h
 djinni-output-temp/cx/InterfaceUsingExtendedRecord.cpp
+djinni-output-temp/cx/CxOnlyListener.h
+djinni-output-temp/cx/CxOnlyListener.cpp
+djinni-output-temp/cx/CxOnlyListenerProxy.h
 djinni-output-temp/cx/UsesSingleLanguageListeners.h
 djinni-output-temp/cx/UsesSingleLanguageListeners.cpp
 djinni-output-temp/cx/ListenerCaller.h
@@ -361,6 +371,9 @@ djinni-output-temp/cx/EnumUsageInterface.h
 djinni-output-temp/cx/EnumUsageInterface.cpp
 djinni-output-temp/cx/ClientReturnedRecord.h
 djinni-output-temp/cx/ClientReturnedRecord.cpp
+djinni-output-temp/cx/ClientInterface.h
+djinni-output-temp/cx/ClientInterface.cpp
+djinni-output-temp/cx/ClientInterfaceProxy.h
 djinni-output-temp/cx/ReverseClientInterface.h
 djinni-output-temp/cx/ReverseClientInterface.cpp
 djinni-output-temp/cx/CppException.h
