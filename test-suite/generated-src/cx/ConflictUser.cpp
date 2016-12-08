@@ -7,20 +7,20 @@
 
 namespace testsuite {
 
-Conflict^ ConflictUser::Conflict ()
+IConflict^ ConflictUser::Conflict ()
 {
     try {
         auto cppRet = _cppRef->Conflict();
-        return transform<std::shared_ptr<::testsuite::Conflict>, ::testsuite::Conflict^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::Conflict>, ::testsuite::IConflict^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool ConflictUser::ConflictArg (Windows::Foundation::Collections::IIterable<Conflict^>^ Cs)
+bool ConflictUser::ConflictArg (Windows::Foundation::Collections::IIterable<IConflict^>^ Cs)
 {
     try {
-        auto cppRet = _cppRef->conflict_arg(transform<std::unordered_set<std::shared_ptr<::testsuite::Conflict>>, Windows::Foundation::Collections::IIterable<::testsuite::Conflict^>^>()(Cs));
+        auto cppRet = _cppRef->conflict_arg(transform<std::unordered_set<std::shared_ptr<::testsuite::Conflict>>, Windows::Foundation::Collections::IIterable<::testsuite::IConflict^>^>()(Cs));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {

@@ -11,7 +11,7 @@ namespace testsuite {
 public ref class ReturnTwo sealed : public Platform::Object
 {
 public:
-    static ReturnTwo^ GetInstance ();
+    static IReturnTwo^ GetInstance ();
     uint8_t ReturnTwo ();
 internal:
     ReturnTwo(std::shared_ptr<::testsuite::ReturnTwo> cppRef) : _cppRef(cppRef) {}

@@ -8,10 +8,10 @@
 
 namespace testsuite {
 
-::testsuite::ClientReturnedRecord ExternInterface1::Foo (::testsuite::ClientInterface^ I)
+::testsuite::ClientReturnedRecord ExternInterface1::Foo (::testsuite::IClientInterface^ I)
 {
     try {
-        auto cppRet = _cppRef->foo(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::ClientInterface^>()(I));
+        auto cppRet = _cppRef->foo(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(I));
         return transform<::testsuite::ClientReturnedRecord, ::testsuite::ClientReturnedRecord>()(cppRet);
     }
     catch(const std::exception& e) {
