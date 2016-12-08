@@ -9,58 +9,58 @@
 
 namespace testsuite {
 
-void UsesSingleLanguageListeners::CallForObjC (ObjcOnlyListener^ L)
+void UsesSingleLanguageListeners::CallForObjC (IObjcOnlyListener^ L)
 {
     try {
-        _cppRef->callForObjC(transform<std::shared_ptr<::testsuite::ObjcOnlyListener>, ::testsuite::ObjcOnlyListener^>()(L));
+        _cppRef->callForObjC(transform<std::shared_ptr<::testsuite::ObjcOnlyListener>, ::testsuite::IObjcOnlyListener^>()(L));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-ObjcOnlyListener^ UsesSingleLanguageListeners::ReturnForObjC ()
+IObjcOnlyListener^ UsesSingleLanguageListeners::ReturnForObjC ()
 {
     try {
         auto cppRet = _cppRef->returnForObjC();
-        return transform<std::shared_ptr<::testsuite::ObjcOnlyListener>, ::testsuite::ObjcOnlyListener^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::ObjcOnlyListener>, ::testsuite::IObjcOnlyListener^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void UsesSingleLanguageListeners::CallForJava (JavaOnlyListener^ L)
+void UsesSingleLanguageListeners::CallForJava (IJavaOnlyListener^ L)
 {
     try {
-        _cppRef->callForJava(transform<std::shared_ptr<::testsuite::JavaOnlyListener>, ::testsuite::JavaOnlyListener^>()(L));
+        _cppRef->callForJava(transform<std::shared_ptr<::testsuite::JavaOnlyListener>, ::testsuite::IJavaOnlyListener^>()(L));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-JavaOnlyListener^ UsesSingleLanguageListeners::ReturnForJava ()
+IJavaOnlyListener^ UsesSingleLanguageListeners::ReturnForJava ()
 {
     try {
         auto cppRet = _cppRef->returnForJava();
-        return transform<std::shared_ptr<::testsuite::JavaOnlyListener>, ::testsuite::JavaOnlyListener^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::JavaOnlyListener>, ::testsuite::IJavaOnlyListener^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void UsesSingleLanguageListeners::CallForCx (CxOnlyListener^ L)
+void UsesSingleLanguageListeners::CallForCx (ICxOnlyListener^ L)
 {
     try {
-        _cppRef->callForCx(transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::CxOnlyListener^>()(L));
+        _cppRef->callForCx(transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::ICxOnlyListener^>()(L));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-CxOnlyListener^ UsesSingleLanguageListeners::ReturnForCx ()
+ICxOnlyListener^ UsesSingleLanguageListeners::ReturnForCx ()
 {
     try {
         auto cppRet = _cppRef->returnForCx();
-        return transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::CxOnlyListener^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::ICxOnlyListener^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

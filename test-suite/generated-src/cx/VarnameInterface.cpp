@@ -17,11 +17,11 @@ VarnameRecord^ VarnameInterface::Rmethod (VarnameRecord^ RArg)
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-VarnameInterface^ VarnameInterface::Imethod (VarnameInterface^ IArg)
+IVarnameInterface^ VarnameInterface::Imethod (IVarnameInterface^ IArg)
 {
     try {
-        auto cppRet = _cppRef->_imethod_(transform<std::shared_ptr<::testsuite::VarnameInterface>, ::testsuite::VarnameInterface^>()(IArg));
-        return transform<std::shared_ptr<::testsuite::VarnameInterface>, ::testsuite::VarnameInterface^>()(cppRet);
+        auto cppRet = _cppRef->_imethod_(transform<std::shared_ptr<::testsuite::VarnameInterface>, ::testsuite::IVarnameInterface^>()(IArg));
+        return transform<std::shared_ptr<::testsuite::VarnameInterface>, ::testsuite::IVarnameInterface^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

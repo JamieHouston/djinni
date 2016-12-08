@@ -5,7 +5,7 @@
 
 namespace testsuite {
 
-public interface class CxOnlyListener
+public interface class ICxOnlyListener
 {
 public:
 };

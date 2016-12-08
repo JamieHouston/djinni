@@ -135,28 +135,28 @@ bool TestHelpers::CheckMapListRecord (MapListRecord^ M)
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckClientInterfaceAscii (ClientInterface^ I)
+void TestHelpers::CheckClientInterfaceAscii (IClientInterface^ I)
 {
     try {
-        ::testsuite::TestHelpers::check_client_interface_ascii(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::ClientInterface^>()(I));
+        ::testsuite::TestHelpers::check_client_interface_ascii(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(I));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckClientInterfaceNonascii (ClientInterface^ I)
+void TestHelpers::CheckClientInterfaceNonascii (IClientInterface^ I)
 {
     try {
-        ::testsuite::TestHelpers::check_client_interface_nonascii(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::ClientInterface^>()(I));
+        ::testsuite::TestHelpers::check_client_interface_nonascii(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(I));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckClientInterfaceArgs (ClientInterface^ I)
+void TestHelpers::CheckClientInterfaceArgs (IClientInterface^ I)
 {
     try {
-        ::testsuite::TestHelpers::check_client_interface_args(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::ClientInterface^>()(I));
+        ::testsuite::TestHelpers::check_client_interface_args(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(I));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -180,49 +180,49 @@ void TestHelpers::CheckEnum (Color C)
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-UserToken^ TestHelpers::TokenId (UserToken^ T)
+IUserToken^ TestHelpers::TokenId (IUserToken^ T)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::token_id(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::UserToken^>()(T));
-        return transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::UserToken^>()(cppRet);
+        auto cppRet = ::testsuite::TestHelpers::token_id(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(T));
+        return transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-UserToken^ TestHelpers::CreateCppToken ()
+IUserToken^ TestHelpers::CreateCppToken ()
 {
     try {
         auto cppRet = ::testsuite::TestHelpers::create_cpp_token();
-        return transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::UserToken^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckCppToken (UserToken^ T)
+void TestHelpers::CheckCppToken (IUserToken^ T)
 {
     try {
-        ::testsuite::TestHelpers::check_cpp_token(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::UserToken^>()(T));
+        ::testsuite::TestHelpers::check_cpp_token(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(T));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-int64_t TestHelpers::CppTokenId (UserToken^ T)
+int64_t TestHelpers::CppTokenId (IUserToken^ T)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::cpp_token_id(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::UserToken^>()(T));
+        auto cppRet = ::testsuite::TestHelpers::cpp_token_id(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(T));
         return transform<int64_t, int64_t>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckTokenType (UserToken^ T, Platform::String^ Type)
+void TestHelpers::CheckTokenType (IUserToken^ T, Platform::String^ Type)
 {
     try {
-        ::testsuite::TestHelpers::check_token_type(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::UserToken^>()(T), transform<std::string, Platform::String^>()(Type));
+        ::testsuite::TestHelpers::check_token_type(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(T), transform<std::string, Platform::String^>()(Type));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
