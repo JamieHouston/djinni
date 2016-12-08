@@ -24,8 +24,7 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
   override def fqTypename(tm: MExpr): String = toCxType(tm, Some(spec.cxNamespace))._1
   def fqTypename(name: String, ty: TypeDef): String = ty match {
     case e: Enum => withNs(Some(spec.cxNamespace), idCx.enumType(name))
-//    case i: Interface => if(i.ext.cx) withNs(Some(spec.cxNamespace), s"I${idCx.ty(name)}") else withNs(Some(spec.cxNamespace), idCx.ty(name))
-      case i: Interface => if(i.ext.cx) withNs(Some(spec.cxNamespace), s"${idCx.ty(name)}") else withNs(Some(spec.cxNamespace), idCx.ty(name))
+    case i: Interface => if(i.ext.cx) withNs(Some(spec.cxNamespace), s"I${idCx.ty(name)}") else withNs(Some(spec.cxNamespace), idCx.ty(name))
     case r: Record => withNs(Some(spec.cxNamespace), idCx.ty(name))
   }
 
@@ -314,7 +313,7 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
         d.defType match {
           case DEnum => (withNs(namespace, idCx.enumType(d.name)), false)
           case DRecord => (withNs(namespace, idCx.ty(d.name)), true)
-          case DInterface => (withNs(namespace, idCx.ty(d.name)), true)
+          case DInterface => (withNs(namespace, s"I${idCx.ty(d.name)}"), true)
         }
       case e: MExtern => e.body match {
         case i: Interface => (e.cx.typename, true)

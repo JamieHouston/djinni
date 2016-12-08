@@ -3,6 +3,7 @@
 
 #import "DBUsesSingleLanguageListeners+Private.h"
 #import "DBUsesSingleLanguageListeners.h"
+#import "DBCxOnlyListener+Private.h"
 #import "DBJavaOnlyListener+Private.h"
 #import "DBObjcOnlyListener+Private.h"
 #import "DJICppWrapperCache+Private.h"
@@ -58,6 +59,19 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (void)callForCx:(nullable DBCxOnlyListener *)l {
+    try {
+        _cppRefHandle.get()->callForCx(::djinni_generated::CxOnlyListener::toCpp(l));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable DBCxOnlyListener *)returnForCx {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->returnForCx();
+        return ::djinni_generated::CxOnlyListener::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 namespace djinni_generated {
 
 class UsesSingleLanguageListeners::ObjcProxy final
@@ -90,6 +104,19 @@ public:
         @autoreleasepool {
             auto objcpp_result_ = [Handle::get() returnForJava];
             return ::djinni_generated::JavaOnlyListener::toCpp(objcpp_result_);
+        }
+    }
+    void callForCx(const std::shared_ptr<::testsuite::CxOnlyListener> & c_l) override
+    {
+        @autoreleasepool {
+            [Handle::get() callForCx:(::djinni_generated::CxOnlyListener::fromCpp(c_l))];
+        }
+    }
+    std::shared_ptr<::testsuite::CxOnlyListener> returnForCx() override
+    {
+        @autoreleasepool {
+            auto objcpp_result_ = [Handle::get() returnForCx];
+            return ::djinni_generated::CxOnlyListener::toCpp(objcpp_result_);
         }
     }
 };

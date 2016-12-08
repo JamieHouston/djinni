@@ -366,7 +366,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
         throw new AssertionError("interface to cx doesn't support non-virtual method")
 
       writeHxFile(ident.name, origin, refs.hx, refs.hxFwds, w=>{
-        w.wl(s"public interface class $self").bracedSemi {
+        w.wl(s"public interface class I$self").bracedSemi {
           w.wlOutdent("public:")
           for (m <- i.methods) {
             val ret = cxMarshal.returnType(m.ret)
