@@ -13,7 +13,7 @@ namespace testsuite {
 public ref class ListenerCaller sealed : public Platform::Object
 {
 public:
-    static ListenerCaller^ Init (FirstListener^ FirstL, SecondListener^ SecondL);
+    static IListenerCaller^ Init (IFirstListener^ FirstL, ISecondListener^ SecondL);
     void CallFirst ();
     void CallSecond ();
 internal:

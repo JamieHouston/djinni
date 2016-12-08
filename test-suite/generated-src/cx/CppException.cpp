@@ -16,11 +16,11 @@ int32_t CppException::ThrowAnException ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-CppException^ CppException::Get ()
+ICppException^ CppException::Get ()
 {
     try {
         auto cppRet = ::testsuite::CppException::get();
-        return transform<std::shared_ptr<::testsuite::CppException>, ::testsuite::CppException^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::CppException>, ::testsuite::ICppException^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

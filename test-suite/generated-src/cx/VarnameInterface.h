@@ -13,7 +13,7 @@ public ref class VarnameInterface sealed : public Platform::Object
 {
 public:
     VarnameRecord^ Rmethod (VarnameRecord^ RArg);
-    VarnameInterface^ Imethod (VarnameInterface^ IArg);
+    IVarnameInterface^ Imethod (IVarnameInterface^ IArg);
 internal:
     VarnameInterface(std::shared_ptr<::testsuite::VarnameInterface> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::VarnameInterface> cppRef() {return _cppRef;}

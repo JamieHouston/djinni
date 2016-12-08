@@ -36,12 +36,12 @@ public:
     }
     std::string meth_taking_interface(const std::shared_ptr<::testsuite::ClientInterface> & i) override
     {
-        auto nativeRet = nativeRef()->MethTakingInterface(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::ClientInterface^>()(i));
+        auto nativeRet = nativeRef()->MethTakingInterface(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(i));
         return transform<std::string, Platform::String^>()(nativeRet);
     }
     std::string meth_taking_optional_interface(const std::shared_ptr<::testsuite::ClientInterface> & i) override
     {
-        auto nativeRet = nativeRef()->MethTakingOptionalInterface(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::ClientInterface^>()(i));
+        auto nativeRet = nativeRef()->MethTakingOptionalInterface(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(i));
         return transform<std::string, Platform::String^>()(nativeRet);
     }
     ::testsuite::ClientInterface^ nativeRef() { return native_call_nativeRef(); }
