@@ -3,6 +3,7 @@
 
 package com.dropbox.djinni.test;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
@@ -16,6 +17,9 @@ public abstract class ReverseClientInterface {
 
     @Nonnull
     public abstract String methTakingOptionalInterface(@CheckForNull ReverseClientInterface i);
+
+    @Nonnull
+    public abstract ArrayList<ClientReturnedRecord> methTakingAndReturningRecordList(@Nonnull ArrayList<ClientReturnedRecord> rl);
 
     @CheckForNull
     public static native ReverseClientInterface create();
@@ -66,5 +70,13 @@ public abstract class ReverseClientInterface {
             return native_methTakingOptionalInterface(this.nativeRef, i);
         }
         private native String native_methTakingOptionalInterface(long _nativeRef, ReverseClientInterface i);
+
+        @Override
+        public ArrayList<ClientReturnedRecord> methTakingAndReturningRecordList(ArrayList<ClientReturnedRecord> rl)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_methTakingAndReturningRecordList(this.nativeRef, rl);
+        }
+        private native ArrayList<ClientReturnedRecord> native_methTakingAndReturningRecordList(long _nativeRef, ArrayList<ClientReturnedRecord> rl);
     }
 }
