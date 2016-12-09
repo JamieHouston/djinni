@@ -41,7 +41,7 @@ public:
 
     property static Platform::String^ Constants::StringConstant {Platform::String^ get() {return "string-constant";} } 
 
-    property static Platform::IBox<Platform::String>^ Constants::OptStringConstant {Platform::IBox<Platform::String>^ get() {return "string-constant";} } 
+    property static Platform::String^ Constants::OptStringConstant {Platform::String^ get() {return "string-constant";} } 
 
     property static ConstantRecord^ Constants::ObjectConstant {ConstantRecord^ get() {return ref new ConstantRecord(
         Constants::I32Constant /* SomeInteger */ ,

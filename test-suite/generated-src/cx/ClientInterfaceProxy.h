@@ -21,7 +21,7 @@ public:
     }
     ::testsuite::ClientReturnedRecord get_record(int64_t record_id, const std::string & utf8string, const std::experimental::optional<std::string> & misc) override
     {
-        auto nativeRet = nativeRef()->GetRecord(transform<int64_t, int64_t>()(record_id), transform<std::string, Platform::String^>()(utf8string), transform<std::experimental::optional<std::string>, Platform::IBox<Platform::String>^>()(misc));
+        auto nativeRet = nativeRef()->GetRecord(transform<int64_t, int64_t>()(record_id), transform<std::string, Platform::String^>()(utf8string), transform<std::experimental::optional<std::string>, Platform::String^>()(misc));
         return transform<::testsuite::ClientReturnedRecord, ::testsuite::ClientReturnedRecord^>()(nativeRet);
     }
     double identifier_check(const std::vector<uint8_t> & data, int32_t r, int64_t jret) override
@@ -41,7 +41,7 @@ public:
     }
     std::string meth_taking_optional_interface(const std::shared_ptr<::testsuite::ClientInterface> & i) override
     {
-        auto nativeRet = nativeRef()->MethTakingOptionalInterface(transform<std::shared_ptr<::testsuite::ClientInterface>, Platform::IBox<::testsuite::IClientInterface>^>()(i));
+        auto nativeRet = nativeRef()->MethTakingOptionalInterface(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(i));
         return transform<std::string, Platform::String^>()(nativeRet);
     }
     ::testsuite::ClientInterface^ nativeRef() { return native_call_nativeRef(); }
