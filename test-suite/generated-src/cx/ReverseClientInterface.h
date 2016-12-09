@@ -13,7 +13,7 @@ public ref class ReverseClientInterface sealed : public Platform::Object
 public:
     Platform::String^ ReturnStr ();
     Platform::String^ MethTakingInterface (IReverseClientInterface^ I);
-    Platform::String^ MethTakingOptionalInterface (IReverseClientInterface^ I);
+    Platform::String^ MethTakingOptionalInterface (Platform::IBox<IReverseClientInterface>^ I);
     static IReverseClientInterface^ Create ();
 internal:
     ReverseClientInterface(std::shared_ptr<::testsuite::ReverseClientInterface> cppRef) : _cppRef(cppRef) {}
