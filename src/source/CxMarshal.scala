@@ -304,7 +304,8 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
           //   case MString => ("Platform::IBox<Platform::String^>", true)
           case e: MExtern =>
             (s"Platform::IBox<${expr(arg, namespace, e.cx.reference)._1}>", true)
-          case m => expr(arg, namespace, true)
+          case m =>
+            (s"Platform::IBox<${expr(arg, namespace, true)._1}>", true)
         }
       case MList => ("Windows::Foundation::Collections::IVector", true)
       case MSet => ("Windows::Foundation::Collections::IIterable", true)
