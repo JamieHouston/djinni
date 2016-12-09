@@ -26,10 +26,10 @@ Platform::String^ ReverseClientInterface::MethTakingInterface (IReverseClientInt
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::String^ ReverseClientInterface::MethTakingOptionalInterface (Platform::IBox<IReverseClientInterface>^ I)
+Platform::String^ ReverseClientInterface::MethTakingOptionalInterface (IReverseClientInterface^ I)
 {
     try {
-        auto cppRet = _cppRef->meth_taking_optional_interface(transform<std::shared_ptr<::testsuite::ReverseClientInterface>, Platform::IBox<::testsuite::IReverseClientInterface>^>()(I));
+        auto cppRet = _cppRef->meth_taking_optional_interface(transform<std::shared_ptr<::testsuite::ReverseClientInterface>, ::testsuite::IReverseClientInterface^>()(I));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {

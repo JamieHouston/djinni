@@ -32,4 +32,4 @@ cx:
   typename: 'Windows::Foundation::DateTime'
   header: 'Windows.Foundation.FoundationContract.winmd'
   boxed: 'DateTime'
-  reference: true
+  reference: false
