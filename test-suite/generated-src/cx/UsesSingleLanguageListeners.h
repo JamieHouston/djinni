@@ -18,8 +18,8 @@ public:
     ObjcOnlyListener^ ReturnForObjC ();
     void CallForJava (JavaOnlyListener^ L);
     JavaOnlyListener^ ReturnForJava ();
-    void CallForCx (CxOnlyListener^ L);
-    CxOnlyListener^ ReturnForCx ();
+    void CallForCx (ICxOnlyListener^ L);
+    ICxOnlyListener^ ReturnForCx ();
 internal:
     UsesSingleLanguageListeners(std::shared_ptr<::testsuite::UsesSingleLanguageListeners> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::UsesSingleLanguageListeners> cppRef() {return _cppRef;}

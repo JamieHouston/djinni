@@ -47,20 +47,20 @@ JavaOnlyListener^ UsesSingleLanguageListeners::ReturnForJava ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void UsesSingleLanguageListeners::CallForCx (CxOnlyListener^ L)
+void UsesSingleLanguageListeners::CallForCx (ICxOnlyListener^ L)
 {
     try {
-        _cppRef->callForCx(transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::CxOnlyListener^>()(L));
+        _cppRef->callForCx(transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::ICxOnlyListener^>()(L));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-CxOnlyListener^ UsesSingleLanguageListeners::ReturnForCx ()
+ICxOnlyListener^ UsesSingleLanguageListeners::ReturnForCx ()
 {
     try {
         auto cppRet = _cppRef->returnForCx();
-        return transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::CxOnlyListener^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::ICxOnlyListener^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
