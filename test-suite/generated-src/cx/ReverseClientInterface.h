@@ -12,9 +12,9 @@ public ref class ReverseClientInterface sealed : public Platform::Object
 {
 public:
     Platform::String^ ReturnStr ();
-    Platform::String^ MethTakingInterface (IReverseClientInterface^ I);
-    Platform::String^ MethTakingOptionalInterface (IReverseClientInterface^ I);
-    static IReverseClientInterface^ Create ();
+    Platform::String^ MethTakingInterface (ReverseClientInterface^ I);
+    Platform::String^ MethTakingOptionalInterface (ReverseClientInterface^ I);
+    static ReverseClientInterface^ Create ();
 internal:
     ReverseClientInterface(std::shared_ptr<::testsuite::ReverseClientInterface> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::ReverseClientInterface> cppRef() {return _cppRef;}

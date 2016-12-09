@@ -16,31 +16,31 @@ Platform::String^ ReverseClientInterface::ReturnStr ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::String^ ReverseClientInterface::MethTakingInterface (IReverseClientInterface^ I)
+Platform::String^ ReverseClientInterface::MethTakingInterface (ReverseClientInterface^ I)
 {
     try {
-        auto cppRet = _cppRef->meth_taking_interface(transform<std::shared_ptr<::testsuite::ReverseClientInterface>, ::testsuite::IReverseClientInterface^>()(I));
+        auto cppRet = _cppRef->meth_taking_interface(transform<std::shared_ptr<::testsuite::ReverseClientInterface>, ::testsuite::ReverseClientInterface^>()(I));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::String^ ReverseClientInterface::MethTakingOptionalInterface (IReverseClientInterface^ I)
+Platform::String^ ReverseClientInterface::MethTakingOptionalInterface (ReverseClientInterface^ I)
 {
     try {
-        auto cppRet = _cppRef->meth_taking_optional_interface(transform<std::shared_ptr<::testsuite::ReverseClientInterface>, ::testsuite::IReverseClientInterface^>()(I));
+        auto cppRet = _cppRef->meth_taking_optional_interface(transform<std::shared_ptr<::testsuite::ReverseClientInterface>, ::testsuite::ReverseClientInterface^>()(I));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-IReverseClientInterface^ ReverseClientInterface::Create ()
+ReverseClientInterface^ ReverseClientInterface::Create ()
 {
     try {
         auto cppRet = ::testsuite::ReverseClientInterface::create();
-        return transform<std::shared_ptr<::testsuite::ReverseClientInterface>, ::testsuite::IReverseClientInterface^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::ReverseClientInterface>, ::testsuite::ReverseClientInterface^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
