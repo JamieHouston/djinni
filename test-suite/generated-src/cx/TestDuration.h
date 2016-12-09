@@ -30,8 +30,8 @@ public:
     static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Millisf (double Count);
     static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Microsf (double Count);
     static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Nanosf (double Count);
-    static Windows::Foundation::TimeSpan<int64_t, Windows::Foundation::TimeSpan^>^ Box (int64_t Count);
-    static int64_t Unbox (Windows::Foundation::TimeSpan<int64_t, Windows::Foundation::TimeSpan^>^ Dt);
+    static Platform::IBox<Windows::Foundation::TimeSpan<int64_t, Windows::Foundation::TimeSpan>>^ Box (int64_t Count);
+    static int64_t Unbox (Platform::IBox<Windows::Foundation::TimeSpan<int64_t, Windows::Foundation::TimeSpan>>^ Dt);
 internal:
     TestDuration(std::shared_ptr<::testsuite::TestDuration> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::TestDuration> cppRef() {return _cppRef;}
