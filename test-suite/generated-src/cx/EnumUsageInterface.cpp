@@ -17,11 +17,11 @@ Color EnumUsageInterface::E (Color E)
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Color EnumUsageInterface::O (Color O)
+Platform::IBox<Color>^ EnumUsageInterface::O (Platform::IBox<Color>^ O)
 {
     try {
-        auto cppRet = _cppRef->o(transform<std::experimental::optional<::testsuite::color>, ::testsuite::Color>()(O));
-        return transform<std::experimental::optional<::testsuite::color>, ::testsuite::Color>()(cppRet);
+        auto cppRet = _cppRef->o(transform<std::experimental::optional<::testsuite::color>, Platform::IBox<::testsuite::Color>^>()(O));
+        return transform<std::experimental::optional<::testsuite::color>, Platform::IBox<::testsuite::Color>^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

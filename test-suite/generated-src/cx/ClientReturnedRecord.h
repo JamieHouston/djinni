@@ -12,11 +12,11 @@ public ref class ClientReturnedRecord sealed : public Platform::Object {
 public:
     property int64_t RecordId;
     property Platform::String^ Content;
-    property Platform::String^ Misc;
+    property Platform::IBox<Platform::String>^ Misc;
 
     ClientReturnedRecord(int64_t RecordId,
                          Platform::String^ Content,
-                         Platform::String^ Misc) {
+                         Platform::IBox<Platform::String>^ Misc) {
         this->RecordId = RecordId;
         this->Content = Content;
         this->Misc = Misc;

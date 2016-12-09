@@ -11,13 +11,13 @@ namespace testsuite {
 public ref class EnumUsageRecord sealed : public Platform::Object {
 public:
     property Color E;
-    property Color O;
+    property Platform::IBox<Color>^ O;
     property Windows::Foundation::Collections::IVector<Color>^ L;
     property Windows::Foundation::Collections::IIterable<Color>^ S;
     property Windows::Foundation::Collections::IMap<Color, Color>^ M;
 
     EnumUsageRecord(Color E,
-                    Color O,
+                    Platform::IBox<Color>^ O,
                     Windows::Foundation::Collections::IVector<Color>^ L,
                     Windows::Foundation::Collections::IIterable<Color>^ S,
                     Windows::Foundation::Collections::IMap<Color, Color>^ M) {

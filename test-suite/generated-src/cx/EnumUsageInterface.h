@@ -13,7 +13,7 @@ public ref class EnumUsageInterface sealed : public Platform::Object
 {
 public:
     Color E (Color E);
-    Color O (Color O);
+    Platform::IBox<Color>^ O (Platform::IBox<Color>^ O);
     Windows::Foundation::Collections::IVector<Color>^ L (Windows::Foundation::Collections::IVector<Color>^ L);
     Windows::Foundation::Collections::IIterable<Color>^ S (Windows::Foundation::Collections::IIterable<Color>^ S);
     Windows::Foundation::Collections::IMap<Color, Color>^ M (Windows::Foundation::Collections::IMap<Color, Color>^ M);
