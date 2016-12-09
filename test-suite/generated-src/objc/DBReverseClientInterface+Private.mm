@@ -3,6 +3,7 @@
 
 #import "DBReverseClientInterface+Private.h"
 #import "DBReverseClientInterface.h"
+#import "DBClientReturnedRecord+Private.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
@@ -48,6 +49,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->meth_taking_optional_interface(::djinni::Optional<std::experimental::optional, ::djinni_generated::ReverseClientInterface>::toCpp(i));
         return ::djinni::String::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSArray<DBClientReturnedRecord *> *)methTakingAndReturningRecordList:(nonnull NSArray<DBClientReturnedRecord *> *)rl {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->meth_taking_and_returning_record_list(::djinni::List<::djinni_generated::ClientReturnedRecord>::toCpp(rl));
+        return ::djinni::List<::djinni_generated::ClientReturnedRecord>::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

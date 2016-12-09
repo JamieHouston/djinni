@@ -3,6 +3,7 @@
 
 #include "NativeReverseClientInterface.hpp"  // my header
 #include "Marshal.hpp"
+#include "NativeClientReturnedRecord.hpp"
 
 namespace djinni_generated {
 
@@ -46,6 +47,16 @@ CJNIEXPORT jstring JNICALL Java_com_dropbox_djinni_test_ReverseClientInterface_0
         const auto& ref = ::djinni::objectFromHandleAddress<::testsuite::ReverseClientInterface>(nativeRef);
         auto r = ref->meth_taking_optional_interface(::djinni::Optional<std::experimental::optional, ::djinni_generated::NativeReverseClientInterface>::toCpp(jniEnv, j_i));
         return ::djinni::release(::djinni::String::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
+CJNIEXPORT jobject JNICALL Java_com_dropbox_djinni_test_ReverseClientInterface_00024CppProxy_native_1methTakingAndReturningRecordList(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jobject j_rl)
+{
+    try {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto& ref = ::djinni::objectFromHandleAddress<::testsuite::ReverseClientInterface>(nativeRef);
+        auto r = ref->meth_taking_and_returning_record_list(::djinni::List<::djinni_generated::NativeClientReturnedRecord>::toCpp(jniEnv, j_rl));
+        return ::djinni::release(::djinni::List<::djinni_generated::NativeClientReturnedRecord>::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 

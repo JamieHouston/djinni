@@ -22,5 +22,6 @@ reverse_client_interface = interface +c {
     meth_taking_interface(i: reverse_client_interface): string;
     meth_taking_optional_interface(i: optional<reverse_client_interface>): string;
 
+    meth_taking_and_returning_record_list(rl: list<client_returned_record>): list<client_returned_record>;
     static create(): reverse_client_interface;
 }

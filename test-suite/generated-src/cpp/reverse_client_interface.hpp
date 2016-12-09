@@ -6,8 +6,11 @@
 #include "../../handwritten-src/cpp/optional.hpp"
 #include <memory>
 #include <string>
+#include <vector>
 
 namespace testsuite {
+
+struct ClientReturnedRecord;
 
 class ReverseClientInterface {
 public:
@@ -18,6 +21,8 @@ public:
     virtual std::string meth_taking_interface(const std::shared_ptr<ReverseClientInterface> & i) = 0;
 
     virtual std::string meth_taking_optional_interface(const std::shared_ptr<ReverseClientInterface> & i) = 0;
+
+    virtual std::vector<ClientReturnedRecord> meth_taking_and_returning_record_list(const std::vector<ClientReturnedRecord> & rl) = 0;
 
     static std::shared_ptr<ReverseClientInterface> create();
 };
