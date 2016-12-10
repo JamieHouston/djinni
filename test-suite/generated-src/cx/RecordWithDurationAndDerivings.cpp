@@ -9,12 +9,12 @@ namespace testsuite {
 
 ::testsuite::RecordWithDurationAndDerivings RecordWithDurationAndDerivings::toCpp() {
     return ::testsuite::RecordWithDurationAndDerivings(
-        transform<std::chrono::duration<double, std::nano>, Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan>>()(Dt));
+        transform<std::chrono::duration<double, std::nano>, Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan^>>()(Dt));
 }
 
 RecordWithDurationAndDerivings^ RecordWithDurationAndDerivings::fromCpp(const ::testsuite::RecordWithDurationAndDerivings& value) {
     RecordWithDurationAndDerivings^ ret = ref new RecordWithDurationAndDerivings();
-    ret->Dt = transform<std::chrono::duration<double, std::nano>, Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan>>()(value.dt);
+    ret->Dt = transform<std::chrono::duration<double, std::nano>, Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan^>>()(value.dt);
     return ret;
 }
 

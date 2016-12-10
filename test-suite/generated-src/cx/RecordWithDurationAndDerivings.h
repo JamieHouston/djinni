@@ -10,9 +10,9 @@ namespace testsuite {
 
 public ref class RecordWithDurationAndDerivings sealed : public Platform::Object {
 public:
-    property Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Dt;
+    property Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan^> Dt;
 
-    RecordWithDurationAndDerivings(Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Dt) {
+    RecordWithDurationAndDerivings(Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan^> Dt) {
         this->Dt = Dt;
     }
     RecordWithDurationAndDerivings() {}

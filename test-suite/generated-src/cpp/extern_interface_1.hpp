@@ -6,10 +6,15 @@
 #include "client_interface.hpp"
 #include "client_returned_record.hpp"
 #include <memory>
+#include <vector>
 
 class ExternInterface1 {
 public:
     virtual ~ExternInterface1() {}
 
     virtual ::testsuite::ClientReturnedRecord foo(const std::shared_ptr<::testsuite::ClientInterface> & i) = 0;
+
+    virtual ::testsuite::ClientReturnedRecord meth_taking_record_list(const std::vector<::testsuite::ClientReturnedRecord> & lr) = 0;
+
+    virtual std::vector<::testsuite::ClientReturnedRecord> meth_returning_record_list(const ::testsuite::ClientReturnedRecord & r) = 0;
 };
