@@ -13,13 +13,13 @@ namespace System {
 template<> class CxInterfaceProxy<::testsuite::CxOnlyListener> : public ::testsuite::CxOnlyListener
 {
 public:
-    CxInterfaceProxy(::testsuite::CxOnlyListener^ nativeRef)
+    CxInterfaceProxy(::testsuite::ICxOnlyListener^ nativeRef)
     {
         native_call_nativeRef = [nativeRef]{ return nativeRef; };
     }
-    ::testsuite::CxOnlyListener^ nativeRef() { return native_call_nativeRef(); }
+    ::testsuite::ICxOnlyListener^ nativeRef() { return native_call_nativeRef(); }
 private:
-    std::function<::testsuite::CxOnlyListener^()> native_call_nativeRef;
+    std::function<::testsuite::ICxOnlyListener^()> native_call_nativeRef;
 };
 
 }  // namespace System

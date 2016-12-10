@@ -15,7 +15,7 @@ namespace System {
 template<> class CxInterfaceProxy<::testsuite::ClientInterface> : public ::testsuite::ClientInterface
 {
 public:
-    CxInterfaceProxy(::testsuite::ClientInterface^ nativeRef)
+    CxInterfaceProxy(::testsuite::IClientInterface^ nativeRef)
     {
         native_call_nativeRef = [nativeRef]{ return nativeRef; };
     }
@@ -44,9 +44,9 @@ public:
         auto nativeRet = nativeRef()->MethTakingOptionalInterface(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(i));
         return transform<std::string, Platform::String^>()(nativeRet);
     }
-    ::testsuite::ClientInterface^ nativeRef() { return native_call_nativeRef(); }
+    ::testsuite::IClientInterface^ nativeRef() { return native_call_nativeRef(); }
 private:
-    std::function<::testsuite::ClientInterface^()> native_call_nativeRef;
+    std::function<::testsuite::IClientInterface^()> native_call_nativeRef;
 };
 
 }  // namespace System

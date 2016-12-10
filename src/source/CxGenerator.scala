@@ -387,7 +387,8 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
         val nativeDecls = mutable.TreeSet[String]()
         w.wl(s"template<> class CxInterfaceProxy<$cppSelf> : public $cppSelf").bracedSemi {
           w.wlOutdent("public:")
-          w.wl(s"CxInterfaceProxy(${withNs(Some(spec.cxNamespace), self)}^ nativeRef)").braced {
+          val iSelf = s"I${self}"
+          w.wl(s"CxInterfaceProxy(${withNs(Some(spec.cxNamespace), iSelf)}^ nativeRef)").braced {
             w.wl(s"native_call_nativeRef = [nativeRef]{ return nativeRef; };")
           }
           for(m <- i.methods) {
@@ -405,7 +406,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
                 w.wl(call + ";")
             }
           }
-          val nativeType = withNs(Some(spec.cxNamespace), idCx.ty(ident.name))
+          val nativeType = withNs(Some(spec.cxNamespace), s"I${idCx.ty(ident.name)}")
           w.wl(s"$nativeType^ nativeRef() { return native_call_nativeRef(); }")
           w.wlOutdent("private:")
           for(n <- nativeDecls)
