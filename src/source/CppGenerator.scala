@@ -192,6 +192,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
           r.fields.tail.map(f => ", " + init(f)).foreach(w.wl)
           w.wl("{}")
         }
+        w.wl(actualSelf + "() {}")
         if (r.ext.cpp) {
           w.wl
           w.wl(s"virtual ~$actualSelf() = default;")

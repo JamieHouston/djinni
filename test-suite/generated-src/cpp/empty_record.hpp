@@ -13,6 +13,7 @@ namespace testsuite {
  *   Indented third line of multi-line documentation.)
  */
 struct EmptyRecord final {
+    EmptyRecord() {}
 };
 
 }  // namespace testsuite

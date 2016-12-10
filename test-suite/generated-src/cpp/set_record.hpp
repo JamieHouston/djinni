@@ -19,6 +19,7 @@ struct SetRecord final {
     : set(std::move(set_))
     , iset(std::move(iset_))
     {}
+    SetRecord() {}
 };
 
 }  // namespace testsuite

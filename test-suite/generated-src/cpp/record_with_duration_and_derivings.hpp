@@ -23,6 +23,7 @@ struct RecordWithDurationAndDerivings final {
     RecordWithDurationAndDerivings(std::chrono::duration<double, std::nano> dt_)
     : dt(std::move(dt_))
     {}
+    RecordWithDurationAndDerivings() {}
 };
 
 }  // namespace testsuite

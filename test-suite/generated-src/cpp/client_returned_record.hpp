@@ -23,6 +23,7 @@ struct ClientReturnedRecord final {
     , content(std::move(content_))
     , misc(std::move(misc_))
     {}
+    ClientReturnedRecord() {}
 };
 
 }  // namespace testsuite

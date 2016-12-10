@@ -16,6 +16,7 @@ struct MapDateRecord final {
     MapDateRecord(std::unordered_map<std::string, std::chrono::system_clock::time_point> dates_by_id_)
     : dates_by_id(std::move(dates_by_id_))
     {}
+    MapDateRecord() {}
 };
 
 }  // namespace testsuite

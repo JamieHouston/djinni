@@ -16,6 +16,7 @@ struct RecordUsingExtendedRecord final {
     RecordUsingExtendedRecord(ExtendedRecord er_)
     : er(std::move(er_))
     {}
+    RecordUsingExtendedRecord() {}
 };
 
 }  // namespace testsuite

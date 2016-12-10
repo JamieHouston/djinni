@@ -19,6 +19,7 @@ struct VarnameRecord final {
     VarnameRecord(int8_t _field__)
     : _field_(std::move(_field__))
     {}
+    VarnameRecord() {}
 };
 
 }  // namespace testsuite
