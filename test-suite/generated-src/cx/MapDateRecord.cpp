@@ -9,12 +9,12 @@ namespace testsuite {
 
 ::testsuite::MapDateRecord MapDateRecord::toCpp() {
     return ::testsuite::MapDateRecord(
-        transform<std::unordered_map<std::string, std::chrono::system_clock::time_point>, Windows::Foundation::Collections::IMap<Platform::String^, Windows::Foundation::DateTime^>^>()(DatesById));
+        transform<std::unordered_map<std::string, std::chrono::system_clock::time_point>, Windows::Foundation::Collections::IMap<Platform::String^, Windows::Foundation::DateTime>^>()(DatesById));
 }
 
 MapDateRecord^ MapDateRecord::fromCpp(const ::testsuite::MapDateRecord& value) {
     MapDateRecord^ ret = ref new MapDateRecord();
-    ret->DatesById = transform<std::unordered_map<std::string, std::chrono::system_clock::time_point>, Windows::Foundation::Collections::IMap<Platform::String^, Windows::Foundation::DateTime^>^>()(value.dates_by_id);
+    ret->DatesById = transform<std::unordered_map<std::string, std::chrono::system_clock::time_point>, Windows::Foundation::Collections::IMap<Platform::String^, Windows::Foundation::DateTime>^>()(value.dates_by_id);
     return ret;
 }
 

@@ -325,7 +325,7 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
     }
     def exprWithReference(tm: MExpr, namespace: Option[String], needRef:Boolean): String = {
       println()
-      val (arg, ref) = expr(tm, namespace, true)
+      val (arg, ref) = expr(tm, namespace, needRef)
       println(s"arg is ${arg}, ref is ${ref}, tm.base is ${tm.base}")
       if(ref) s"$arg^" else arg
     }

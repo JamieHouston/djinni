@@ -18,21 +18,21 @@ namespace testsuite {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-::testsuite::ClientReturnedRecord ExternInterface1::MethTakingRecordList (Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord^>^ Lr)
+::testsuite::ClientReturnedRecord ExternInterface1::MethTakingRecordList (Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord>^ Lr)
 {
     try {
-        auto cppRet = _cppRef->meth_taking_record_list(transform<std::vector<::testsuite::ClientReturnedRecord>, Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord^>^>()(Lr));
+        auto cppRet = _cppRef->meth_taking_record_list(transform<std::vector<::testsuite::ClientReturnedRecord>, Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord>^>()(Lr));
         return transform<::testsuite::ClientReturnedRecord, ::testsuite::ClientReturnedRecord>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord^>^ ExternInterface1::MethReturningRecordList (::testsuite::ClientReturnedRecord R)
+Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord>^ ExternInterface1::MethReturningRecordList (::testsuite::ClientReturnedRecord R)
 {
     try {
         auto cppRet = _cppRef->meth_returning_record_list(transform<::testsuite::ClientReturnedRecord, ::testsuite::ClientReturnedRecord>()(R));
-        return transform<std::vector<::testsuite::ClientReturnedRecord>, Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord^>^>()(cppRet);
+        return transform<std::vector<::testsuite::ClientReturnedRecord>, Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord>^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
