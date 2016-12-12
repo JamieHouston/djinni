@@ -131,42 +131,6 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
     }
   }
 
-  def generateCxConstants(w: IndentWriter, consts: Seq[Const], selfName: String) = {
-    def writeCxConst(w: IndentWriter, ty: TypeRef, v: Any): Unit = v match {
-      case l: Long => w.w(l.toString)
-      case d: Double if cxMarshal.fieldType(ty) == "float" => w.w(d.toString + "f")
-      case d: Double => w.w(d.toString)
-      case b: Boolean => w.w(if (b) "true" else "false")
-      case s: String => w.w(s)
-      case e: EnumValue => w.w(cxMarshal.typename(ty) + "::" + idCx.enum(e.ty.name + "_" + e.name))
-      case v: ConstRef => w.w(selfName + "::" + idCx.const(v))
-      case z: Map[_, _] => { // Value is record
-      val recordMdef = ty.resolved.base.asInstanceOf[MDef]
-        val record = recordMdef.body.asInstanceOf[Record]
-        val vMap = z.asInstanceOf[Map[String, Any]]
-        w.wl("ref new " + cxMarshal.toCxType(ty) + "(")
-        w.increase()
-        // Use exact sequence
-        val skipFirst = SkipFirst()
-        for (f <- record.fields) {
-          skipFirst {w.wl(",")}
-          writeCxConst(w, f.ty, vMap.apply(f.ident.name))
-          w.w(" /* " + idCx.field(f.ident) + " */ ")
-        }
-        w.w(")")
-        w.decrease()
-      }
-    }
-
-    val skipFirst = SkipFirst()
-    for (c <- consts) {
-      skipFirst{ w.wl }
-      w.w(s"${cxMarshal.fieldType(c.ty)} const $selfName::${idCx.const(c.ident)} = ")
-      writeCxConst(w, c.ty, c.value)
-      w.wl(";")
-    }
-  }
-
   override def generateRecord(origin: String, ident: Ident, doc: Doc, params: Seq[TypeParam], r: Record) {
     val refs = new CxRefs(ident.name)
     r.fields.foreach(f => refs.find(f.ty))
