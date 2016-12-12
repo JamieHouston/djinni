@@ -6,6 +6,43 @@
 
 namespace testsuite {
 
+bool const Constants::BoolConstant = true;
+
+int8 const Constants::I8Constant = 1;
+
+int16 const Constants::I16Constant = 2;
+
+int32 const Constants::I32Constant = 3;
+
+int64 const Constants::I64Constant = 4;
+
+float32 const Constants::F32Constant = 5.0;
+
+float64 const Constants::F64Constant = 5.0;
+
+Platform::IBox<bool>^ const Constants::OptBoolConstant = true;
+
+Platform::IBox<int8>^ const Constants::OptI8Constant = 1;
+
+Platform::IBox<int16>^ const Constants::OptI16Constant = 2;
+
+Platform::IBox<int32>^ const Constants::OptI32Constant = 3;
+
+Platform::IBox<int64>^ const Constants::OptI64Constant = 4;
+
+Platform::IBox<float32>^ const Constants::OptF32Constant = 5.0;
+
+Platform::IBox<float64>^ const Constants::OptF64Constant = 5.0;
+
+Platform::String^ const Constants::StringConstant = "string-constant";
+
+Platform::String^ const Constants::OptStringConstant = "string-constant";
+
+ConstantRecord^ const Constants::ObjectConstant = ref new (ConstantRecord,true)(
+    Constants::I32Constant /* SomeInteger */ ,
+    Constants::StringConstant /* SomeString */ );
+
+bool const Constants::Dummy = false;
 
 ::testsuite::Constants Constants::toCpp() {
     return ::testsuite::Constants(

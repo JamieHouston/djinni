@@ -220,7 +220,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
 
     writeCxFile(cxName, origin, refs.cx, w => {
       //   w.wl("using namespace System;")
-      //  generateCxConstants(w, r.consts, self)
+      generateCxConstants(w, r.consts, self)
       w.wl
       w.w(s"$cppType $self::toCpp()").braced {
         w.wl(s"return $cppType(")

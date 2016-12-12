@@ -6,6 +6,8 @@
 
 namespace testsuite {
 
+ExtendedRecord^ const ExtendedRecord::ExtendedRecordConst = ref new (ExtendedRecord,true)(
+    true /* Foo */ );
 
 ::testsuite::ExtendedRecord ExtendedRecord::toCpp() {
     return ::testsuite::ExtendedRecord(
