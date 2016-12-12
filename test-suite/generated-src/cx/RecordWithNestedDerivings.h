@@ -10,10 +10,10 @@ namespace testsuite {
 
 public ref class RecordWithNestedDerivings sealed : public Platform::Object {
 public:
-    property int32_t Key;
+    property int32 Key;
     property RecordWithDerivings^ Rec;
 
-    RecordWithNestedDerivings(int32_t Key,
+    RecordWithNestedDerivings(int32 Key,
                               RecordWithDerivings^ Rec) {
         this->Key = Key;
         this->Rec = Rec;

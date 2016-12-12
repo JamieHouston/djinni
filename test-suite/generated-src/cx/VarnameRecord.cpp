@@ -9,12 +9,12 @@ namespace testsuite {
 
 ::testsuite::VarnameRecord VarnameRecord::toCpp() {
     return ::testsuite::VarnameRecord(
-        transform<int8_t, uint8_t>()(Field));
+        transform<int8_t, int8>()(Field));
 }
 
 VarnameRecord^ VarnameRecord::fromCpp(const ::testsuite::VarnameRecord& value) {
     VarnameRecord^ ret = ref new VarnameRecord();
-    ret->Field = transform<int8_t, uint8_t>()(value._field_);
+    ret->Field = transform<int8_t, int8>()(value._field_);
     return ret;
 }
 

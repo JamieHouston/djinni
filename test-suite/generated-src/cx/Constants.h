@@ -13,31 +13,31 @@ public ref class Constants sealed : public Platform::Object {
 public:
     property static bool Constants::BoolConstant {bool get() {return true;} } 
 
-    property static uint8_t Constants::I8Constant {uint8_t get() {return 1;} } 
+    property static int8 Constants::I8Constant {int8 get() {return 1;} } 
 
-    property static int16_t Constants::I16Constant {int16_t get() {return 2;} } 
+    property static int16 Constants::I16Constant {int16 get() {return 2;} } 
 
-    property static int32_t Constants::I32Constant {int32_t get() {return 3;} } 
+    property static int32 Constants::I32Constant {int32 get() {return 3;} } 
 
-    property static int64_t Constants::I64Constant {int64_t get() {return 4;} } 
+    property static int64 Constants::I64Constant {int64 get() {return 4;} } 
 
-    property static float Constants::F32Constant {float get() {return 5.0f;} } 
+    property static float32 Constants::F32Constant {float32 get() {return 5.0;} } 
 
-    property static double Constants::F64Constant {double get() {return 5.0;} } 
+    property static float64 Constants::F64Constant {float64 get() {return 5.0;} } 
 
     property static Platform::IBox<bool>^ Constants::OptBoolConstant {Platform::IBox<bool>^ get() {return true;} } 
 
-    property static Platform::IBox<uint8>^ Constants::OptI8Constant {Platform::IBox<uint8>^ get() {return 1;} } 
+    property static Platform::IBox<int8>^ Constants::OptI8Constant {Platform::IBox<int8>^ get() {return 1;} } 
 
-    property static Platform::IBox<short>^ Constants::OptI16Constant {Platform::IBox<short>^ get() {return 2;} } 
+    property static Platform::IBox<int16>^ Constants::OptI16Constant {Platform::IBox<int16>^ get() {return 2;} } 
 
-    property static Platform::IBox<int>^ Constants::OptI32Constant {Platform::IBox<int>^ get() {return 3;} } 
+    property static Platform::IBox<int32>^ Constants::OptI32Constant {Platform::IBox<int32>^ get() {return 3;} } 
 
-    property static Platform::IBox<int64_t>^ Constants::OptI64Constant {Platform::IBox<int64_t>^ get() {return 4;} } 
+    property static Platform::IBox<int64>^ Constants::OptI64Constant {Platform::IBox<int64>^ get() {return 4;} } 
 
-    property static Platform::IBox<float>^ Constants::OptF32Constant {Platform::IBox<float>^ get() {return 5.0;} } 
+    property static Platform::IBox<float32>^ Constants::OptF32Constant {Platform::IBox<float32>^ get() {return 5.0;} } 
 
-    property static Platform::IBox<double>^ Constants::OptF64Constant {Platform::IBox<double>^ get() {return 5.0;} } 
+    property static Platform::IBox<float64>^ Constants::OptF64Constant {Platform::IBox<float64>^ get() {return 5.0;} } 
 
     property static Platform::String^ Constants::StringConstant {Platform::String^ get() {return "string-constant";} } 
 

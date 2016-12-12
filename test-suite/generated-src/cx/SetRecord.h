@@ -10,10 +10,10 @@ namespace testsuite {
 public ref class SetRecord sealed : public Platform::Object {
 public:
     property Windows::Foundation::Collections::IIterable<Platform::String^>^ Set;
-    property Windows::Foundation::Collections::IIterable<int32_t>^ Iset;
+    property Windows::Foundation::Collections::IIterable<int32>^ Iset;
 
     SetRecord(Windows::Foundation::Collections::IIterable<Platform::String^>^ Set,
-              Windows::Foundation::Collections::IIterable<int32_t>^ Iset) {
+              Windows::Foundation::Collections::IIterable<int32>^ Iset) {
         this->Set = Set;
         this->Iset = Iset;
     }

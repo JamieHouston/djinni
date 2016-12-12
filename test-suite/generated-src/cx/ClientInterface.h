@@ -11,8 +11,8 @@ namespace testsuite {
 public interface class IClientInterface
 {
 public:
-    virtual ClientReturnedRecord^ GetRecord (int64_t RecordId, Platform::String^ Utf8string, Platform::String^ Misc);
-    virtual double IdentifierCheck (const Platform::Array<uint8_t>^ Data, int32_t R, int64_t Jret);
+    virtual ClientReturnedRecord^ GetRecord (int64 RecordId, Platform::String^ Utf8string, Platform::String^ Misc);
+    virtual float64 IdentifierCheck (const Platform::Array<uint8_t>^ Data, int32 R, int64 Jret);
     virtual Platform::String^ ReturnStr ();
     virtual Platform::String^ MethTakingInterface (IClientInterface^ I);
     virtual Platform::String^ MethTakingOptionalInterface (IClientInterface^ I);

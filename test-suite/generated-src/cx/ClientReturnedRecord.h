@@ -10,11 +10,11 @@ namespace testsuite {
 /** Record returned by a client */
 public ref class ClientReturnedRecord sealed : public Platform::Object {
 public:
-    property int64_t RecordId;
+    property int64 RecordId;
     property Platform::String^ Content;
     property Platform::String^ Misc;
 
-    ClientReturnedRecord(int64_t RecordId,
+    ClientReturnedRecord(int64 RecordId,
                          Platform::String^ Content,
                          Platform::String^ Misc) {
         this->RecordId = RecordId;
