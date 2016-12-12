@@ -220,7 +220,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
 
     writeCxFile(cxName, origin, refs.cx, w => {
       //   w.wl("using namespace System;")
-      generateCxConstants(w, r.consts, self)
+      //   generateCxConstants(w, r.consts, self)
       w.wl
       w.w(s"$cppType $self::toCpp()").braced {
         w.wl(s"return $cppType(")
@@ -337,7 +337,6 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
       })
       refs.cx += translationHeader()
       writeCxFile(ident.name, origin, refs.cx, w=> {
-        generateCxConstants(w, i.consts, self)
         for (m <- i.methods) {
           val ret = cxMarshal.returnType(m.ret)
           val params = m.params.map(p => cxMarshal.paramType(p.ty) + " " + idCx.local(p.ident))

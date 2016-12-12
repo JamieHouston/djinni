@@ -8,9 +8,6 @@
 
 namespace testsuite {
 
-RecordUsingExtendedRecord^ const InterfaceUsingExtendedRecord::Cr = ref new (RecordUsingExtendedRecord,true)(
-    ref new (ExtendedRecord,true)(
-        false /* Foo */ ) /* Er */ );
 ExtendedRecord^ InterfaceUsingExtendedRecord::Meth (ExtendedRecord^ Er)
 {
     try {

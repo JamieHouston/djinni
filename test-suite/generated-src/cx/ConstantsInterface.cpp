@@ -7,41 +7,6 @@
 
 namespace testsuite {
 
-bool const ConstantsInterface::BoolConstant = true;
-
-int8 const ConstantsInterface::I8Constant = 1;
-
-int16 const ConstantsInterface::I16Constant = 2;
-
-int32 const ConstantsInterface::I32Constant = 3;
-
-int64 const ConstantsInterface::I64Constant = 4;
-
-float32 const ConstantsInterface::F32Constant = 5.0;
-
-float64 const ConstantsInterface::F64Constant = 5.0;
-
-Platform::IBox<bool>^ const ConstantsInterface::OptBoolConstant = true;
-
-Platform::IBox<int8>^ const ConstantsInterface::OptI8Constant = 1;
-
-Platform::IBox<int16>^ const ConstantsInterface::OptI16Constant = 2;
-
-Platform::IBox<int32>^ const ConstantsInterface::OptI32Constant = 3;
-
-Platform::IBox<int64>^ const ConstantsInterface::OptI64Constant = 4;
-
-Platform::IBox<float32>^ const ConstantsInterface::OptF32Constant = 5.0;
-
-Platform::IBox<float64>^ const ConstantsInterface::OptF64Constant = 5.0;
-
-Platform::String^ const ConstantsInterface::StringConstant = "string-constant";
-
-Platform::String^ const ConstantsInterface::OptStringConstant = "string-constant";
-
-ConstantRecord^ const ConstantsInterface::ObjectConstant = ref new (ConstantRecord,true)(
-    ConstantsInterface::I32Constant /* SomeInteger */ ,
-    ConstantsInterface::StringConstant /* SomeString */ );
 void ConstantsInterface::Dummy ()
 {
     try {
