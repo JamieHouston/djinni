@@ -89,6 +89,9 @@ case object MList extends MOpaque { val numParams = 1; val idlName = "list" }
 case object MSet extends MOpaque { val numParams = 1; val idlName = "set" }
 case object MMap extends MOpaque { val numParams = 2; val idlName = "map" }
 
+// Even though we fill out int8 for CX, Windows Runtime does not actually support it so it's
+// best to not use 'i8' anywhere in djinni files if CX/Windows will be targeted.
+// For reference see https://msdn.microsoft.com/en-us/library/windows/apps/hh755822.aspx
 val defaults: Map[String,MOpaque] = immutable.HashMap(
   ("i8",   MPrimitive("i8",   "byte",    "jbyte",    "int8_t", "Byte",    "B", "int8_t", "NSNumber", "int8", "Platform::IBox<int8>")),
   ("i16",  MPrimitive("i16",  "short",   "jshort",   "int16_t", "Short",   "S", "int16_t", "NSNumber", "int16", "Platform::IBox<int16>")),
