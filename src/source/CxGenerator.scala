@@ -220,9 +220,6 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
 
     writeCxFile(cxName, origin, refs.cx, w => {
       //   w.wl("using namespace System;")
-      // Below line commented out because we don't need to generate consts for CPP
-      // because the .h file has the const values
-      //   generateCxConstants(w, r.consts, self)
       w.wl
       w.w(s"$cppType $self::toCpp()").braced {
         w.wl(s"return $cppType(")
