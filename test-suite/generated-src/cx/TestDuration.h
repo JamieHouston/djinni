@@ -24,12 +24,12 @@ public:
     static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Millis (int32 Count);
     static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Micros (int32 Count);
     static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Nanos (int32 Count);
-    static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Hoursf (double Count);
-    static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Minutesf (double Count);
-    static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Secondsf (double Count);
-    static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Millisf (double Count);
-    static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Microsf (double Count);
-    static Windows::Foundation::TimeSpan<double, Windows::Foundation::TimeSpan> Nanosf (double Count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Hoursf (float64 Count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Minutesf (float64 Count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Secondsf (float64 Count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Millisf (float64 Count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Microsf (float64 Count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Nanosf (float64 Count);
     static Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ Box (int64 Count);
     static int64 Unbox (Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ Dt);
 internal:

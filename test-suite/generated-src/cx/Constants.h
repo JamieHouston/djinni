@@ -21,9 +21,9 @@ public:
 
     property static int64 Constants::I64Constant {int64 get() {return 4;} } 
 
-    property static float Constants::F32Constant {float get() {return 5.0f;} } 
+    property static float32 Constants::F32Constant {float32 get() {return 5.0;} } 
 
-    property static double Constants::F64Constant {double get() {return 5.0;} } 
+    property static float64 Constants::F64Constant {float64 get() {return 5.0;} } 
 
     property static Platform::IBox<bool>^ Constants::OptBoolConstant {Platform::IBox<bool>^ get() {return true;} } 
 
@@ -35,9 +35,9 @@ public:
 
     property static Platform::IBox<int64>^ Constants::OptI64Constant {Platform::IBox<int64>^ get() {return 4;} } 
 
-    property static Platform::IBox<float>^ Constants::OptF32Constant {Platform::IBox<float>^ get() {return 5.0;} } 
+    property static Platform::IBox<float32>^ Constants::OptF32Constant {Platform::IBox<float32>^ get() {return 5.0;} } 
 
-    property static Platform::IBox<double>^ Constants::OptF64Constant {Platform::IBox<double>^ get() {return 5.0;} } 
+    property static Platform::IBox<float64>^ Constants::OptF64Constant {Platform::IBox<float64>^ get() {return 5.0;} } 
 
     property static Platform::String^ Constants::StringConstant {Platform::String^ get() {return "string-constant";} } 
 

@@ -27,7 +27,7 @@ public:
     double identifier_check(const std::vector<uint8_t> & data, int32_t r, int64_t jret) override
     {
         auto nativeRet = nativeRef()->IdentifierCheck(transform<std::vector<uint8_t>, Platform::Array<uint8_t>^>()(data), transform<int32_t, int32>()(r), transform<int64_t, int64>()(jret));
-        return transform<double, double>()(nativeRet);
+        return transform<double, float64>()(nativeRet);
     }
     std::string return_str() override
     {

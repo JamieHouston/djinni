@@ -13,8 +13,8 @@ public:
     property int16 Sixteen;
     property int32 Thirtytwo;
     property int64 Sixtyfour;
-    property float Fthirtytwo;
-    property double Fsixtyfour;
+    property float32 Fthirtytwo;
+    property float64 Fsixtyfour;
     property Windows::Foundation::DateTime^ D;
     property Platform::String^ S;
 
@@ -22,8 +22,8 @@ public:
                         int16 Sixteen,
                         int32 Thirtytwo,
                         int64 Sixtyfour,
-                        float Fthirtytwo,
-                        double Fsixtyfour,
+                        float32 Fthirtytwo,
+                        float64 Fsixtyfour,
                         Windows::Foundation::DateTime^ D,
                         Platform::String^ S) {
         this->Eight = Eight;

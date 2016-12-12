@@ -14,30 +14,30 @@ public:
     property int16 Sixteen;
     property int32 Thirtytwo;
     property int64 Sixtyfour;
-    property float Fthirtytwo;
-    property double Fsixtyfour;
+    property float32 Fthirtytwo;
+    property float64 Fsixtyfour;
     property Platform::IBox<bool>^ OB;
     property Platform::IBox<int8>^ OEight;
     property Platform::IBox<int16>^ OSixteen;
     property Platform::IBox<int32>^ OThirtytwo;
     property Platform::IBox<int64>^ OSixtyfour;
-    property Platform::IBox<float>^ OFthirtytwo;
-    property Platform::IBox<double>^ OFsixtyfour;
+    property Platform::IBox<float32>^ OFthirtytwo;
+    property Platform::IBox<float64>^ OFsixtyfour;
 
     AssortedPrimitives(bool B,
                        int8 Eight,
                        int16 Sixteen,
                        int32 Thirtytwo,
                        int64 Sixtyfour,
-                       float Fthirtytwo,
-                       double Fsixtyfour,
+                       float32 Fthirtytwo,
+                       float64 Fsixtyfour,
                        Platform::IBox<bool>^ OB,
                        Platform::IBox<int8>^ OEight,
                        Platform::IBox<int16>^ OSixteen,
                        Platform::IBox<int32>^ OThirtytwo,
                        Platform::IBox<int64>^ OSixtyfour,
-                       Platform::IBox<float>^ OFthirtytwo,
-                       Platform::IBox<double>^ OFsixtyfour) {
+                       Platform::IBox<float32>^ OFthirtytwo,
+                       Platform::IBox<float64>^ OFsixtyfour) {
         this->B = B;
         this->Eight = Eight;
         this->Sixteen = Sixteen;
