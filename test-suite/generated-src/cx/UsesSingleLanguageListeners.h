@@ -14,10 +14,10 @@ namespace testsuite {
 public ref class UsesSingleLanguageListeners sealed : public Platform::Object
 {
 public:
-    void CallForObjC (IObjcOnlyListener^ L);
-    IObjcOnlyListener^ ReturnForObjC ();
-    void CallForJava (IJavaOnlyListener^ L);
-    IJavaOnlyListener^ ReturnForJava ();
+    void CallForObjC (ObjcOnlyListener^ L);
+    ObjcOnlyListener^ ReturnForObjC ();
+    void CallForJava (JavaOnlyListener^ L);
+    JavaOnlyListener^ ReturnForJava ();
     void CallForCx (ICxOnlyListener^ L);
     ICxOnlyListener^ ReturnForCx ();
 internal:

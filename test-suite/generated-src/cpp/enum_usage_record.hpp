@@ -30,6 +30,7 @@ struct EnumUsageRecord final {
     , s(std::move(s_))
     , m(std::move(m_))
     {}
+    EnumUsageRecord() {}
 };
 
 }  // namespace testsuite

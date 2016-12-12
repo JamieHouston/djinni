@@ -11,7 +11,7 @@ namespace testsuite {
 public ref class ReturnOne sealed : public Platform::Object
 {
 public:
-    static IReturnOne^ GetInstance ();
+    static ReturnOne^ GetInstance ();
     uint8_t ReturnOne ();
 internal:
     ReturnOne(std::shared_ptr<::testsuite::ReturnOne> cppRef) : _cppRef(cppRef) {}

@@ -23,6 +23,7 @@ struct DateRecord final {
     DateRecord(std::chrono::system_clock::time_point created_at_)
     : created_at(std::move(created_at_))
     {}
+    DateRecord() {}
 };
 
 }  // namespace testsuite

@@ -6,11 +6,11 @@
 
 namespace testsuite {
 
-IReturnOne^ ReturnOne::GetInstance ()
+ReturnOne^ ReturnOne::GetInstance ()
 {
     try {
         auto cppRet = ::testsuite::ReturnOne::get_instance();
-        return transform<std::shared_ptr<::testsuite::ReturnOne>, ::testsuite::IReturnOne^>()(cppRet);
+        return transform<std::shared_ptr<::testsuite::ReturnOne>, ::testsuite::ReturnOne^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

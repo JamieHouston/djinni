@@ -16,6 +16,7 @@ struct NestedCollection final {
     NestedCollection(std::vector<std::unordered_set<std::string>> set_list_)
     : set_list(std::move(set_list_))
     {}
+    NestedCollection() {}
 };
 
 }  // namespace testsuite

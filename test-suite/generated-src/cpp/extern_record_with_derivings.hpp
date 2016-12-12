@@ -26,4 +26,5 @@ struct ExternRecordWithDerivings final {
     : member(std::move(member_))
     , e(std::move(e_))
     {}
+    ExternRecordWithDerivings() {}
 };

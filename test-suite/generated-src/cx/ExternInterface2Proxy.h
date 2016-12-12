@@ -15,7 +15,7 @@ namespace System {
 template<> class CxInterfaceProxy<::ExternInterface2> : public ::ExternInterface2
 {
 public:
-    CxInterfaceProxy(::testsuite::ExternInterface2^ nativeRef)
+    CxInterfaceProxy(::testsuite::IExternInterface2^ nativeRef)
     {
         native_call_nativeRef = [nativeRef]{ return nativeRef; };
     }
@@ -24,9 +24,9 @@ public:
         auto nativeRet = nativeRef()->Foo(transform<std::shared_ptr<::testsuite::TestHelpers>, ::testsuite::TestHelpers^>()(i));
         return transform<::ExternRecordWithDerivings, ::testsuite::ExternRecordWithDerivings^>()(nativeRet);
     }
-    ::testsuite::ExternInterface2^ nativeRef() { return native_call_nativeRef(); }
+    ::testsuite::IExternInterface2^ nativeRef() { return native_call_nativeRef(); }
 private:
-    std::function<::testsuite::ExternInterface2^()> native_call_nativeRef;
+    std::function<::testsuite::IExternInterface2^()> native_call_nativeRef;
 };
 
 }  // namespace System

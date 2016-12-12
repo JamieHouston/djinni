@@ -19,6 +19,7 @@ struct ConstantRecord final {
     : some_integer(std::move(some_integer_))
     , some_string(std::move(some_string_))
     {}
+    ConstantRecord() {}
 };
 
 }  // namespace testsuite

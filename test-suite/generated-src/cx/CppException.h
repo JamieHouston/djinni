@@ -12,7 +12,7 @@ public ref class CppException sealed : public Platform::Object
 {
 public:
     int32_t ThrowAnException ();
-    static ICppException^ Get ();
+    static CppException^ Get ();
 internal:
     CppException(std::shared_ptr<::testsuite::CppException> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::CppException> cppRef() {return _cppRef;}
