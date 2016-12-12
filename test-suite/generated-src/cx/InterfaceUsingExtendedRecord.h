@@ -13,6 +13,9 @@ namespace testsuite {
 public ref class InterfaceUsingExtendedRecord sealed : public Platform::Object
 {
 public:
+    property static RecordUsingExtendedRecord^ InterfaceUsingExtendedRecord::Cr {RecordUsingExtendedRecord^ get() {return ref new RecordUsingExtendedRecord(
+        ref new ExtendedRecord(
+            false /* Foo */ ) /* Er */ );} } 
     ExtendedRecord^ Meth (ExtendedRecord^ Er);
 internal:
     InterfaceUsingExtendedRecord(std::shared_ptr<::testsuite::InterfaceUsingExtendedRecord> cppRef) : _cppRef(cppRef) {}

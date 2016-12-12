@@ -12,6 +12,41 @@ namespace testsuite {
 public ref class ConstantsInterface sealed : public Platform::Object
 {
 public:
+    property static bool ConstantsInterface::BoolConstant {bool get() {return true;} } 
+
+    property static int8 ConstantsInterface::I8Constant {int8 get() {return 1;} } 
+
+    property static int16 ConstantsInterface::I16Constant {int16 get() {return 2;} } 
+
+    property static int32 ConstantsInterface::I32Constant {int32 get() {return 3;} } 
+
+    property static int64 ConstantsInterface::I64Constant {int64 get() {return 4;} } 
+
+    property static float32 ConstantsInterface::F32Constant {float32 get() {return 5.0;} } 
+
+    property static float64 ConstantsInterface::F64Constant {float64 get() {return 5.0;} } 
+
+    property static Platform::IBox<bool>^ ConstantsInterface::OptBoolConstant {Platform::IBox<bool>^ get() {return true;} } 
+
+    property static Platform::IBox<int8>^ ConstantsInterface::OptI8Constant {Platform::IBox<int8>^ get() {return 1;} } 
+
+    property static Platform::IBox<int16>^ ConstantsInterface::OptI16Constant {Platform::IBox<int16>^ get() {return 2;} } 
+
+    property static Platform::IBox<int32>^ ConstantsInterface::OptI32Constant {Platform::IBox<int32>^ get() {return 3;} } 
+
+    property static Platform::IBox<int64>^ ConstantsInterface::OptI64Constant {Platform::IBox<int64>^ get() {return 4;} } 
+
+    property static Platform::IBox<float32>^ ConstantsInterface::OptF32Constant {Platform::IBox<float32>^ get() {return 5.0;} } 
+
+    property static Platform::IBox<float64>^ ConstantsInterface::OptF64Constant {Platform::IBox<float64>^ get() {return 5.0;} } 
+
+    property static Platform::String^ ConstantsInterface::StringConstant {Platform::String^ get() {return "string-constant";} } 
+
+    property static Platform::String^ ConstantsInterface::OptStringConstant {Platform::String^ get() {return "string-constant";} } 
+
+    property static ConstantRecord^ ConstantsInterface::ObjectConstant {ConstantRecord^ get() {return ref new ConstantRecord(
+        ConstantsInterface::I32Constant /* SomeInteger */ ,
+        ConstantsInterface::StringConstant /* SomeString */ );} } 
     void Dummy ();
 internal:
     ConstantsInterface(std::shared_ptr<::testsuite::ConstantsInterface> cppRef) : _cppRef(cppRef) {}
