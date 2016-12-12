@@ -315,7 +315,8 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
         d.defType match {
           case DEnum => (withNs(namespace, idCx.enumType(d.name)), false)
           case DRecord => (withNs(namespace, idCx.ty(d.name)), true)
-          case DInterface => (withNs(namespace, s"I${idCx.ty(d.name)}"), true)
+          case DInterface =>
+             (withNs(namespace, if(cxImplemented(d)) s"I${idCx.ty(d.name)}" else idCx.ty(d.name)), true)
         }
       case e: MExtern => e.body match {
         case i: Interface => (e.cx.typename, true)

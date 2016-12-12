@@ -46,6 +46,7 @@ struct RecordWithDerivings final {
     , d(std::move(d_))
     , s(std::move(s_))
     {}
+    RecordWithDerivings() {}
 };
 
 }  // namespace testsuite

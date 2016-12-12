@@ -27,6 +27,7 @@ struct RecordWithNestedDerivings final {
     : key(std::move(key_))
     , rec(std::move(rec_))
     {}
+    RecordWithNestedDerivings() {}
 };
 
 }  // namespace testsuite

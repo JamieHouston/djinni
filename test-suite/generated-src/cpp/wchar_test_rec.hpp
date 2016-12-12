@@ -14,6 +14,7 @@ struct WcharTestRec final {
     WcharTestRec(std::wstring s_)
     : s(std::move(s_))
     {}
+    WcharTestRec() {}
 };
 
 }  // namespace testsuite

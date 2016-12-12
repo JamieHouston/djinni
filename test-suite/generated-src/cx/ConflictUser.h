@@ -12,8 +12,8 @@ namespace testsuite {
 public ref class ConflictUser sealed : public Platform::Object
 {
 public:
-    IConflict^ Conflict ();
-    bool ConflictArg (Windows::Foundation::Collections::IIterable<IConflict^>^ Cs);
+    Conflict^ Conflict ();
+    bool ConflictArg (Windows::Foundation::Collections::IIterable<Conflict^>^ Cs);
 internal:
     ConflictUser(std::shared_ptr<::testsuite::ConflictUser> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::ConflictUser> cppRef() {return _cppRef;}

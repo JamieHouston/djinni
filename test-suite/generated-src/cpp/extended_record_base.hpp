@@ -18,6 +18,7 @@ struct ExtendedRecordBase {
     ExtendedRecordBase(bool foo_)
     : foo(std::move(foo_))
     {}
+    ExtendedRecordBase() {}
 
     virtual ~ExtendedRecordBase() = default;
 

@@ -15,6 +15,7 @@ struct PrimitiveList final {
     PrimitiveList(std::vector<int64_t> list_)
     : list(std::move(list_))
     {}
+    PrimitiveList() {}
 };
 
 }  // namespace testsuite

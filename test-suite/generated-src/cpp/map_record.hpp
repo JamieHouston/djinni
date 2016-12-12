@@ -19,6 +19,7 @@ struct MapRecord final {
     : map(std::move(map_))
     , imap(std::move(imap_))
     {}
+    MapRecord() {}
 };
 
 }  // namespace testsuite

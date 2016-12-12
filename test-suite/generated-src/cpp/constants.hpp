@@ -66,6 +66,7 @@ struct Constants final {
      * No support for constant binary, list, set, map
      */
     static bool const DUMMY;
+    Constants() {}
 };
 
 }  // namespace testsuite
