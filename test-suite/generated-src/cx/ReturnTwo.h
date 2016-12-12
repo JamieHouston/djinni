@@ -12,7 +12,7 @@ public ref class ReturnTwo sealed : public Platform::Object
 {
 public:
     static ReturnTwo^ GetInstance ();
-    uint8_t ReturnTwo ();
+    int8 ReturnTwo ();
 internal:
     ReturnTwo(std::shared_ptr<::testsuite::ReturnTwo> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::ReturnTwo> cppRef() {return _cppRef;}

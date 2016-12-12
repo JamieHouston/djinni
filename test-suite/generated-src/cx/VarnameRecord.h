@@ -14,9 +14,9 @@ namespace testsuite {
  */
 public ref class VarnameRecord sealed : public Platform::Object {
 public:
-    property uint8_t Field;
+    property int8 Field;
 
-    VarnameRecord(uint8_t Field) {
+    VarnameRecord(int8 Field) {
         this->Field = Field;
     }
     VarnameRecord() {}

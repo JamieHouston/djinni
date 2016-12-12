@@ -9,10 +9,10 @@ namespace testsuite {
 
 ::testsuite::RecordWithDerivings RecordWithDerivings::toCpp() {
     return ::testsuite::RecordWithDerivings(
-        transform<int8_t, uint8_t>()(Eight),
-        transform<int16_t, int16_t>()(Sixteen),
-        transform<int32_t, int32_t>()(Thirtytwo),
-        transform<int64_t, int64_t>()(Sixtyfour),
+        transform<int8_t, int8>()(Eight),
+        transform<int16_t, int16>()(Sixteen),
+        transform<int32_t, int32>()(Thirtytwo),
+        transform<int64_t, int64>()(Sixtyfour),
         transform<float, float>()(Fthirtytwo),
         transform<double, double>()(Fsixtyfour),
         transform<std::chrono::system_clock::time_point, Windows::Foundation::DateTime^>()(D),
@@ -21,10 +21,10 @@ namespace testsuite {
 
 RecordWithDerivings^ RecordWithDerivings::fromCpp(const ::testsuite::RecordWithDerivings& value) {
     RecordWithDerivings^ ret = ref new RecordWithDerivings();
-    ret->Eight = transform<int8_t, uint8_t>()(value.eight);
-    ret->Sixteen = transform<int16_t, int16_t>()(value.sixteen);
-    ret->Thirtytwo = transform<int32_t, int32_t>()(value.thirtytwo);
-    ret->Sixtyfour = transform<int64_t, int64_t>()(value.sixtyfour);
+    ret->Eight = transform<int8_t, int8>()(value.eight);
+    ret->Sixteen = transform<int16_t, int16>()(value.sixteen);
+    ret->Thirtytwo = transform<int32_t, int32>()(value.thirtytwo);
+    ret->Sixtyfour = transform<int64_t, int64>()(value.sixtyfour);
     ret->Fthirtytwo = transform<float, float>()(value.fthirtytwo);
     ret->Fsixtyfour = transform<double, double>()(value.fsixtyfour);
     ret->D = transform<std::chrono::system_clock::time_point, Windows::Foundation::DateTime^>()(value.d);

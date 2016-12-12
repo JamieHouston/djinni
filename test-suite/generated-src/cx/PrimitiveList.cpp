@@ -9,12 +9,12 @@ namespace testsuite {
 
 ::testsuite::PrimitiveList PrimitiveList::toCpp() {
     return ::testsuite::PrimitiveList(
-        transform<std::vector<int64_t>, Windows::Foundation::Collections::IVector<int64_t>^>()(List));
+        transform<std::vector<int64_t>, Windows::Foundation::Collections::IVector<int64>^>()(List));
 }
 
 PrimitiveList^ PrimitiveList::fromCpp(const ::testsuite::PrimitiveList& value) {
     PrimitiveList^ ret = ref new PrimitiveList();
-    ret->List = transform<std::vector<int64_t>, Windows::Foundation::Collections::IVector<int64_t>^>()(value.list);
+    ret->List = transform<std::vector<int64_t>, Windows::Foundation::Collections::IVector<int64>^>()(value.list);
     return ret;
 }
 

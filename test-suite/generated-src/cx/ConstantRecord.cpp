@@ -9,13 +9,13 @@ namespace testsuite {
 
 ::testsuite::ConstantRecord ConstantRecord::toCpp() {
     return ::testsuite::ConstantRecord(
-        transform<int32_t, int32_t>()(SomeInteger),
+        transform<int32_t, int32>()(SomeInteger),
         transform<std::string, Platform::String^>()(SomeString));
 }
 
 ConstantRecord^ ConstantRecord::fromCpp(const ::testsuite::ConstantRecord& value) {
     ConstantRecord^ ret = ref new ConstantRecord();
-    ret->SomeInteger = transform<int32_t, int32_t>()(value.some_integer);
+    ret->SomeInteger = transform<int32_t, int32>()(value.some_integer);
     ret->SomeString = transform<std::string, Platform::String^>()(value.some_string);
     return ret;
 }

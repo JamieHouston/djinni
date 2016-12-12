@@ -26,10 +26,10 @@ public:
     static bool CheckPrimitiveList (PrimitiveList^ Pl);
     static NestedCollection^ GetNestedCollection ();
     static bool CheckNestedCollection (NestedCollection^ Nc);
-    static Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^ GetMap ();
-    static bool CheckMap (Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^ M);
-    static Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^ GetEmptyMap ();
-    static bool CheckEmptyMap (Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^ M);
+    static Windows::Foundation::Collections::IMap<Platform::String^, int64>^ GetMap ();
+    static bool CheckMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ M);
+    static Windows::Foundation::Collections::IMap<Platform::String^, int64>^ GetEmptyMap ();
+    static bool CheckEmptyMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ M);
     static MapListRecord^ GetMapListRecord ();
     static bool CheckMapListRecord (MapListRecord^ M);
     static void CheckClientInterfaceAscii (IClientInterface^ I);
@@ -40,9 +40,9 @@ public:
     static IUserToken^ TokenId (IUserToken^ T);
     static IUserToken^ CreateCppToken ();
     static void CheckCppToken (IUserToken^ T);
-    static int64_t CppTokenId (IUserToken^ T);
+    static int64 CppTokenId (IUserToken^ T);
     static void CheckTokenType (IUserToken^ T, Platform::String^ Type);
-    static Platform::IBox<int>^ ReturnNone ();
+    static Platform::IBox<int32>^ ReturnNone ();
     static AssortedPrimitives^ AssortedPrimitivesId (AssortedPrimitives^ I);
     static Platform::Array<uint8_t>^ IdBinary (const Platform::Array<uint8_t>^ B);
 internal:

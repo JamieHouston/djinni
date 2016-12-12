@@ -9,19 +9,19 @@ namespace testsuite {
 
 public ref class RecordWithDerivings sealed : public Platform::Object {
 public:
-    property uint8_t Eight;
-    property int16_t Sixteen;
-    property int32_t Thirtytwo;
-    property int64_t Sixtyfour;
+    property int8 Eight;
+    property int16 Sixteen;
+    property int32 Thirtytwo;
+    property int64 Sixtyfour;
     property float Fthirtytwo;
     property double Fsixtyfour;
     property Windows::Foundation::DateTime^ D;
     property Platform::String^ S;
 
-    RecordWithDerivings(uint8_t Eight,
-                        int16_t Sixteen,
-                        int32_t Thirtytwo,
-                        int64_t Sixtyfour,
+    RecordWithDerivings(int8 Eight,
+                        int16 Sixteen,
+                        int32 Thirtytwo,
+                        int64 Sixtyfour,
                         float Fthirtytwo,
                         double Fsixtyfour,
                         Windows::Foundation::DateTime^ D,

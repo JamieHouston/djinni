@@ -9,9 +9,9 @@ namespace testsuite {
 
 public ref class MapListRecord sealed : public Platform::Object {
 public:
-    property Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^>^ MapList;
+    property Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64>^>^ MapList;
 
-    MapListRecord(Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^>^ MapList) {
+    MapListRecord(Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64>^>^ MapList) {
         this->MapList = MapList;
     }
     MapListRecord() {}

@@ -10,10 +10,10 @@ namespace testsuite {
 /** Record for use in constants */
 public ref class ConstantRecord sealed : public Platform::Object {
 public:
-    property int32_t SomeInteger;
+    property int32 SomeInteger;
     property Platform::String^ SomeString;
 
-    ConstantRecord(int32_t SomeInteger,
+    ConstantRecord(int32 SomeInteger,
                    Platform::String^ SomeString) {
         this->SomeInteger = SomeInteger;
         this->SomeString = SomeString;

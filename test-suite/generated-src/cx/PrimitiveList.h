@@ -9,9 +9,9 @@ namespace testsuite {
 
 public ref class PrimitiveList sealed : public Platform::Object {
 public:
-    property Windows::Foundation::Collections::IVector<int64_t>^ List;
+    property Windows::Foundation::Collections::IVector<int64>^ List;
 
-    PrimitiveList(Windows::Foundation::Collections::IVector<int64_t>^ List) {
+    PrimitiveList(Windows::Foundation::Collections::IVector<int64>^ List) {
         this->List = List;
     }
     PrimitiveList() {}

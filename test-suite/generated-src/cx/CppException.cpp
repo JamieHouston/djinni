@@ -6,11 +6,11 @@
 
 namespace testsuite {
 
-int32_t CppException::ThrowAnException ()
+int32 CppException::ThrowAnException ()
 {
     try {
         auto cppRet = _cppRef->throw_an_exception();
-        return transform<int32_t, int32_t>()(cppRet);
+        return transform<int32_t, int32>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

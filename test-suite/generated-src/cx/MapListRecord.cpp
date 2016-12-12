@@ -9,12 +9,12 @@ namespace testsuite {
 
 ::testsuite::MapListRecord MapListRecord::toCpp() {
     return ::testsuite::MapListRecord(
-        transform<std::vector<std::unordered_map<std::string, int64_t>>, Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^>^>()(MapList));
+        transform<std::vector<std::unordered_map<std::string, int64_t>>, Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64>^>^>()(MapList));
 }
 
 MapListRecord^ MapListRecord::fromCpp(const ::testsuite::MapListRecord& value) {
     MapListRecord^ ret = ref new MapListRecord();
-    ret->MapList = transform<std::vector<std::unordered_map<std::string, int64_t>>, Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^>^>()(value.map_list);
+    ret->MapList = transform<std::vector<std::unordered_map<std::string, int64_t>>, Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64>^>^>()(value.map_list);
     return ret;
 }
 

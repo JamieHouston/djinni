@@ -9,14 +9,14 @@ namespace testsuite {
 
 ::testsuite::MapRecord MapRecord::toCpp() {
     return ::testsuite::MapRecord(
-        transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^>()(Map),
-        transform<std::unordered_map<int32_t, int32_t>, Windows::Foundation::Collections::IMap<int32_t, int32_t>^>()(Imap));
+        transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64>^>()(Map),
+        transform<std::unordered_map<int32_t, int32_t>, Windows::Foundation::Collections::IMap<int32, int32>^>()(Imap));
 }
 
 MapRecord^ MapRecord::fromCpp(const ::testsuite::MapRecord& value) {
     MapRecord^ ret = ref new MapRecord();
-    ret->Map = transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64_t>^>()(value.map);
-    ret->Imap = transform<std::unordered_map<int32_t, int32_t>, Windows::Foundation::Collections::IMap<int32_t, int32_t>^>()(value.imap);
+    ret->Map = transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64>^>()(value.map);
+    ret->Imap = transform<std::unordered_map<int32_t, int32_t>, Windows::Foundation::Collections::IMap<int32, int32>^>()(value.imap);
     return ret;
 }
 

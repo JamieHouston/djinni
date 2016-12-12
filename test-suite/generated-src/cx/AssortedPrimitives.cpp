@@ -10,17 +10,17 @@ namespace testsuite {
 ::testsuite::AssortedPrimitives AssortedPrimitives::toCpp() {
     return ::testsuite::AssortedPrimitives(
         transform<bool, bool>()(B),
-        transform<int8_t, uint8_t>()(Eight),
-        transform<int16_t, int16_t>()(Sixteen),
-        transform<int32_t, int32_t>()(Thirtytwo),
-        transform<int64_t, int64_t>()(Sixtyfour),
+        transform<int8_t, int8>()(Eight),
+        transform<int16_t, int16>()(Sixteen),
+        transform<int32_t, int32>()(Thirtytwo),
+        transform<int64_t, int64>()(Sixtyfour),
         transform<float, float>()(Fthirtytwo),
         transform<double, double>()(Fsixtyfour),
         transform<std::experimental::optional<bool>, Platform::IBox<bool>^>()(OB),
-        transform<std::experimental::optional<int8_t>, Platform::IBox<uint8>^>()(OEight),
-        transform<std::experimental::optional<int16_t>, Platform::IBox<short>^>()(OSixteen),
-        transform<std::experimental::optional<int32_t>, Platform::IBox<int>^>()(OThirtytwo),
-        transform<std::experimental::optional<int64_t>, Platform::IBox<int64_t>^>()(OSixtyfour),
+        transform<std::experimental::optional<int8_t>, Platform::IBox<int8>^>()(OEight),
+        transform<std::experimental::optional<int16_t>, Platform::IBox<int16>^>()(OSixteen),
+        transform<std::experimental::optional<int32_t>, Platform::IBox<int32>^>()(OThirtytwo),
+        transform<std::experimental::optional<int64_t>, Platform::IBox<int64>^>()(OSixtyfour),
         transform<std::experimental::optional<float>, Platform::IBox<float>^>()(OFthirtytwo),
         transform<std::experimental::optional<double>, Platform::IBox<double>^>()(OFsixtyfour));
 }
@@ -28,17 +28,17 @@ namespace testsuite {
 AssortedPrimitives^ AssortedPrimitives::fromCpp(const ::testsuite::AssortedPrimitives& value) {
     AssortedPrimitives^ ret = ref new AssortedPrimitives();
     ret->B = transform<bool, bool>()(value.b);
-    ret->Eight = transform<int8_t, uint8_t>()(value.eight);
-    ret->Sixteen = transform<int16_t, int16_t>()(value.sixteen);
-    ret->Thirtytwo = transform<int32_t, int32_t>()(value.thirtytwo);
-    ret->Sixtyfour = transform<int64_t, int64_t>()(value.sixtyfour);
+    ret->Eight = transform<int8_t, int8>()(value.eight);
+    ret->Sixteen = transform<int16_t, int16>()(value.sixteen);
+    ret->Thirtytwo = transform<int32_t, int32>()(value.thirtytwo);
+    ret->Sixtyfour = transform<int64_t, int64>()(value.sixtyfour);
     ret->Fthirtytwo = transform<float, float>()(value.fthirtytwo);
     ret->Fsixtyfour = transform<double, double>()(value.fsixtyfour);
     ret->OB = transform<std::experimental::optional<bool>, Platform::IBox<bool>^>()(value.o_b);
-    ret->OEight = transform<std::experimental::optional<int8_t>, Platform::IBox<uint8>^>()(value.o_eight);
-    ret->OSixteen = transform<std::experimental::optional<int16_t>, Platform::IBox<short>^>()(value.o_sixteen);
-    ret->OThirtytwo = transform<std::experimental::optional<int32_t>, Platform::IBox<int>^>()(value.o_thirtytwo);
-    ret->OSixtyfour = transform<std::experimental::optional<int64_t>, Platform::IBox<int64_t>^>()(value.o_sixtyfour);
+    ret->OEight = transform<std::experimental::optional<int8_t>, Platform::IBox<int8>^>()(value.o_eight);
+    ret->OSixteen = transform<std::experimental::optional<int16_t>, Platform::IBox<int16>^>()(value.o_sixteen);
+    ret->OThirtytwo = transform<std::experimental::optional<int32_t>, Platform::IBox<int32>^>()(value.o_thirtytwo);
+    ret->OSixtyfour = transform<std::experimental::optional<int64_t>, Platform::IBox<int64>^>()(value.o_sixtyfour);
     ret->OFthirtytwo = transform<std::experimental::optional<float>, Platform::IBox<float>^>()(value.o_fthirtytwo);
     ret->OFsixtyfour = transform<std::experimental::optional<double>, Platform::IBox<double>^>()(value.o_fsixtyfour);
     return ret;
