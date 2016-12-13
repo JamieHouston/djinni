@@ -9,14 +9,14 @@ namespace testsuite {
 
 ::ExternRecordWithDerivings ExternRecordWithDerivings::toCpp() {
     return ::ExternRecordWithDerivings(
-        transform<::testsuite::RecordWithDerivings, ::testsuite::RecordWithDerivings>()(Member),
-        transform<::testsuite::color, ::testsuite::Color>()(E));
+        transform<::testsuite::RecordWithDerivings, ::testsuite::RecordWithDerivings^>()(Member),
+        transform<::testsuite::color, ::testsuite::Color^>()(E));
 }
 
 ExternRecordWithDerivings^ ExternRecordWithDerivings::fromCpp(const ::ExternRecordWithDerivings& value) {
     ExternRecordWithDerivings^ ret = ref new ExternRecordWithDerivings();
-    ret->Member = transform<::testsuite::RecordWithDerivings, ::testsuite::RecordWithDerivings>()(value.member);
-    ret->E = transform<::testsuite::color, ::testsuite::Color>()(value.e);
+    ret->Member = transform<::testsuite::RecordWithDerivings, ::testsuite::RecordWithDerivings^>()(value.member);
+    ret->E = transform<::testsuite::color, ::testsuite::Color^>()(value.e);
     return ret;
 }
 

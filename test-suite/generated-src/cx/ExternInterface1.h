@@ -13,7 +13,7 @@ namespace testsuite {
 public ref class ExternInterface1 sealed : public Platform::Object
 {
 public:
-    ::testsuite::ClientReturnedRecord Foo (::testsuite::IClientInterface^ I);
+    ::testsuite::ClientReturnedRecord^ Foo (::testsuite::IClientInterface^ I);
 internal:
     ExternInterface1(std::shared_ptr<::ExternInterface1> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::ExternInterface1> cppRef() {return _cppRef;}
