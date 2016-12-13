@@ -187,6 +187,14 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
         false
     }
   }
+  def cxImplemented(ty: MExtern): Boolean = {
+    ty match {
+      case MExtern(_, _, DInterface, Interface(Ext(_, _, _, true), _, _), _, _, _, _, _, _)=>
+        true
+      case _=>
+        false
+    }
+  }
   def convertReferences(m: Meta, exclude: String): Seq[SymbolReference] = m match {
     case p: MPrimitive => p.idlName match {
       case "i8" | "i16" | "i32" | "i64" => List()
@@ -318,10 +326,14 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
           case DInterface =>
              (withNs(namespace, if(cxImplemented(d)) s"I${idCx.ty(d.name)}" else idCx.ty(d.name)), true)
         }
-      case e: MExtern => e.body match {
-        case i: Interface => (e.cx.typename, true)
-        case _ => (e.cx.typename, needRef)
-      }
+      case e: MExtern =>
+        e.defType match {
+          case DEnum => (withNs(namespace, idCx.enumType(e.name)), false)
+          case DRecord => (withNs(namespace, idCx.ty(e.name)), true)
+          case DInterface =>
+            (withNs(namespace, if(cxImplemented(e)) s"I${idCx.ty(e.name)}" else idCx.ty(e.name)), true)
+        }
+
       case p: MParam => (idCx.typeParam(p.name), needRef)
     }
     def exprWithReference(tm: MExpr, namespace: Option[String], needRef:Boolean): String = {

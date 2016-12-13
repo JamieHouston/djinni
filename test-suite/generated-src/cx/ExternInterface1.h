@@ -13,9 +13,9 @@ namespace testsuite {
 public ref class ExternInterface1 sealed : public Platform::Object
 {
 public:
-    ::testsuite::DBClientReturnedRecord Foo (::testsuite::IClientInterface^ I);
-    ::testsuite::DBClientReturnedRecord MethTakingRecordList (Windows::Foundation::Collections::IVector<::testsuite::DBClientReturnedRecord>^ Lr);
-    Windows::Foundation::Collections::IVector<::testsuite::DBClientReturnedRecord>^ MethReturningRecordList (::testsuite::DBClientReturnedRecord R);
+    ClientReturnedRecord^ Foo (ClientInterface^ I);
+    ClientReturnedRecord^ MethTakingRecordList (Windows::Foundation::Collections::IVector<ClientReturnedRecord^>^ Lr);
+    Windows::Foundation::Collections::IVector<ClientReturnedRecord^>^ MethReturningRecordList (ClientReturnedRecord^ R);
 internal:
     ExternInterface1(std::shared_ptr<::ExternInterface1> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::ExternInterface1> cppRef() {return _cppRef;}

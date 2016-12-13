@@ -8,31 +8,31 @@
 
 namespace testsuite {
 
-::testsuite::DBClientReturnedRecord ExternInterface1::Foo (::testsuite::IClientInterface^ I)
+ClientReturnedRecord^ ExternInterface1::Foo (ClientInterface^ I)
 {
     try {
-        auto cppRet = _cppRef->foo(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(I));
-        return transform<::testsuite::ClientReturnedRecord, ::testsuite::DBClientReturnedRecord>()(cppRet);
+        auto cppRet = _cppRef->foo(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::ClientInterface^>()(I));
+        return transform<::testsuite::ClientReturnedRecord, ::testsuite::ClientReturnedRecord^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-::testsuite::DBClientReturnedRecord ExternInterface1::MethTakingRecordList (Windows::Foundation::Collections::IVector<::testsuite::DBClientReturnedRecord>^ Lr)
+ClientReturnedRecord^ ExternInterface1::MethTakingRecordList (Windows::Foundation::Collections::IVector<ClientReturnedRecord^>^ Lr)
 {
     try {
-        auto cppRet = _cppRef->meth_taking_record_list(transform<std::vector<::testsuite::ClientReturnedRecord>, Windows::Foundation::Collections::IVector<::testsuite::DBClientReturnedRecord>^>()(Lr));
-        return transform<::testsuite::ClientReturnedRecord, ::testsuite::DBClientReturnedRecord>()(cppRet);
+        auto cppRet = _cppRef->meth_taking_record_list(transform<std::vector<::testsuite::ClientReturnedRecord>, Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord^>^>()(Lr));
+        return transform<::testsuite::ClientReturnedRecord, ::testsuite::ClientReturnedRecord^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::Collections::IVector<::testsuite::DBClientReturnedRecord>^ ExternInterface1::MethReturningRecordList (::testsuite::DBClientReturnedRecord R)
+Windows::Foundation::Collections::IVector<ClientReturnedRecord^>^ ExternInterface1::MethReturningRecordList (ClientReturnedRecord^ R)
 {
     try {
-        auto cppRet = _cppRef->meth_returning_record_list(transform<::testsuite::ClientReturnedRecord, ::testsuite::DBClientReturnedRecord>()(R));
-        return transform<std::vector<::testsuite::ClientReturnedRecord>, Windows::Foundation::Collections::IVector<::testsuite::DBClientReturnedRecord>^>()(cppRet);
+        auto cppRet = _cppRef->meth_returning_record_list(transform<::testsuite::ClientReturnedRecord, ::testsuite::ClientReturnedRecord^>()(R));
+        return transform<std::vector<::testsuite::ClientReturnedRecord>, Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord^>^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
