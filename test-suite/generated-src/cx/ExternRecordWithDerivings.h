@@ -12,11 +12,11 @@ namespace testsuite {
 /** This file tests YAML dumped by Djinni can be parsed back in */
 public ref class ExternRecordWithDerivings sealed : public Platform::Object {
 public:
-    property ::testsuite::RecordWithDerivings Member;
-    property ::testsuite::Color E;
+    property ::testsuite::RecordWithDerivings^ Member;
+    property ::testsuite::Color^ E;
 
-    ExternRecordWithDerivings(::testsuite::RecordWithDerivings Member,
-                              ::testsuite::Color E) {
+    ExternRecordWithDerivings(::testsuite::RecordWithDerivings^ Member,
+                              ::testsuite::Color^ E) {
         this->Member = Member;
         this->E = E;
     }

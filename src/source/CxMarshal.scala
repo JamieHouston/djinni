@@ -320,7 +320,7 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
         }
       case e: MExtern => e.body match {
         case i: Interface => (e.cx.typename, true)
-        case _ => (e.cx.typename, needRef)
+        case _ => (e.cx.typename, e.cx.reference)
       }
       case p: MParam => (idCx.typeParam(p.name), needRef)
     }
