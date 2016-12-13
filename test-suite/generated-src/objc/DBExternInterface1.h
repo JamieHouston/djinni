@@ -10,4 +10,8 @@
 
 - (nonnull DBClientReturnedRecord *)foo:(nullable id<DBClientInterface>)i;
 
+- (nonnull DBClientReturnedRecord *)methTakingRecordList:(nonnull NSArray<DBClientReturnedRecord *> *)lr;
+
+- (nonnull NSArray<DBClientReturnedRecord *> *)methReturningRecordList:(nonnull DBClientReturnedRecord *)r;
+
 @end

@@ -11,6 +11,8 @@ extern_record_with_derivings = record
 extern_interface_1 = interface +c
 {
 	foo(i: test_client_interface): test_client_returned_record;
+	meth_taking_record_list(lr: list<test_client_returned_record>): test_client_returned_record;
+    meth_returning_record_list(r: test_client_returned_record): list<test_client_returned_record>;
 }
 
 extern_interface_2 = interface +j +o +x

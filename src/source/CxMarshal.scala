@@ -325,7 +325,9 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
       case p: MParam => (idCx.typeParam(p.name), needRef)
     }
     def exprWithReference(tm: MExpr, namespace: Option[String], needRef:Boolean): String = {
+      println()
       val (arg, ref) = expr(tm, namespace, needRef)
+      println(s"arg is ${arg}, ref is ${ref}, tm.base is ${tm.base}")
       if(ref) s"$arg^" else arg
     }
     def expr(tm: MExpr, namespace: Option[String], needRef: Boolean): (String, Boolean) = {
@@ -343,6 +345,9 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
           assert(tm.args.size == 1)
           "<" + exprWithReference(tm.args.head, namespace, needRef) + ">"
         case MMap => tm.args.map(arg => exprWithReference(arg, namespace, needRef)).mkString("<", ", ", ">")
+//        case MList => {
+//          println(s"args is ${tm.args}, tm is ${tm}, namespace is ${namespace}, needRef is ${needRef}")
+//        }
         case e: MExtern if "false" == e.cx.boxed =>
           ""
         case d => if (tm.args.isEmpty) "" else tm.args.map(arg => exprWithReference(arg, namespace, needRef)).mkString("<", ", ", ">")

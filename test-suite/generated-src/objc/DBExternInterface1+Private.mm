@@ -7,6 +7,7 @@
 #import "DBClientReturnedRecord+Private.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
+#import "DJIMarshal+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -35,6 +36,20 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->foo(::djinni_generated::ClientInterface::toCpp(i));
         return ::djinni_generated::ClientReturnedRecord::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull DBClientReturnedRecord *)methTakingRecordList:(nonnull NSArray<DBClientReturnedRecord *> *)lr {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->meth_taking_record_list(::djinni::List<::djinni_generated::ClientReturnedRecord>::toCpp(lr));
+        return ::djinni_generated::ClientReturnedRecord::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSArray<DBClientReturnedRecord *> *)methReturningRecordList:(nonnull DBClientReturnedRecord *)r {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->meth_returning_record_list(::djinni_generated::ClientReturnedRecord::toCpp(r));
+        return ::djinni::List<::djinni_generated::ClientReturnedRecord>::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

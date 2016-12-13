@@ -3,10 +3,15 @@
 
 package com.dropbox.djinni.test;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class ExternInterface1 {
     public abstract com.dropbox.djinni.test.ClientReturnedRecord foo(com.dropbox.djinni.test.ClientInterface i);
+
+    public abstract com.dropbox.djinni.test.ClientReturnedRecord methTakingRecordList(ArrayList<com.dropbox.djinni.test.ClientReturnedRecord> lr);
+
+    public abstract ArrayList<com.dropbox.djinni.test.ClientReturnedRecord> methReturningRecordList(com.dropbox.djinni.test.ClientReturnedRecord r);
 
     private static final class CppProxy extends ExternInterface1
     {
@@ -38,5 +43,21 @@ public abstract class ExternInterface1 {
             return native_foo(this.nativeRef, i);
         }
         private native com.dropbox.djinni.test.ClientReturnedRecord native_foo(long _nativeRef, com.dropbox.djinni.test.ClientInterface i);
+
+        @Override
+        public com.dropbox.djinni.test.ClientReturnedRecord methTakingRecordList(ArrayList<com.dropbox.djinni.test.ClientReturnedRecord> lr)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_methTakingRecordList(this.nativeRef, lr);
+        }
+        private native com.dropbox.djinni.test.ClientReturnedRecord native_methTakingRecordList(long _nativeRef, ArrayList<com.dropbox.djinni.test.ClientReturnedRecord> lr);
+
+        @Override
+        public ArrayList<com.dropbox.djinni.test.ClientReturnedRecord> methReturningRecordList(com.dropbox.djinni.test.ClientReturnedRecord r)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_methReturningRecordList(this.nativeRef, r);
+        }
+        private native ArrayList<com.dropbox.djinni.test.ClientReturnedRecord> native_methReturningRecordList(long _nativeRef, com.dropbox.djinni.test.ClientReturnedRecord r);
     }
 }
