@@ -4,7 +4,7 @@
 #pragma once
 
 #include "ClientInterface.h"
-#include "ClientReturnedRecord.h"
+#include "DBClientReturnedRecord.h"
 #include "extern_interface_1.hpp"
 #include <memory>
 
@@ -13,9 +13,9 @@ namespace testsuite {
 public ref class ExternInterface1 sealed : public Platform::Object
 {
 public:
-    ::testsuite::ClientReturnedRecord Foo (::testsuite::IClientInterface^ I);
-    ::testsuite::ClientReturnedRecord MethTakingRecordList (Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord>^ Lr);
-    Windows::Foundation::Collections::IVector<::testsuite::ClientReturnedRecord>^ MethReturningRecordList (::testsuite::ClientReturnedRecord R);
+    ::testsuite::DBClientReturnedRecord Foo (::testsuite::IClientInterface^ I);
+    ::testsuite::DBClientReturnedRecord MethTakingRecordList (Windows::Foundation::Collections::IVector<::testsuite::DBClientReturnedRecord>^ Lr);
+    Windows::Foundation::Collections::IVector<::testsuite::DBClientReturnedRecord>^ MethReturningRecordList (::testsuite::DBClientReturnedRecord R);
 internal:
     ExternInterface1(std::shared_ptr<::ExternInterface1> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::ExternInterface1> cppRef() {return _cppRef;}

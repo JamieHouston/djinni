@@ -326,8 +326,11 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
     }
     def exprWithReference(tm: MExpr, namespace: Option[String], needRef:Boolean): String = {
       println()
+      println(s"needref is ${needRef}")
       val (arg, ref) = expr(tm, namespace, needRef)
       println(s"arg is ${arg}, ref is ${ref}, tm.base is ${tm.base}")
+      println()
+      println(s"tm.args is empty: ${tm.args.isEmpty}")
       if(ref) s"$arg^" else arg
     }
     def expr(tm: MExpr, namespace: Option[String], needRef: Boolean): (String, Boolean) = {
@@ -348,8 +351,11 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
 //        case MList => {
 //          println(s"args is ${tm.args}, tm is ${tm}, namespace is ${namespace}, needRef is ${needRef}")
 //        }
-        case e: MExtern if "false" == e.cx.boxed =>
+          // TODO: JH - This looks like it checks for cx.boxed to be "false", but cx.boxed is a typename like "ClientReturnedRecord"
+        case e: MExtern if "false" == e.cx.boxed => {
+          println("We have an MExtern")
           ""
+        }
         case d => if (tm.args.isEmpty) "" else tm.args.map(arg => exprWithReference(arg, namespace, needRef)).mkString("<", ", ", ">")
 
       }

@@ -1,4 +1,1 @@
-@import "common.djinni"
-
-@import "date.djinni"
-@import "duration.djinni"
+@import "yaml-test.djinni"

@@ -2,11 +2,12 @@
 
 # This file tests YAML dumped by Djinni can be parsed back in
 
-extern_record_with_derivings = record
-{
-	member: test_record_with_derivings;
-	e: test_color;
-} deriving(eq, ord)
+# Record returned by a client
+client_returned_record = record {
+	record_id: i64;
+	content: string;
+	misc: optional<string>;
+}
 
 extern_interface_1 = interface +c
 {
@@ -15,7 +16,10 @@ extern_interface_1 = interface +c
     meth_returning_record_list(r: test_client_returned_record): list<test_client_returned_record>;
 }
 
-extern_interface_2 = interface +j +o +x
-{
-	foo(i: test_test_helpers): extern_record_with_derivings;
+reverse_client_interface = interface +c {
+    const return_str(): string;
+    meth_taking_interface(i: reverse_client_interface): string;
+    meth_taking_optional_interface(i: optional<reverse_client_interface>): string;
+    meth_taking_and_returning_record_list(rl: list<client_returned_record>): list<client_returned_record>;
+    static create(): reverse_client_interface;
 }
