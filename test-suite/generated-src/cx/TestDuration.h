@@ -12,26 +12,26 @@ namespace testsuite {
 public ref class TestDuration sealed : public Platform::Object
 {
 public:
-    static Platform::String^ HoursString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt);
-    static Platform::String^ MinutesString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt);
-    static Platform::String^ SecondsString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt);
-    static Platform::String^ MillisString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt);
-    static Platform::String^ MicrosString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt);
-    static Platform::String^ NanosString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt);
-    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Hours (int32 Count);
-    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Minutes (int32 Count);
-    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Seconds (int32 Count);
-    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Millis (int32 Count);
-    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Micros (int32 Count);
-    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Nanos (int32 Count);
-    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Hoursf (float64 Count);
-    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Minutesf (float64 Count);
-    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Secondsf (float64 Count);
-    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Millisf (float64 Count);
-    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Microsf (float64 Count);
-    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Nanosf (float64 Count);
-    static Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ Box (int64 Count);
-    static int64 Unbox (Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ Dt);
+    static Platform::String^ HoursString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt);
+    static Platform::String^ MinutesString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt);
+    static Platform::String^ SecondsString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt);
+    static Platform::String^ MillisString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt);
+    static Platform::String^ MicrosString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt);
+    static Platform::String^ NanosString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt);
+    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Hours (int32 count);
+    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Minutes (int32 count);
+    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Seconds (int32 count);
+    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Millis (int32 count);
+    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Micros (int32 count);
+    static Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Nanos (int32 count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Hoursf (float64 count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Minutesf (float64 count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Secondsf (float64 count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Millisf (float64 count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Microsf (float64 count);
+    static Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Nanosf (float64 count);
+    static Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ Box (int64 count);
+    static int64 Unbox (Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ dt);
 internal:
     TestDuration(std::shared_ptr<::testsuite::TestDuration> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::TestDuration> cppRef() {return _cppRef;}

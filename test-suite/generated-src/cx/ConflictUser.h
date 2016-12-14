@@ -13,7 +13,7 @@ public ref class ConflictUser sealed : public Platform::Object
 {
 public:
     Conflict^ Conflict ();
-    bool ConflictArg (Windows::Foundation::Collections::IIterable<Conflict^>^ Cs);
+    bool ConflictArg (Windows::Foundation::Collections::IIterable<Conflict^>^ cs);
 internal:
     ConflictUser(std::shared_ptr<::testsuite::ConflictUser> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::ConflictUser> cppRef() {return _cppRef;}

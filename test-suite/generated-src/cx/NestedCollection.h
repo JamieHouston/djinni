@@ -11,8 +11,8 @@ public ref class NestedCollection sealed : public Platform::Object {
 public:
     property Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IIterable<Platform::String^>^>^ SetList;
 
-    NestedCollection(Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IIterable<Platform::String^>^>^ SetList) {
-        this->SetList = SetList;
+    NestedCollection(Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IIterable<Platform::String^>^>^ setList) {
+        this->SetList = setList;
     }
     NestedCollection() {}
 internal:

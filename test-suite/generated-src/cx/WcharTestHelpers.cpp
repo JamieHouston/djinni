@@ -27,20 +27,20 @@ Platform::String^ WcharTestHelpers::GetString ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool WcharTestHelpers::CheckString (Platform::String^ Str)
+bool WcharTestHelpers::CheckString (Platform::String^ str)
 {
     try {
-        auto cppRet = ::testsuite::WcharTestHelpers::check_string(transform<std::wstring, Platform::String^>()(Str));
+        auto cppRet = ::testsuite::WcharTestHelpers::check_string(transform<std::wstring, Platform::String^>()(str));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool WcharTestHelpers::CheckRecord (WcharTestRec^ Rec)
+bool WcharTestHelpers::CheckRecord (WcharTestRec^ rec)
 {
     try {
-        auto cppRet = ::testsuite::WcharTestHelpers::check_record(transform<::testsuite::WcharTestRec, ::testsuite::WcharTestRec^>()(Rec));
+        auto cppRet = ::testsuite::WcharTestHelpers::check_record(transform<::testsuite::WcharTestRec, ::testsuite::WcharTestRec^>()(rec));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {

@@ -7,200 +7,200 @@
 
 namespace testsuite {
 
-Platform::String^ TestDuration::HoursString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt)
+Platform::String^ TestDuration::HoursString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::hoursString(transform<std::chrono::duration<int32_t, std::ratio<3600>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(Dt));
+        auto cppRet = ::testsuite::TestDuration::hoursString(transform<std::chrono::duration<int32_t, std::ratio<3600>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(dt));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::String^ TestDuration::MinutesString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt)
+Platform::String^ TestDuration::MinutesString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::minutesString(transform<std::chrono::duration<int32_t, std::ratio<60>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(Dt));
+        auto cppRet = ::testsuite::TestDuration::minutesString(transform<std::chrono::duration<int32_t, std::ratio<60>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(dt));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::String^ TestDuration::SecondsString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt)
+Platform::String^ TestDuration::SecondsString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::secondsString(transform<std::chrono::duration<int32_t, std::ratio<1>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(Dt));
+        auto cppRet = ::testsuite::TestDuration::secondsString(transform<std::chrono::duration<int32_t, std::ratio<1>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(dt));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::String^ TestDuration::MillisString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt)
+Platform::String^ TestDuration::MillisString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::millisString(transform<std::chrono::duration<int32_t, std::milli>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(Dt));
+        auto cppRet = ::testsuite::TestDuration::millisString(transform<std::chrono::duration<int32_t, std::milli>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(dt));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::String^ TestDuration::MicrosString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt)
+Platform::String^ TestDuration::MicrosString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::microsString(transform<std::chrono::duration<int32_t, std::micro>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(Dt));
+        auto cppRet = ::testsuite::TestDuration::microsString(transform<std::chrono::duration<int32_t, std::micro>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(dt));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::String^ TestDuration::NanosString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> Dt)
+Platform::String^ TestDuration::NanosString (Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> dt)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::nanosString(transform<std::chrono::duration<int32_t, std::nano>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(Dt));
+        auto cppRet = ::testsuite::TestDuration::nanosString(transform<std::chrono::duration<int32_t, std::nano>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(dt));
         return transform<std::string, Platform::String^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Hours (int32 Count)
+Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Hours (int32 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::hours(transform<int32_t, int32>()(Count));
+        auto cppRet = ::testsuite::TestDuration::hours(transform<int32_t, int32>()(count));
         return transform<std::chrono::duration<int32_t, std::ratio<3600>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Minutes (int32 Count)
+Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Minutes (int32 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::minutes(transform<int32_t, int32>()(Count));
+        auto cppRet = ::testsuite::TestDuration::minutes(transform<int32_t, int32>()(count));
         return transform<std::chrono::duration<int32_t, std::ratio<60>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Seconds (int32 Count)
+Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Seconds (int32 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::seconds(transform<int32_t, int32>()(Count));
+        auto cppRet = ::testsuite::TestDuration::seconds(transform<int32_t, int32>()(count));
         return transform<std::chrono::duration<int32_t, std::ratio<1>>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Millis (int32 Count)
+Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Millis (int32 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::millis(transform<int32_t, int32>()(Count));
+        auto cppRet = ::testsuite::TestDuration::millis(transform<int32_t, int32>()(count));
         return transform<std::chrono::duration<int32_t, std::milli>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Micros (int32 Count)
+Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Micros (int32 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::micros(transform<int32_t, int32>()(Count));
+        auto cppRet = ::testsuite::TestDuration::micros(transform<int32_t, int32>()(count));
         return transform<std::chrono::duration<int32_t, std::micro>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Nanos (int32 Count)
+Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan> TestDuration::Nanos (int32 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::nanos(transform<int32_t, int32>()(Count));
+        auto cppRet = ::testsuite::TestDuration::nanos(transform<int32_t, int32>()(count));
         return transform<std::chrono::duration<int32_t, std::nano>, Windows::Foundation::TimeSpan<int32, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Hoursf (float64 Count)
+Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Hoursf (float64 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::hoursf(transform<double, float64>()(Count));
+        auto cppRet = ::testsuite::TestDuration::hoursf(transform<double, float64>()(count));
         return transform<std::chrono::duration<double, std::ratio<3600>>, Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Minutesf (float64 Count)
+Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Minutesf (float64 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::minutesf(transform<double, float64>()(Count));
+        auto cppRet = ::testsuite::TestDuration::minutesf(transform<double, float64>()(count));
         return transform<std::chrono::duration<double, std::ratio<60>>, Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Secondsf (float64 Count)
+Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Secondsf (float64 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::secondsf(transform<double, float64>()(Count));
+        auto cppRet = ::testsuite::TestDuration::secondsf(transform<double, float64>()(count));
         return transform<std::chrono::duration<double, std::ratio<1>>, Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Millisf (float64 Count)
+Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Millisf (float64 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::millisf(transform<double, float64>()(Count));
+        auto cppRet = ::testsuite::TestDuration::millisf(transform<double, float64>()(count));
         return transform<std::chrono::duration<double, std::milli>, Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Microsf (float64 Count)
+Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Microsf (float64 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::microsf(transform<double, float64>()(Count));
+        auto cppRet = ::testsuite::TestDuration::microsf(transform<double, float64>()(count));
         return transform<std::chrono::duration<double, std::micro>, Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Nanosf (float64 Count)
+Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> TestDuration::Nanosf (float64 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::nanosf(transform<double, float64>()(Count));
+        auto cppRet = ::testsuite::TestDuration::nanosf(transform<double, float64>()(count));
         return transform<std::chrono::duration<double, std::nano>, Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan>>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ TestDuration::Box (int64 Count)
+Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ TestDuration::Box (int64 count)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::box(transform<int64_t, int64>()(Count));
+        auto cppRet = ::testsuite::TestDuration::box(transform<int64_t, int64>()(count));
         return transform<std::experimental::optional<std::chrono::duration<int64_t, std::ratio<1>>>, Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-int64 TestDuration::Unbox (Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ Dt)
+int64 TestDuration::Unbox (Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^ dt)
 {
     try {
-        auto cppRet = ::testsuite::TestDuration::unbox(transform<std::experimental::optional<std::chrono::duration<int64_t, std::ratio<1>>>, Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^>()(Dt));
+        auto cppRet = ::testsuite::TestDuration::unbox(transform<std::experimental::optional<std::chrono::duration<int64_t, std::ratio<1>>>, Platform::IBox<Windows::Foundation::TimeSpan<int64, Windows::Foundation::TimeSpan>>^>()(dt));
         return transform<int64_t, int64>()(cppRet);
     }
     catch(const std::exception& e) {

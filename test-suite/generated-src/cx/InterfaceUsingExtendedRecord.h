@@ -16,7 +16,7 @@ public:
     property static RecordUsingExtendedRecord^ InterfaceUsingExtendedRecord::Cr {RecordUsingExtendedRecord^ get() {return ref new RecordUsingExtendedRecord(
         ref new ExtendedRecord(
             false /* Foo */ ) /* Er */ );} } 
-    ExtendedRecord^ Meth (ExtendedRecord^ Er);
+    ExtendedRecord^ Meth (ExtendedRecord^ er);
 internal:
     InterfaceUsingExtendedRecord(std::shared_ptr<::testsuite::InterfaceUsingExtendedRecord> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::InterfaceUsingExtendedRecord> cppRef() {return _cppRef;}

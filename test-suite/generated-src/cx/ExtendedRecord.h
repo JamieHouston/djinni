@@ -14,8 +14,8 @@ public:
         true /* Foo */ );} } 
     property bool Foo;
 
-    ExtendedRecord(bool Foo) {
-        this->Foo = Foo;
+    ExtendedRecord(bool foo) {
+        this->Foo = foo;
     }
     ExtendedRecord() {}
 internal:

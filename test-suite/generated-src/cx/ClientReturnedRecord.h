@@ -14,12 +14,12 @@ public:
     property Platform::String^ Content;
     property Platform::String^ Misc;
 
-    ClientReturnedRecord(int64 RecordId,
-                         Platform::String^ Content,
-                         Platform::String^ Misc) {
-        this->RecordId = RecordId;
-        this->Content = Content;
-        this->Misc = Misc;
+    ClientReturnedRecord(int64 recordId,
+                         Platform::String^ content,
+                         Platform::String^ misc) {
+        this->RecordId = recordId;
+        this->Content = content;
+        this->Misc = misc;
     }
     ClientReturnedRecord() {}
 internal:

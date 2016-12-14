@@ -14,11 +14,11 @@ namespace testsuite {
 public ref class UsesSingleLanguageListeners sealed : public Platform::Object
 {
 public:
-    void CallForObjC (ObjcOnlyListener^ L);
+    void CallForObjC (ObjcOnlyListener^ l);
     ObjcOnlyListener^ ReturnForObjC ();
-    void CallForJava (JavaOnlyListener^ L);
+    void CallForJava (JavaOnlyListener^ l);
     JavaOnlyListener^ ReturnForJava ();
-    void CallForCx (ICxOnlyListener^ L);
+    void CallForCx (ICxOnlyListener^ l);
     ICxOnlyListener^ ReturnForCx ();
 internal:
     UsesSingleLanguageListeners(std::shared_ptr<::testsuite::UsesSingleLanguageListeners> cppRef) : _cppRef(cppRef) {}

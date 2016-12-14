@@ -11,8 +11,8 @@ public ref class WcharTestRec sealed : public Platform::Object {
 public:
     property Platform::String^ S;
 
-    WcharTestRec(Platform::String^ S) {
-        this->S = S;
+    WcharTestRec(Platform::String^ s) {
+        this->S = s;
     }
     WcharTestRec() {}
 internal:

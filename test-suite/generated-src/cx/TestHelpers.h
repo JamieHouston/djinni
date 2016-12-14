@@ -21,30 +21,30 @@ public ref class TestHelpers sealed : public Platform::Object
 {
 public:
     static SetRecord^ GetSetRecord ();
-    static bool CheckSetRecord (SetRecord^ Rec);
+    static bool CheckSetRecord (SetRecord^ rec);
     static PrimitiveList^ GetPrimitiveList ();
-    static bool CheckPrimitiveList (PrimitiveList^ Pl);
+    static bool CheckPrimitiveList (PrimitiveList^ pl);
     static NestedCollection^ GetNestedCollection ();
-    static bool CheckNestedCollection (NestedCollection^ Nc);
+    static bool CheckNestedCollection (NestedCollection^ nc);
     static Windows::Foundation::Collections::IMap<Platform::String^, int64>^ GetMap ();
-    static bool CheckMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ M);
+    static bool CheckMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ m);
     static Windows::Foundation::Collections::IMap<Platform::String^, int64>^ GetEmptyMap ();
-    static bool CheckEmptyMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ M);
+    static bool CheckEmptyMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ m);
     static MapListRecord^ GetMapListRecord ();
-    static bool CheckMapListRecord (MapListRecord^ M);
-    static void CheckClientInterfaceAscii (IClientInterface^ I);
-    static void CheckClientInterfaceNonascii (IClientInterface^ I);
-    static void CheckClientInterfaceArgs (IClientInterface^ I);
-    static void CheckEnumMap (Windows::Foundation::Collections::IMap<Color, Platform::String^>^ M);
-    static void CheckEnum (Color C);
-    static IUserToken^ TokenId (IUserToken^ T);
+    static bool CheckMapListRecord (MapListRecord^ m);
+    static void CheckClientInterfaceAscii (IClientInterface^ i);
+    static void CheckClientInterfaceNonascii (IClientInterface^ i);
+    static void CheckClientInterfaceArgs (IClientInterface^ i);
+    static void CheckEnumMap (Windows::Foundation::Collections::IMap<Color, Platform::String^>^ m);
+    static void CheckEnum (Color c);
+    static IUserToken^ TokenId (IUserToken^ t);
     static IUserToken^ CreateCppToken ();
-    static void CheckCppToken (IUserToken^ T);
-    static int64 CppTokenId (IUserToken^ T);
-    static void CheckTokenType (IUserToken^ T, Platform::String^ Type);
+    static void CheckCppToken (IUserToken^ t);
+    static int64 CppTokenId (IUserToken^ t);
+    static void CheckTokenType (IUserToken^ t, Platform::String^ type);
     static Platform::IBox<int32>^ ReturnNone ();
-    static AssortedPrimitives^ AssortedPrimitivesId (AssortedPrimitives^ I);
-    static Platform::Array<uint8_t>^ IdBinary (const Platform::Array<uint8_t>^ B);
+    static AssortedPrimitives^ AssortedPrimitivesId (AssortedPrimitives^ i);
+    static Platform::Array<uint8_t>^ IdBinary (const Platform::Array<uint8_t>^ b);
 internal:
     TestHelpers(std::shared_ptr<::testsuite::TestHelpers> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::TestHelpers> cppRef() {return _cppRef;}

@@ -15,8 +15,8 @@ public:
             false /* Foo */ ) /* Er */ );} } 
     property ExtendedRecord^ Er;
 
-    RecordUsingExtendedRecord(ExtendedRecord^ Er) {
-        this->Er = Er;
+    RecordUsingExtendedRecord(ExtendedRecord^ er) {
+        this->Er = er;
     }
     RecordUsingExtendedRecord() {}
 internal:

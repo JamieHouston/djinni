@@ -13,9 +13,9 @@ public ref class ReverseClientInterface sealed : public Platform::Object
 {
 public:
     Platform::String^ ReturnStr ();
-    Platform::String^ MethTakingInterface (ReverseClientInterface^ I);
-    Platform::String^ MethTakingOptionalInterface (ReverseClientInterface^ I);
-    Windows::Foundation::Collections::IVector<ClientReturnedRecord^>^ MethTakingAndReturningRecordList (Windows::Foundation::Collections::IVector<ClientReturnedRecord^>^ Rl);
+    Platform::String^ MethTakingInterface (ReverseClientInterface^ i);
+    Platform::String^ MethTakingOptionalInterface (ReverseClientInterface^ i);
+    Windows::Foundation::Collections::IVector<ClientReturnedRecord^>^ MethTakingAndReturningRecordList (Windows::Foundation::Collections::IVector<ClientReturnedRecord^>^ rl);
     static ReverseClientInterface^ Create ();
 internal:
     ReverseClientInterface(std::shared_ptr<::testsuite::ReverseClientInterface> cppRef) : _cppRef(cppRef) {}

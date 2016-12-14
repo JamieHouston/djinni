@@ -14,8 +14,8 @@ public ref class WcharTestHelpers sealed : public Platform::Object
 public:
     static WcharTestRec^ GetRecord ();
     static Platform::String^ GetString ();
-    static bool CheckString (Platform::String^ Str);
-    static bool CheckRecord (WcharTestRec^ Rec);
+    static bool CheckString (Platform::String^ str);
+    static bool CheckRecord (WcharTestRec^ rec);
 internal:
     WcharTestHelpers(std::shared_ptr<::testsuite::WcharTestHelpers> cppRef) : _cppRef(cppRef) {}
     std::shared_ptr<::testsuite::WcharTestHelpers> cppRef() {return _cppRef;}
