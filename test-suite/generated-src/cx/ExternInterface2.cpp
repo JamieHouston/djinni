@@ -4,6 +4,7 @@
 #include "ExternInterface2.h"  // my header
 #include "ExternRecordWithDerivings.h"
 #include "TestHelpers.h"
+#include "TestHelpersProxy.h"
 
 namespace testsuite {
 

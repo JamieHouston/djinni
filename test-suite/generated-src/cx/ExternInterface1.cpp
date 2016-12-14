@@ -3,6 +3,7 @@
 
 #include "ExternInterface1.h"  // my header
 #include "ClientInterface.h"
+#include "ClientInterfaceProxy.h"
 #include "ClientReturnedRecord.h"
 #include "translation.h"
 
