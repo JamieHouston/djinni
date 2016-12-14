@@ -151,6 +151,7 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
     }
   }
 
+  // this sets the includes in the hx file
   def references(m: Meta, exclude: String): Seq[SymbolReference] = m match {
     case p: MPrimitive => p.idlName match {
       case "i8" | "i16" | "i32" | "i64" => List()
@@ -187,6 +188,8 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
         false
     }
   }
+
+  // this sets the includes in the cx file  
   def convertReferences(m: Meta, exclude: String): Seq[SymbolReference] = m match {
     case p: MPrimitive => p.idlName match {
       case "i8" | "i16" | "i32" | "i64" => List()
@@ -212,8 +215,13 @@ class CxMarshal(spec: Spec) extends Marshal(spec) {
     }
     case p: MParam => List()
     case e: MExtern =>
-      e.cx.header.fold(List[SymbolReference]())(p=>List(ImportRef(p)))
-  }
+    {
+      if(e.defType == DInterface)
+        List(ImportRef(q(spec.cxIncludePrefix + spec.cxFileIdentStyle(e.name + "_proxy") + "." + spec.cxHeaderExt)))
+      else
+        e.cx.header.fold(List[SymbolReference]())(p=>List(ImportRef(p)))
+    }
+}
 
   def headerName(ident: String) = idCx.ty(ident) + "." + spec.cxHeaderExt
   def include(ident: String) = q(spec.cxIncludePrefix + headerName(ident))
