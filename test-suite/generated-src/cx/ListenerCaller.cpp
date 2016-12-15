@@ -8,10 +8,10 @@
 
 namespace testsuite {
 
-ListenerCaller^ ListenerCaller::Init (FirstListener^ FirstL, SecondListener^ SecondL)
+ListenerCaller^ ListenerCaller::Init (FirstListener^ firstL, SecondListener^ secondL)
 {
     try {
-        auto cppRet = ::testsuite::ListenerCaller::init(transform<std::shared_ptr<::testsuite::FirstListener>, ::testsuite::FirstListener^>()(FirstL), transform<std::shared_ptr<::testsuite::SecondListener>, ::testsuite::SecondListener^>()(SecondL));
+        auto cppRet = ::testsuite::ListenerCaller::init(transform<std::shared_ptr<::testsuite::FirstListener>, ::testsuite::FirstListener^>()(firstL), transform<std::shared_ptr<::testsuite::SecondListener>, ::testsuite::SecondListener^>()(secondL));
         return transform<std::shared_ptr<::testsuite::ListenerCaller>, ::testsuite::ListenerCaller^>()(cppRet);
     }
     catch(const std::exception& e) {

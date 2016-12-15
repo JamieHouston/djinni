@@ -18,22 +18,22 @@ public:
     property Windows::Foundation::DateTime^ D;
     property Platform::String^ S;
 
-    RecordWithDerivings(int8 Eight,
-                        int16 Sixteen,
-                        int32 Thirtytwo,
-                        int64 Sixtyfour,
-                        float32 Fthirtytwo,
-                        float64 Fsixtyfour,
-                        Windows::Foundation::DateTime^ D,
-                        Platform::String^ S) {
-        this->Eight = Eight;
-        this->Sixteen = Sixteen;
-        this->Thirtytwo = Thirtytwo;
-        this->Sixtyfour = Sixtyfour;
-        this->Fthirtytwo = Fthirtytwo;
-        this->Fsixtyfour = Fsixtyfour;
-        this->D = D;
-        this->S = S;
+    RecordWithDerivings(int8 eight,
+                        int16 sixteen,
+                        int32 thirtytwo,
+                        int64 sixtyfour,
+                        float32 fthirtytwo,
+                        float64 fsixtyfour,
+                        Windows::Foundation::DateTime^ d,
+                        Platform::String^ s) {
+        this->Eight = eight;
+        this->Sixteen = sixteen;
+        this->Thirtytwo = thirtytwo;
+        this->Sixtyfour = sixtyfour;
+        this->Fthirtytwo = fthirtytwo;
+        this->Fsixtyfour = fsixtyfour;
+        this->D = d;
+        this->S = s;
     }
     RecordWithDerivings() {}
 internal:

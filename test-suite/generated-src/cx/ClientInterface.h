@@ -11,11 +11,11 @@ namespace testsuite {
 public interface class IClientInterface
 {
 public:
-    virtual ClientReturnedRecord^ GetRecord (int64 RecordId, Platform::String^ Utf8string, Platform::String^ Misc);
-    virtual float64 IdentifierCheck (const Platform::Array<uint8_t>^ Data, int32 R, int64 Jret);
+    virtual ClientReturnedRecord^ GetRecord (int64 recordId, Platform::String^ utf8string, Platform::String^ misc);
+    virtual float64 IdentifierCheck (const Platform::Array<uint8_t>^ data, int32 r, int64 jret);
     virtual Platform::String^ ReturnStr ();
-    virtual Platform::String^ MethTakingInterface (IClientInterface^ I);
-    virtual Platform::String^ MethTakingOptionalInterface (IClientInterface^ I);
+    virtual Platform::String^ MethTakingInterface (IClientInterface^ i);
+    virtual Platform::String^ MethTakingOptionalInterface (IClientInterface^ i);
 };
 
 }  // namespace testsuite

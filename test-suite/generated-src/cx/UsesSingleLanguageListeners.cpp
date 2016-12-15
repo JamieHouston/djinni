@@ -9,10 +9,10 @@
 
 namespace testsuite {
 
-void UsesSingleLanguageListeners::CallForObjC (ObjcOnlyListener^ L)
+void UsesSingleLanguageListeners::CallForObjC (ObjcOnlyListener^ l)
 {
     try {
-        _cppRef->callForObjC(transform<std::shared_ptr<::testsuite::ObjcOnlyListener>, ::testsuite::ObjcOnlyListener^>()(L));
+        _cppRef->callForObjC(transform<std::shared_ptr<::testsuite::ObjcOnlyListener>, ::testsuite::ObjcOnlyListener^>()(l));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -28,10 +28,10 @@ ObjcOnlyListener^ UsesSingleLanguageListeners::ReturnForObjC ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void UsesSingleLanguageListeners::CallForJava (JavaOnlyListener^ L)
+void UsesSingleLanguageListeners::CallForJava (JavaOnlyListener^ l)
 {
     try {
-        _cppRef->callForJava(transform<std::shared_ptr<::testsuite::JavaOnlyListener>, ::testsuite::JavaOnlyListener^>()(L));
+        _cppRef->callForJava(transform<std::shared_ptr<::testsuite::JavaOnlyListener>, ::testsuite::JavaOnlyListener^>()(l));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -47,10 +47,10 @@ JavaOnlyListener^ UsesSingleLanguageListeners::ReturnForJava ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void UsesSingleLanguageListeners::CallForCx (ICxOnlyListener^ L)
+void UsesSingleLanguageListeners::CallForCx (ICxOnlyListener^ l)
 {
     try {
-        _cppRef->callForCx(transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::ICxOnlyListener^>()(L));
+        _cppRef->callForCx(transform<std::shared_ptr<::testsuite::CxOnlyListener>, ::testsuite::ICxOnlyListener^>()(l));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

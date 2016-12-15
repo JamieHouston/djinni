@@ -8,10 +8,10 @@
 
 namespace testsuite {
 
-ExtendedRecord^ InterfaceUsingExtendedRecord::Meth (ExtendedRecord^ Er)
+ExtendedRecord^ InterfaceUsingExtendedRecord::Meth (ExtendedRecord^ er)
 {
     try {
-        auto cppRet = _cppRef->meth(transform<::testsuite::ExtendedRecord, ::testsuite::ExtendedRecord^>()(Er));
+        auto cppRet = _cppRef->meth(transform<::testsuite::ExtendedRecord, ::testsuite::ExtendedRecord^>()(er));
         return transform<::testsuite::ExtendedRecord, ::testsuite::ExtendedRecord^>()(cppRet);
     }
     catch(const std::exception& e) {

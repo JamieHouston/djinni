@@ -12,8 +12,8 @@ public ref class MapDateRecord sealed : public Platform::Object {
 public:
     property Windows::Foundation::Collections::IMap<Platform::String^, Windows::Foundation::DateTime>^ DatesById;
 
-    MapDateRecord(Windows::Foundation::Collections::IMap<Platform::String^, Windows::Foundation::DateTime>^ DatesById) {
-        this->DatesById = DatesById;
+    MapDateRecord(Windows::Foundation::Collections::IMap<Platform::String^, Windows::Foundation::DateTime>^ datesById) {
+        this->DatesById = datesById;
     }
     MapDateRecord() {}
 internal:

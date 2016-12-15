@@ -11,7 +11,7 @@ namespace testsuite {
 public interface class IExternInterface2
 {
 public:
-    virtual ExternRecordWithDerivings^ Foo (::testsuite::TestHelpers^ I);
+    virtual ExternRecordWithDerivings^ Foo (::testsuite::TestHelpers^ i);
 };
 
 }  // namespace testsuite
