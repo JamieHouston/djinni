@@ -11,8 +11,8 @@ public ref class MapListRecord sealed : public Platform::Object {
 public:
     property Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64>^>^ MapList;
 
-    MapListRecord(Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64>^>^ MapList) {
-        this->MapList = MapList;
+    MapListRecord(Windows::Foundation::Collections::IVector<Windows::Foundation::Collections::IMap<Platform::String^, int64>^>^ mapList) {
+        this->MapList = mapList;
     }
     MapListRecord() {}
 internal:

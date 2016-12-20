@@ -12,8 +12,8 @@ public ref class RecordWithDurationAndDerivings sealed : public Platform::Object
 public:
     property Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Dt;
 
-    RecordWithDurationAndDerivings(Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> Dt) {
-        this->Dt = Dt;
+    RecordWithDurationAndDerivings(Windows::Foundation::TimeSpan<float64, Windows::Foundation::TimeSpan> dt) {
+        this->Dt = dt;
     }
     RecordWithDurationAndDerivings() {}
 internal:

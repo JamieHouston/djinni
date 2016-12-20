@@ -25,10 +25,10 @@ SetRecord^ TestHelpers::GetSetRecord ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool TestHelpers::CheckSetRecord (SetRecord^ Rec)
+bool TestHelpers::CheckSetRecord (SetRecord^ rec)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::check_set_record(transform<::testsuite::SetRecord, ::testsuite::SetRecord^>()(Rec));
+        auto cppRet = ::testsuite::TestHelpers::check_set_record(transform<::testsuite::SetRecord, ::testsuite::SetRecord^>()(rec));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {
@@ -45,10 +45,10 @@ PrimitiveList^ TestHelpers::GetPrimitiveList ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool TestHelpers::CheckPrimitiveList (PrimitiveList^ Pl)
+bool TestHelpers::CheckPrimitiveList (PrimitiveList^ pl)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::check_primitive_list(transform<::testsuite::PrimitiveList, ::testsuite::PrimitiveList^>()(Pl));
+        auto cppRet = ::testsuite::TestHelpers::check_primitive_list(transform<::testsuite::PrimitiveList, ::testsuite::PrimitiveList^>()(pl));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {
@@ -65,10 +65,10 @@ NestedCollection^ TestHelpers::GetNestedCollection ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool TestHelpers::CheckNestedCollection (NestedCollection^ Nc)
+bool TestHelpers::CheckNestedCollection (NestedCollection^ nc)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::check_nested_collection(transform<::testsuite::NestedCollection, ::testsuite::NestedCollection^>()(Nc));
+        auto cppRet = ::testsuite::TestHelpers::check_nested_collection(transform<::testsuite::NestedCollection, ::testsuite::NestedCollection^>()(nc));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {
@@ -85,10 +85,10 @@ Windows::Foundation::Collections::IMap<Platform::String^, int64>^ TestHelpers::G
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool TestHelpers::CheckMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ M)
+bool TestHelpers::CheckMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ m)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::check_map(transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64>^>()(M));
+        auto cppRet = ::testsuite::TestHelpers::check_map(transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64>^>()(m));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {
@@ -105,10 +105,10 @@ Windows::Foundation::Collections::IMap<Platform::String^, int64>^ TestHelpers::G
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool TestHelpers::CheckEmptyMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ M)
+bool TestHelpers::CheckEmptyMap (Windows::Foundation::Collections::IMap<Platform::String^, int64>^ m)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::check_empty_map(transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64>^>()(M));
+        auto cppRet = ::testsuite::TestHelpers::check_empty_map(transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64>^>()(m));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {
@@ -125,65 +125,65 @@ MapListRecord^ TestHelpers::GetMapListRecord ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool TestHelpers::CheckMapListRecord (MapListRecord^ M)
+bool TestHelpers::CheckMapListRecord (MapListRecord^ m)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::check_map_list_record(transform<::testsuite::MapListRecord, ::testsuite::MapListRecord^>()(M));
+        auto cppRet = ::testsuite::TestHelpers::check_map_list_record(transform<::testsuite::MapListRecord, ::testsuite::MapListRecord^>()(m));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckClientInterfaceAscii (IClientInterface^ I)
+void TestHelpers::CheckClientInterfaceAscii (IClientInterface^ i)
 {
     try {
-        ::testsuite::TestHelpers::check_client_interface_ascii(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(I));
+        ::testsuite::TestHelpers::check_client_interface_ascii(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(i));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckClientInterfaceNonascii (IClientInterface^ I)
+void TestHelpers::CheckClientInterfaceNonascii (IClientInterface^ i)
 {
     try {
-        ::testsuite::TestHelpers::check_client_interface_nonascii(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(I));
+        ::testsuite::TestHelpers::check_client_interface_nonascii(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(i));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckClientInterfaceArgs (IClientInterface^ I)
+void TestHelpers::CheckClientInterfaceArgs (IClientInterface^ i)
 {
     try {
-        ::testsuite::TestHelpers::check_client_interface_args(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(I));
+        ::testsuite::TestHelpers::check_client_interface_args(transform<std::shared_ptr<::testsuite::ClientInterface>, ::testsuite::IClientInterface^>()(i));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckEnumMap (Windows::Foundation::Collections::IMap<Color, Platform::String^>^ M)
+void TestHelpers::CheckEnumMap (Windows::Foundation::Collections::IMap<Color, Platform::String^>^ m)
 {
     try {
-        ::testsuite::TestHelpers::check_enum_map(transform<std::unordered_map<::testsuite::color, std::string>, Windows::Foundation::Collections::IMap<::testsuite::Color, Platform::String^>^>()(M));
+        ::testsuite::TestHelpers::check_enum_map(transform<std::unordered_map<::testsuite::color, std::string>, Windows::Foundation::Collections::IMap<::testsuite::Color, Platform::String^>^>()(m));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckEnum (Color C)
+void TestHelpers::CheckEnum (Color c)
 {
     try {
-        ::testsuite::TestHelpers::check_enum(transform<::testsuite::color, ::testsuite::Color>()(C));
+        ::testsuite::TestHelpers::check_enum(transform<::testsuite::color, ::testsuite::Color>()(c));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-IUserToken^ TestHelpers::TokenId (IUserToken^ T)
+IUserToken^ TestHelpers::TokenId (IUserToken^ t)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::token_id(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(T));
+        auto cppRet = ::testsuite::TestHelpers::token_id(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(t));
         return transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(cppRet);
     }
     catch(const std::exception& e) {
@@ -200,29 +200,29 @@ IUserToken^ TestHelpers::CreateCppToken ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckCppToken (IUserToken^ T)
+void TestHelpers::CheckCppToken (IUserToken^ t)
 {
     try {
-        ::testsuite::TestHelpers::check_cpp_token(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(T));
+        ::testsuite::TestHelpers::check_cpp_token(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(t));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-int64 TestHelpers::CppTokenId (IUserToken^ T)
+int64 TestHelpers::CppTokenId (IUserToken^ t)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::cpp_token_id(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(T));
+        auto cppRet = ::testsuite::TestHelpers::cpp_token_id(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(t));
         return transform<int64_t, int64>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-void TestHelpers::CheckTokenType (IUserToken^ T, Platform::String^ Type)
+void TestHelpers::CheckTokenType (IUserToken^ t, Platform::String^ type)
 {
     try {
-        ::testsuite::TestHelpers::check_token_type(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(T), transform<std::string, Platform::String^>()(Type));
+        ::testsuite::TestHelpers::check_token_type(transform<std::shared_ptr<::testsuite::UserToken>, ::testsuite::IUserToken^>()(t), transform<std::string, Platform::String^>()(type));
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -238,20 +238,20 @@ Platform::IBox<int32>^ TestHelpers::ReturnNone ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-AssortedPrimitives^ TestHelpers::AssortedPrimitivesId (AssortedPrimitives^ I)
+AssortedPrimitives^ TestHelpers::AssortedPrimitivesId (AssortedPrimitives^ i)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::assorted_primitives_id(transform<::testsuite::AssortedPrimitives, ::testsuite::AssortedPrimitives^>()(I));
+        auto cppRet = ::testsuite::TestHelpers::assorted_primitives_id(transform<::testsuite::AssortedPrimitives, ::testsuite::AssortedPrimitives^>()(i));
         return transform<::testsuite::AssortedPrimitives, ::testsuite::AssortedPrimitives^>()(cppRet);
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-Platform::Array<uint8_t>^ TestHelpers::IdBinary (const Platform::Array<uint8_t>^ B)
+Platform::Array<uint8_t>^ TestHelpers::IdBinary (const Platform::Array<uint8_t>^ b)
 {
     try {
-        auto cppRet = ::testsuite::TestHelpers::id_binary(transform<std::vector<uint8_t>, Platform::Array<uint8_t>^>()(B));
+        auto cppRet = ::testsuite::TestHelpers::id_binary(transform<std::vector<uint8_t>, Platform::Array<uint8_t>^>()(b));
         return transform<std::vector<uint8_t>, Platform::Array<uint8_t>^>()(cppRet);
     }
     catch(const std::exception& e) {

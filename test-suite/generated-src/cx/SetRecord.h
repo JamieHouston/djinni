@@ -12,10 +12,10 @@ public:
     property Windows::Foundation::Collections::IIterable<Platform::String^>^ Set;
     property Windows::Foundation::Collections::IIterable<int32>^ Iset;
 
-    SetRecord(Windows::Foundation::Collections::IIterable<Platform::String^>^ Set,
-              Windows::Foundation::Collections::IIterable<int32>^ Iset) {
-        this->Set = Set;
-        this->Iset = Iset;
+    SetRecord(Windows::Foundation::Collections::IIterable<Platform::String^>^ set,
+              Windows::Foundation::Collections::IIterable<int32>^ iset) {
+        this->Set = set;
+        this->Iset = iset;
     }
     SetRecord() {}
 internal:

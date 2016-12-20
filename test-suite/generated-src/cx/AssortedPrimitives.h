@@ -24,34 +24,34 @@ public:
     property Platform::IBox<float32>^ OFthirtytwo;
     property Platform::IBox<float64>^ OFsixtyfour;
 
-    AssortedPrimitives(bool B,
-                       int8 Eight,
-                       int16 Sixteen,
-                       int32 Thirtytwo,
-                       int64 Sixtyfour,
-                       float32 Fthirtytwo,
-                       float64 Fsixtyfour,
-                       Platform::IBox<bool>^ OB,
-                       Platform::IBox<int8>^ OEight,
-                       Platform::IBox<int16>^ OSixteen,
-                       Platform::IBox<int32>^ OThirtytwo,
-                       Platform::IBox<int64>^ OSixtyfour,
-                       Platform::IBox<float32>^ OFthirtytwo,
-                       Platform::IBox<float64>^ OFsixtyfour) {
-        this->B = B;
-        this->Eight = Eight;
-        this->Sixteen = Sixteen;
-        this->Thirtytwo = Thirtytwo;
-        this->Sixtyfour = Sixtyfour;
-        this->Fthirtytwo = Fthirtytwo;
-        this->Fsixtyfour = Fsixtyfour;
-        this->OB = OB;
-        this->OEight = OEight;
-        this->OSixteen = OSixteen;
-        this->OThirtytwo = OThirtytwo;
-        this->OSixtyfour = OSixtyfour;
-        this->OFthirtytwo = OFthirtytwo;
-        this->OFsixtyfour = OFsixtyfour;
+    AssortedPrimitives(bool b,
+                       int8 eight,
+                       int16 sixteen,
+                       int32 thirtytwo,
+                       int64 sixtyfour,
+                       float32 fthirtytwo,
+                       float64 fsixtyfour,
+                       Platform::IBox<bool>^ oB,
+                       Platform::IBox<int8>^ oEight,
+                       Platform::IBox<int16>^ oSixteen,
+                       Platform::IBox<int32>^ oThirtytwo,
+                       Platform::IBox<int64>^ oSixtyfour,
+                       Platform::IBox<float32>^ oFthirtytwo,
+                       Platform::IBox<float64>^ oFsixtyfour) {
+        this->B = b;
+        this->Eight = eight;
+        this->Sixteen = sixteen;
+        this->Thirtytwo = thirtytwo;
+        this->Sixtyfour = sixtyfour;
+        this->Fthirtytwo = fthirtytwo;
+        this->Fsixtyfour = fsixtyfour;
+        this->OB = oB;
+        this->OEight = oEight;
+        this->OSixteen = oSixteen;
+        this->OThirtytwo = oThirtytwo;
+        this->OSixtyfour = oSixtyfour;
+        this->OFthirtytwo = oFthirtytwo;
+        this->OFsixtyfour = oFsixtyfour;
     }
     AssortedPrimitives() {}
 internal:

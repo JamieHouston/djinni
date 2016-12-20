@@ -15,10 +15,10 @@ public:
     property ::testsuite::RecordWithDerivings^ Member;
     property ::testsuite::Color^ E;
 
-    ExternRecordWithDerivings(::testsuite::RecordWithDerivings^ Member,
-                              ::testsuite::Color^ E) {
-        this->Member = Member;
-        this->E = E;
+    ExternRecordWithDerivings(::testsuite::RecordWithDerivings^ member,
+                              ::testsuite::Color^ e) {
+        this->Member = member;
+        this->E = e;
     }
     ExternRecordWithDerivings() {}
 internal:

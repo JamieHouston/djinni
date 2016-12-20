@@ -13,10 +13,10 @@ public:
     property int32 SomeInteger;
     property Platform::String^ SomeString;
 
-    ConstantRecord(int32 SomeInteger,
-                   Platform::String^ SomeString) {
-        this->SomeInteger = SomeInteger;
-        this->SomeString = SomeString;
+    ConstantRecord(int32 someInteger,
+                   Platform::String^ someString) {
+        this->SomeInteger = someInteger;
+        this->SomeString = someString;
     }
     ConstantRecord() {}
 internal:

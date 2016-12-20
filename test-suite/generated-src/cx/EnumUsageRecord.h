@@ -16,16 +16,16 @@ public:
     property Windows::Foundation::Collections::IIterable<Color>^ S;
     property Windows::Foundation::Collections::IMap<Color, Color>^ M;
 
-    EnumUsageRecord(Color E,
-                    Platform::IBox<Color>^ O,
-                    Windows::Foundation::Collections::IVector<Color>^ L,
-                    Windows::Foundation::Collections::IIterable<Color>^ S,
-                    Windows::Foundation::Collections::IMap<Color, Color>^ M) {
-        this->E = E;
-        this->O = O;
-        this->L = L;
-        this->S = S;
-        this->M = M;
+    EnumUsageRecord(Color e,
+                    Platform::IBox<Color>^ o,
+                    Windows::Foundation::Collections::IVector<Color>^ l,
+                    Windows::Foundation::Collections::IIterable<Color>^ s,
+                    Windows::Foundation::Collections::IMap<Color, Color>^ m) {
+        this->E = e;
+        this->O = o;
+        this->L = l;
+        this->S = s;
+        this->M = m;
     }
     EnumUsageRecord() {}
 internal:

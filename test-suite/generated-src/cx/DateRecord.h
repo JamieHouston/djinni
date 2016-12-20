@@ -12,8 +12,8 @@ public ref class DateRecord sealed : public Platform::Object {
 public:
     property Windows::Foundation::DateTime CreatedAt;
 
-    DateRecord(Windows::Foundation::DateTime CreatedAt) {
-        this->CreatedAt = CreatedAt;
+    DateRecord(Windows::Foundation::DateTime createdAt) {
+        this->CreatedAt = createdAt;
     }
     DateRecord() {}
 internal:

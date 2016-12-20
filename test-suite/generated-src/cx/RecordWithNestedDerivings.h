@@ -13,10 +13,10 @@ public:
     property int32 Key;
     property RecordWithDerivings^ Rec;
 
-    RecordWithNestedDerivings(int32 Key,
-                              RecordWithDerivings^ Rec) {
-        this->Key = Key;
-        this->Rec = Rec;
+    RecordWithNestedDerivings(int32 key,
+                              RecordWithDerivings^ rec) {
+        this->Key = key;
+        this->Rec = rec;
     }
     RecordWithNestedDerivings() {}
 internal:

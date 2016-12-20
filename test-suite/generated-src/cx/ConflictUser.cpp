@@ -17,10 +17,10 @@ Conflict^ ConflictUser::Conflict ()
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
     }
 }
-bool ConflictUser::ConflictArg (Windows::Foundation::Collections::IIterable<Conflict^>^ Cs)
+bool ConflictUser::ConflictArg (Windows::Foundation::Collections::IIterable<Conflict^>^ cs)
 {
     try {
-        auto cppRet = _cppRef->conflict_arg(transform<std::unordered_set<std::shared_ptr<::testsuite::Conflict>>, Windows::Foundation::Collections::IIterable<::testsuite::Conflict^>^>()(Cs));
+        auto cppRet = _cppRef->conflict_arg(transform<std::unordered_set<std::shared_ptr<::testsuite::Conflict>>, Windows::Foundation::Collections::IIterable<::testsuite::Conflict^>^>()(cs));
         return transform<bool, bool>()(cppRet);
     }
     catch(const std::exception& e) {
