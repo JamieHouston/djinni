@@ -126,7 +126,7 @@ package object generatorTools {
     val prefix = (prefix: String, suffix: IdentConverter) => (s: String) => prefix + suffix(s)
 
     val javaDefault = JavaIdentStyle(camelUpper, camelUpper, camelLower, camelLower, camelLower, underCaps, underCaps)
-    val cppDefault = CppIdentStyle(camelUpper, camelUpper, camelUpper, underLower, underLower, underLower, underCaps, underCaps)
+    val cppDefault = CppIdentStyle(camelUpper, camelUpper, camelUpper, underLower, underLower, underLower, camelUpper, underCaps)
     val objcDefault = ObjcIdentStyle(camelUpper, camelUpper, camelLower, camelLower, camelLower, camelUpper, camelUpper)
     val cxDefault = CxIdentStyle(camelUpper, camelUpper, camelUpper, camelUpper, camelUpper, camelLower, camelUpper, camelUpper)
     val styles = Map(
