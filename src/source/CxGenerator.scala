@@ -156,7 +156,10 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
         // Constructor.
         if(r.fields.nonEmpty) {
           w.wl
-          writeAlignedCall(w, self + "(", r.fields, ")", f => cxMarshal.fieldType(f.ty) + " " + idCx.local(f.ident)).braced {
+          writeAlignedCall(w, self + "(", r.fields, ")", f => {
+            // if parameter type and value are same string then CX needs the namespace to find the type
+            (if(f.ty.expr.ident.name == f.ident.name) withNs(Some(spec.cxNamespace), cxMarshal.fieldType(f.ty)) else cxMarshal.fieldType(f.ty)) + " " + idCx.local(f.ident)
+          }).braced {
             r.fields.map(f => w.wl("this->" + idCx.field(f.ident) + " = " + idCx.local(f.ident) + ";"))
           }
         }

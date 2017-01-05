@@ -12,7 +12,7 @@ public:
     property Windows::Foundation::Collections::IMap<Platform::String^, int64>^ Map;
     property Windows::Foundation::Collections::IMap<int32, int32>^ Imap;
 
-    MapRecord(Windows::Foundation::Collections::IMap<Platform::String^, int64>^ map,
+    MapRecord(::testsuite::Windows::Foundation::Collections::IMap<Platform::String^, int64>^ map,
               Windows::Foundation::Collections::IMap<int32, int32>^ imap) {
         this->Map = map;
         this->Imap = imap;
