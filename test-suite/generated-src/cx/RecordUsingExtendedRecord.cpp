@@ -9,12 +9,12 @@ namespace testsuite {
 
 ::testsuite::RecordUsingExtendedRecord RecordUsingExtendedRecord::toCpp() {
     return ::testsuite::RecordUsingExtendedRecord(
-        transform<::testsuite::ExtendedRecord, ExtendedRecord^>()(Er));
+        transform<::testsuite::ExtendedRecord, ::testsuite::ExtendedRecord^>()(Er));
 }
 
 RecordUsingExtendedRecord^ RecordUsingExtendedRecord::fromCpp(const ::testsuite::RecordUsingExtendedRecord& value) {
     RecordUsingExtendedRecord^ ret = ref new RecordUsingExtendedRecord();
-    ret->Er = transform<::testsuite::ExtendedRecord, ExtendedRecord^>()(value.er);
+    ret->Er = transform<::testsuite::ExtendedRecord, ::testsuite::ExtendedRecord^>()(value.er);
     return ret;
 }
 

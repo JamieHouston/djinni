@@ -11,7 +11,7 @@ public ref class PrimitiveList sealed : public Platform::Object {
 public:
     property Windows::Foundation::Collections::IVector<int64>^ List;
 
-    PrimitiveList(::testsuite::Windows::Foundation::Collections::IVector<int64>^ list) {
+    PrimitiveList(Windows::Foundation::Collections::IVector<int64>^ list) {
         this->List = list;
     }
     PrimitiveList() {}

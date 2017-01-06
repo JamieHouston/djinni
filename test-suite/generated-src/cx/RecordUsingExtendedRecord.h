@@ -15,7 +15,7 @@ public:
             false /* Foo */ ) /* Er */ );} } 
     property ExtendedRecord^ Er;
 
-    RecordUsingExtendedRecord(ExtendedRecord^ er) {
+    RecordUsingExtendedRecord(::testsuite::ExtendedRecord^ er) {
         this->Er = er;
     }
     RecordUsingExtendedRecord() {}

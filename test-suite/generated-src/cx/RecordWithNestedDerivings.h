@@ -14,7 +14,7 @@ public:
     property RecordWithDerivings^ Rec;
 
     RecordWithNestedDerivings(int32 key,
-                              RecordWithDerivings^ rec) {
+                              ::testsuite::RecordWithDerivings^ rec) {
         this->Key = key;
         this->Rec = rec;
     }

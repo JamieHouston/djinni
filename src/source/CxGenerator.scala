@@ -157,8 +157,12 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
         if(r.fields.nonEmpty) {
           w.wl
           writeAlignedCall(w, self + "(", r.fields, ")", f => {
-            // if parameter type and value are same string then CX needs the namespace to find the type
-            (if(f.ty.expr.ident.name == f.ident.name) withNs(Some(spec.cxNamespace), cxMarshal.fieldType(f.ty)) else cxMarshal.fieldType(f.ty)) + " " + idCx.local(f.ident)
+            // If parameter type and value are same string then CX needs the namespace to find the type.
+            // The below 2 commented lines would take care of it only when needed, but since it doesn't
+            // hurt to just have namespace everytime just... uh... print it every time
+            // val namespaceIfNeeded = if(f.ty.expr.ident.name == f.ident.name) Some(spec.cxNamespace) else None
+            // cxMarshal.fieldType(f.ty.resolved, namespaceIfNeeded) + " " + idCx.local(f.ident)
+            cxMarshal.fieldType(f.ty.resolved, Some(spec.cxNamespace)) + " " + idCx.local(f.ident)
           }).braced {
             r.fields.map(f => w.wl("this->" + idCx.field(f.ident) + " = " + idCx.local(f.ident) + ";"))
           }
@@ -194,7 +198,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
         val skipFirst = SkipFirst()
         for(f <- r.fields) {
           skipFirst{w.wl(",")}
-          w.w(s"${translate(f.ty.resolved, idCx.field(f.ident))}")
+          w.w(s"${translate(f.ty.resolved, idCx.field(f.ident), Some(spec.cxNamespace))}")
         }
         w.decrease()
         w.wl(");")
@@ -204,7 +208,7 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
       w.w(s"$self^ $self::fromCpp(const $cppType& value)").braced {
         w.wl(s"$self^ ret = ref new $self();")
         for(f <- r.fields) {
-          w.wl(s"ret->${idCx.field(f.ident)} = ${translate(f.ty.resolved, "value." + idCpp.field(f.ident))};")
+          w.wl(s"ret->${idCx.field(f.ident)} = ${translate(f.ty.resolved, "value." + idCpp.field(f.ident), Some(spec.cxNamespace))};")
         }
         w.wl("return ret;")
       }

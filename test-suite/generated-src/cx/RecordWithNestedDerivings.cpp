@@ -10,13 +10,13 @@ namespace testsuite {
 ::testsuite::RecordWithNestedDerivings RecordWithNestedDerivings::toCpp() {
     return ::testsuite::RecordWithNestedDerivings(
         transform<int32_t, int32>()(Key),
-        transform<::testsuite::RecordWithDerivings, RecordWithDerivings^>()(Rec));
+        transform<::testsuite::RecordWithDerivings, ::testsuite::RecordWithDerivings^>()(Rec));
 }
 
 RecordWithNestedDerivings^ RecordWithNestedDerivings::fromCpp(const ::testsuite::RecordWithNestedDerivings& value) {
     RecordWithNestedDerivings^ ret = ref new RecordWithNestedDerivings();
     ret->Key = transform<int32_t, int32>()(value.key);
-    ret->Rec = transform<::testsuite::RecordWithDerivings, RecordWithDerivings^>()(value.rec);
+    ret->Rec = transform<::testsuite::RecordWithDerivings, ::testsuite::RecordWithDerivings^>()(value.rec);
     return ret;
 }
 
