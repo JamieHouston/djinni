@@ -29,7 +29,7 @@ bool TestHelpers::CheckSetRecord (SetRecord^ rec)
 {
     try {
         auto cppRet = ::testsuite::TestHelpers::check_set_record(transform<::testsuite::SetRecord, ::testsuite::SetRecord^>()(rec));
-        return transform<bool, bool>()(cppRet);
+        return cppRet;
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -49,7 +49,7 @@ bool TestHelpers::CheckPrimitiveList (PrimitiveList^ pl)
 {
     try {
         auto cppRet = ::testsuite::TestHelpers::check_primitive_list(transform<::testsuite::PrimitiveList, ::testsuite::PrimitiveList^>()(pl));
-        return transform<bool, bool>()(cppRet);
+        return cppRet;
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -69,7 +69,7 @@ bool TestHelpers::CheckNestedCollection (NestedCollection^ nc)
 {
     try {
         auto cppRet = ::testsuite::TestHelpers::check_nested_collection(transform<::testsuite::NestedCollection, ::testsuite::NestedCollection^>()(nc));
-        return transform<bool, bool>()(cppRet);
+        return cppRet;
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -89,7 +89,7 @@ bool TestHelpers::CheckMap (Windows::Foundation::Collections::IMap<Platform::Str
 {
     try {
         auto cppRet = ::testsuite::TestHelpers::check_map(transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64>^>()(m));
-        return transform<bool, bool>()(cppRet);
+        return cppRet;
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -109,7 +109,7 @@ bool TestHelpers::CheckEmptyMap (Windows::Foundation::Collections::IMap<Platform
 {
     try {
         auto cppRet = ::testsuite::TestHelpers::check_empty_map(transform<std::unordered_map<std::string, int64_t>, Windows::Foundation::Collections::IMap<Platform::String^, int64>^>()(m));
-        return transform<bool, bool>()(cppRet);
+        return cppRet;
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));
@@ -129,7 +129,7 @@ bool TestHelpers::CheckMapListRecord (MapListRecord^ m)
 {
     try {
         auto cppRet = ::testsuite::TestHelpers::check_map_list_record(transform<::testsuite::MapListRecord, ::testsuite::MapListRecord^>()(m));
-        return transform<bool, bool>()(cppRet);
+        return cppRet;
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

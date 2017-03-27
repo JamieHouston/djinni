@@ -21,7 +21,7 @@ bool ConflictUser::ConflictArg (Windows::Foundation::Collections::IIterable<Conf
 {
     try {
         auto cppRet = _cppRef->conflict_arg(transform<std::unordered_set<std::shared_ptr<::testsuite::Conflict>>, Windows::Foundation::Collections::IIterable<::testsuite::Conflict^>^>()(cs));
-        return transform<bool, bool>()(cppRet);
+        return cppRet;
     }
     catch(const std::exception& e) {
         throw ref new Platform::Exception(-1, transform<std::string, Platform::String^>()((std::string)e.what()));

@@ -9,12 +9,12 @@ namespace testsuite {
 
 ::testsuite::AssortedPrimitives AssortedPrimitives::toCpp() {
     return ::testsuite::AssortedPrimitives(
-        transform<bool, bool>()(B),
+        B,
         transform<int8_t, int8>()(Eight),
         transform<int16_t, int16>()(Sixteen),
         transform<int32_t, int32>()(Thirtytwo),
         transform<int64_t, int64>()(Sixtyfour),
-        transform<float, float32>()(Fthirtytwo),
+        Fthirtytwo,
         transform<double, float64>()(Fsixtyfour),
         transform<std::experimental::optional<bool>, Platform::IBox<bool>^>()(OB),
         transform<std::experimental::optional<int8_t>, Platform::IBox<int8>^>()(OEight),
@@ -27,12 +27,12 @@ namespace testsuite {
 
 AssortedPrimitives^ AssortedPrimitives::fromCpp(const ::testsuite::AssortedPrimitives& value) {
     AssortedPrimitives^ ret = ref new AssortedPrimitives();
-    ret->B = transform<bool, bool>()(value.b);
+    ret->B = value.b;
     ret->Eight = transform<int8_t, int8>()(value.eight);
     ret->Sixteen = transform<int16_t, int16>()(value.sixteen);
     ret->Thirtytwo = transform<int32_t, int32>()(value.thirtytwo);
     ret->Sixtyfour = transform<int64_t, int64>()(value.sixtyfour);
-    ret->Fthirtytwo = transform<float, float32>()(value.fthirtytwo);
+    ret->Fthirtytwo = value.fthirtytwo;
     ret->Fsixtyfour = transform<double, float64>()(value.fsixtyfour);
     ret->OB = transform<std::experimental::optional<bool>, Platform::IBox<bool>^>()(value.o_b);
     ret->OEight = transform<std::experimental::optional<int8_t>, Platform::IBox<int8>^>()(value.o_eight);

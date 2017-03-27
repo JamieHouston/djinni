@@ -397,7 +397,13 @@ class CxGenerator(spec: Spec) extends Generator(spec) {
     val Cpp = cppMarshal.toCppType(ty, Some(spec.cppNamespace), Seq())
     //   val Cx = toCxType(ty, csNamespace)
     val Cx = cxMarshal.fieldType(ty, cxNamespace)
-    s"transform<$Cpp, $Cx>()($name)"
+    if(Cpp == "bool") {
+      s"$name"
+    } else  if(Cpp == "float"){
+      s"$name"
+    } else{
+      s"transform<$Cpp, $Cx>()($name)"
+    }
   }
   /*  def toCppType(ty: TypeRef, namespace: Option[String] = None): String = toCppType(ty.resolved, namespace)
     def toCppType(tm: MExpr, namespace: Option[String]): String = {
