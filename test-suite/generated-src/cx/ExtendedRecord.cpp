@@ -9,12 +9,12 @@ namespace testsuite {
 
 ::testsuite::ExtendedRecord ExtendedRecord::toCpp() {
     return ::testsuite::ExtendedRecord(
-        transform<bool, bool>()(Foo));
+        Foo);
 }
 
 ExtendedRecord^ ExtendedRecord::fromCpp(const ::testsuite::ExtendedRecord& value) {
     ExtendedRecord^ ret = ref new ExtendedRecord();
-    ret->Foo = transform<bool, bool>()(value.foo);
+    ret->Foo = value.foo;
     return ret;
 }
 
