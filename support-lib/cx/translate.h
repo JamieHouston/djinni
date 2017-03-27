@@ -69,7 +69,7 @@ namespace System {
 	{
 		std::wstring utf8_to_unicode(const std::string& text) {
 			try {
-				std::wstring_convert<std::codecvt_utf8<wchar_t>> convt;
+				std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> convt;
 				return convt.from_bytes(text);
 			}
 			catch (std::range_error&)
@@ -82,7 +82,7 @@ namespace System {
 		}
 
 		std::string unicode_to_utf8(const std::wstring& text) {
-			std::wstring_convert<std::codecvt_utf8<wchar_t>> convt;
+			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> convt;
 			return convt.to_bytes(text);
 		}
 
